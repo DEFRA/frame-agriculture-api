@@ -30,5 +30,9 @@
     <PackageReference Include="Serilog.Settings.Configuration" Version="10.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FrameAgricultureApi.Libraries.CoverCrops\FrameAgricultureApi.Libraries.CoverCrops.csproj" />
+  </ItemGroup>
+
 
 </Project>

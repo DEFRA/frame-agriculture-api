@@ -1,5 +1,6 @@
 using System.Net.Mime;
 using Asp.Versioning;
+using FrameAgricultureApi.Libraries.CoverCrops;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,7 +16,7 @@ namespace FrameAgricultureApi.Controllers
         [ProducesResponseType(typeof(StandardOutput), StatusCodes.Status200OK)]
         [HttpPost("cover-crop-emissions")]
         [ApiVersion(1.0)]
-        public IActionResult CoverCropEmissions([FromBody] CoverCropInputs jsonInputObject)
+        public IActionResult CoverCropEmissions([FromBody] CoverCropRequest jsonInputObject)
         {
             try
             {

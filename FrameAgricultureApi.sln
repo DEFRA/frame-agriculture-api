@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameAgricultureApi.Test", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameAgricultureApi.Infrastructure", "FrameAgricultureApi.Infrastructure\FrameAgricultureApi.Infrastructure.csproj", "{31CC8999-5F40-43C3-9906-B86C16DF026B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameAgricultureApi.Libraries.CoverCrops", "FrameAgricultureApi.Libraries.CoverCrops\FrameAgricultureApi.Libraries.CoverCrops.csproj", "{9457D328-10A4-4735-9F38-B4AEACEFED07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,18 @@ Global
 		{31CC8999-5F40-43C3-9906-B86C16DF026B}.Release|x64.Build.0 = Release|Any CPU
 		{31CC8999-5F40-43C3-9906-B86C16DF026B}.Release|x86.ActiveCfg = Release|Any CPU
 		{31CC8999-5F40-43C3-9906-B86C16DF026B}.Release|x86.Build.0 = Release|Any CPU
+		{9457D328-10A4-4735-9F38-B4AEACEFED07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9457D328-10A4-4735-9F38-B4AEACEFED07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9457D328-10A4-4735-9F38-B4AEACEFED07}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9457D328-10A4-4735-9F38-B4AEACEFED07}.Debug|x64.Build.0 = Debug|Any CPU
+		{9457D328-10A4-4735-9F38-B4AEACEFED07}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9457D328-10A4-4735-9F38-B4AEACEFED07}.Debug|x86.Build.0 = Debug|Any CPU
+		{9457D328-10A4-4735-9F38-B4AEACEFED07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9457D328-10A4-4735-9F38-B4AEACEFED07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9457D328-10A4-4735-9F38-B4AEACEFED07}.Release|x64.ActiveCfg = Release|Any CPU
+		{9457D328-10A4-4735-9F38-B4AEACEFED07}.Release|x64.Build.0 = Release|Any CPU
+		{9457D328-10A4-4735-9F38-B4AEACEFED07}.Release|x86.ActiveCfg = Release|Any CPU
+		{9457D328-10A4-4735-9F38-B4AEACEFED07}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
