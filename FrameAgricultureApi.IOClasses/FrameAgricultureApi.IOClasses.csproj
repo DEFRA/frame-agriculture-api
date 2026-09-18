@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FrameAgricultureApi.Generic\FrameAgricultureApi.Generic.csproj" />
+  </ItemGroup>
+
 </Project>
