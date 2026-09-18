@@ -1,4 +1,3 @@
-using FrameAgricultureApi.Example.Endpoints;
 using FrameAgricultureApi.Example.Services;
 using FrameAgricultureApi.Config;
 using FrameAgricultureApi.Utils;
@@ -46,7 +45,7 @@ static void ConfigureServices(WebApplicationBuilder builder)
     services.LoadCustomTrustStoreFromEnvironment();
 
     services.AddProblemDetails();
-    services.AddValidation();
+    services.AddControllers();
 
     services.AddHttpContextAccessor();
 
@@ -112,6 +111,5 @@ static void ConfigureEndpoints(WebApplication app)
 {
     app.MapHealthChecks("/health", new HealthCheckOptions());
 
-    // Remove before deploying
-    app.MapExampleEndpoints();
+    app.MapControllers();
 }
