@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameAgricultureApi.IOClass
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameAgricultureApi.Enumerators", "FrameAgricultureApi.Enumerators\FrameAgricultureApi.Enumerators.csproj", "{C61AC05C-2AB4-4784-9659-6B0F31EF3263}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameAgricultureApi.Libraries.LookUps", "FrameAgricultureApi.Libraries.LookUps\FrameAgricultureApi.Libraries.LookUps.csproj", "{1981504B-6BE9-420B-B039-D31B6908FC5B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +113,18 @@ Global
 		{C61AC05C-2AB4-4784-9659-6B0F31EF3263}.Release|x64.Build.0 = Release|Any CPU
 		{C61AC05C-2AB4-4784-9659-6B0F31EF3263}.Release|x86.ActiveCfg = Release|Any CPU
 		{C61AC05C-2AB4-4784-9659-6B0F31EF3263}.Release|x86.Build.0 = Release|Any CPU
+		{1981504B-6BE9-420B-B039-D31B6908FC5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1981504B-6BE9-420B-B039-D31B6908FC5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1981504B-6BE9-420B-B039-D31B6908FC5B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1981504B-6BE9-420B-B039-D31B6908FC5B}.Debug|x64.Build.0 = Debug|Any CPU
+		{1981504B-6BE9-420B-B039-D31B6908FC5B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1981504B-6BE9-420B-B039-D31B6908FC5B}.Debug|x86.Build.0 = Debug|Any CPU
+		{1981504B-6BE9-420B-B039-D31B6908FC5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1981504B-6BE9-420B-B039-D31B6908FC5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1981504B-6BE9-420B-B039-D31B6908FC5B}.Release|x64.ActiveCfg = Release|Any CPU
+		{1981504B-6BE9-420B-B039-D31B6908FC5B}.Release|x64.Build.0 = Release|Any CPU
+		{1981504B-6BE9-420B-B039-D31B6908FC5B}.Release|x86.ActiveCfg = Release|Any CPU
+		{1981504B-6BE9-420B-B039-D31B6908FC5B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

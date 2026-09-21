@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 
 namespace FrameAgricultureApi.Generic;
 
@@ -62,6 +63,32 @@ public static class HelperFunctions
         return sum;
     }
     /// <summary>
+    /// Retrieves lookup table as memeory strema from assembly resources
+    /// </summary>
+    /// <param name="assembly"></param>
+    /// <param name="filename"></param>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public static MemoryStream GetLUT(Assembly assembly, string filename)
+    {
+        MemoryStream retstream = new();
+        string resourcename = assembly.GetManifestResourceNames()
+               .Single(str => str.EndsWith(filename));
+        using(Stream? stream = assembly.GetManifestResourceStream(resourcename))
+        {
+            if(stream == null)
+            {
+                throw new Exception("Unable to locate the LUT file " + filename + ".\nMissing files need to be added to the project - contact the FLEA developer.");
+            }
+            else
+            {
+                stream.CopyTo(retstream);
+            }
+        }
+        retstream.Position = 0;
+        return retstream;
+    }
+    /// <summary>
     /// Function to convert daily inputs ot monthly inputs
     /// </summary>
     /// <param name="input">Value ot be converted</param>
@@ -81,3 +108,4 @@ public static class HelperFunctions
         return input * 365.0;
     }
 }
+
