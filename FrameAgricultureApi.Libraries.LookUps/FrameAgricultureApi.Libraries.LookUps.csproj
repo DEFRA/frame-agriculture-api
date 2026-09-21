@@ -10,4 +10,8 @@
     <ProjectReference Include="..\FrameAgricultureApi.Generic\FrameAgricultureApi.Generic.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Include="LUTs\*.dat" />
+  </ItemGroup>
+
 </Project>
