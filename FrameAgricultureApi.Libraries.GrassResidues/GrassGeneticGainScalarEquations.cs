@@ -86,11 +86,11 @@ public static class GrassGeneticGainScalarEquations
         double retval = 1.0;
         if(grassType.Equals(GrassType.ImprovedTemporary))
         {
-            retval = (100.0 + tmp_GeneticIncreaseNitrogenUptake * tmp_Correction * 0.15) / (100.0 + tmp_GeneticIncreaseYield * tmp_Correction * 0.3);
+            retval = (100.0 + tmp_GeneticIncreaseNitrogenUptake * tmp_Correction) / (100.0 + tmp_GeneticIncreaseYield * tmp_Correction);
         }
         else if(grassType.Equals(GrassType.ImprovedPermanent))
         {
-            retval = (100.0 + 0.5 * tmp_GeneticIncreaseNitrogenUptake * tmp_Correction * 0.15) / (100.0 + 0.5 * tmp_GeneticIncreaseYield * tmp_Correction * 0.3);
+            retval = (100.0 + 0.5 * tmp_GeneticIncreaseNitrogenUptake * tmp_Correction) / (100.0 + 0.5 * tmp_GeneticIncreaseYield * tmp_Correction);
         }
 
         return retval;

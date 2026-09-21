@@ -187,7 +187,7 @@ public class GrassResiduesTests
 
         //Assert.Equal(expectedResultJson, actualEmissionJson);
         Assert.True(HelperFunctions.IsWithinPercentage(expectedResult.EmissionsCore[CoreEmissions.DirectN2ON].Value,actualEmissions.EmissionsCore[CoreEmissions.DirectN2ON].Value,0.1));
-        Assert.True(HelperFunctions.IsWithinPercentage(expectedResult.EmissionsCore[CoreEmissions.DirectNH3N].Value, actualEmissions.EmissionsCore[CoreEmissions.DirectNH3N].Value, 0.1));
+        Assert.Equal(expectedResult.EmissionsCore[CoreEmissions.DirectNH3N].Value, actualEmissions.EmissionsCore[CoreEmissions.DirectNH3N].Value);
         Assert.True(HelperFunctions.IsWithinPercentage(expectedResult.EmissionsCore[CoreEmissions.LeachedNO3N].Value,actualEmissions.EmissionsCore[CoreEmissions.LeachedNO3N].Value,0.1));
         Assert.True(HelperFunctions.IsWithinPercentage(expectedResult.EmissionsCore[CoreEmissions.DirectN2N].Value, actualEmissions.EmissionsCore[CoreEmissions.DirectN2N].Value, 0.1));
         Assert.True(HelperFunctions.IsWithinPercentage(expectedResult.EmissionsCore[CoreEmissions.N2ONvolatalised].Value, actualEmissions.EmissionsCore[CoreEmissions.N2ONvolatalised].Value, 0.1));
