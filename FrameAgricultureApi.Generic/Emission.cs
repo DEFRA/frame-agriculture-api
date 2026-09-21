@@ -1,3 +1,5 @@
+namespace FrameAgricultureApi.Generic;
+
 /// <summary>
 /// Base Emission class. Emission defined to have a name, units and a value.
 /// </summary>

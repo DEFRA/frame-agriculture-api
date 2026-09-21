@@ -1,4 +1,6 @@
-﻿namespace FrameAgricultureApi.Libraries.CoverCrops;
+using FrameAgricultureApi.Generic;
+
+namespace FrameAgricultureApi.IOClasses;
 
 /// <summary>
 /// The standard outputs class

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FrameAgricultureApi.Enumerators\FrameAgricultureApi.Enumerators.csproj" />
+    <ProjectReference Include="..\FrameAgricultureApi.Libraries.Enteric\FrameAgricultureApi.Libraries.Enteric.csproj" />
     <ProjectReference Include="..\FrameAgricultureApi.Generic\FrameAgricultureApi.Generic.csproj" />
+    <ProjectReference Include="..\FrameAgricultureApi.Libraries.ManureMassVolume\FrameAgricultureApi.Libraries.ManureMassVolume.csproj" />
+    <ProjectReference Include="..\FrameAgricultureApi.Libraries.GrassResidues\FrameAgricultureApi.Libraries.GrassResidues.csproj" />
   </ItemGroup>
 
 </Project>

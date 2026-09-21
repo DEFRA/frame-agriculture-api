@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FrameAgricultureApi.CustomErrorHandling\FrameAgricultureApi.CustomErrorHandling.csproj" />
+    <ProjectReference Include="..\FrameAgricultureApi.Enumerators\FrameAgricultureApi.Enumerators.csproj" />
+    <ProjectReference Include="..\FrameAgricultureApi.Libraries.CoverCrops\FrameAgricultureApi.Libraries.CoverCrops.csproj" />
+    <ProjectReference Include="..\FrameAgricultureApi.Libraries.CropBurning\FrameAgricultureApi.Libraries.CropBurning.csproj" />
+    <ProjectReference Include="..\FrameAgricultureApi.Libraries.Fertiliser\FrameAgricultureApi.Libraries.Fertiliser.csproj" />
+    <ProjectReference Include="..\FrameAgricultureApi.Libraries.Housing\FrameAgricultureApi.Libraries.Housing.csproj" />
+    <ProjectReference Include="..\FrameAgricultureApi.Libraries.LookUps\FrameAgricultureApi.Libraries.LookUps.csproj" />
+    <ProjectReference Include="..\FrameAgricultureApi.Libraries.ManureMassVolume\FrameAgricultureApi.Libraries.ManureMassVolume.csproj" />
+    <ProjectReference Include="..\FrameAgricultureApi.Libraries.OrganicMatterApplication\FrameAgricultureApi.Libraries.OrganicMatterApplication.csproj" />
+    <ProjectReference Include="..\FrameAgricultureApi.Libraries.OutdoorLivestock\FrameAgricultureApi.Libraries.OutdoorLivestock.csproj" />
+    <ProjectReference Include="..\FrameAgricultureApi.Libraries.CropResidues\FrameAgricultureApi.Libraries.CropResidues.csproj" />
+    <ProjectReference Include="..\FrameAgricultureApi.Libraries.Storage\FrameAgricultureApi.Libraries.Storage.csproj" />
+    <ProjectReference Include="..\FrameAgricultureApi.Libraries.YardExcretionLivestock\FrameAgricultureApi.Libraries.YardExcretionLivestock.csproj" />
+    <ProjectReference Include="..\FrameAgricultureApi.Libraries.GrassResidues\FrameAgricultureApi.Libraries.GrassResidues.csproj" />
+    <ProjectReference Include="..\FrameAgricultureApi.IOClasses\FrameAgricultureApi.IOClasses.csproj" />
+    <ProjectReference Include="..\FrameAgricultureApi.Libraries.NonGHG\FrameAgricultureApi.Libraries.NonGHG.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,7 +1,7 @@
 @baseUrl = http://localhost:8085
 
 ### Calculate cover crop emissions
-# cropType: 10 = Wheat (see FrameAgricultureApi.Libraries.CoverCrops/CropType.cs)
+# cropType: 10 = Wheat (see FrameAgricultureApi.Enumerators/Enumerators.cs)
 # coverCropType: 0 = All (the only supported cover crop type)
 POST {{baseUrl}}/api/CoverCrops/cover-crop-emissions
 Content-Type: application/json

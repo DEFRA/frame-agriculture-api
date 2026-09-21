@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using MongoDB.Driver;
 using MongoDB.Driver.Authentication.AWS;
 using Serilog;
+using Asp.Versioning;
+using FrameAgricultureApi.CustomMiddlewares;
+using Microsoft.OpenApi.Models;
 
 var app = BuildApp(args);
 await app.RunAsync();
@@ -46,6 +49,23 @@ static void ConfigureServices(WebApplicationBuilder builder)
 
     services.AddProblemDetails();
     services.AddControllers();
+    services.AddSwaggerGen(options => options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Frame Agriculture API",
+        Version = "v1",
+        Description = "Farm emissions calculations based on the FLEA model."
+    }));
+    services.AddApiVersioning(options =>
+    {
+        options.AssumeDefaultVersionWhenUnspecified = true;
+        options.DefaultApiVersion = new ApiVersion(1, 0);
+        options.ReportApiVersions = true;
+        options.ApiVersionReader = new UrlSegmentApiVersionReader();
+    }).AddMvc().AddApiExplorer(options =>
+    {
+        options.GroupNameFormat = "'v'V";
+        options.SubstituteApiVersionInUrl = true;
+    });
 
     services.AddHttpContextAccessor();
 
@@ -104,6 +124,9 @@ static void ConfigureMiddleware(WebApplication app)
     app.UseSerilogRequestLogging();
 
     app.UseHeaderPropagation();
+    app.UseExceptionHandlingMiddleware();
+    app.UseSwagger();
+    app.UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1"));
 }
 
 [ExcludeFromCodeCoverage]
