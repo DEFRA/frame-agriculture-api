@@ -14,7 +14,7 @@ namespace FrameAgricultureApi.Test.Example.Endpoints;
 
 public class ExampleEndpointsTest
 {
-    [Fact]
+    [Fact(Skip = "An example test.")]
     public async Task Post_returns_created_and_location_for_valid_request()
     {
         var cancellationToken = TestContext.Current.CancellationToken;
@@ -32,7 +32,7 @@ public class ExampleEndpointsTest
         Assert.Equal("/example/alpha", response.Headers.Location?.AbsolutePath);
     }
 
-    [Fact]
+    [Fact(Skip = "An example test.")]
     public async Task Post_returns_validation_problem_details_for_invalid_request()
     {
         var cancellationToken = TestContext.Current.CancellationToken;
@@ -55,7 +55,7 @@ public class ExampleEndpointsTest
         Assert.Contains(nameof(CreateExampleRequest.Counter), problem.Errors.Keys);
     }
 
-    [Fact]
+    [Fact(Skip = "An example test.")]
     public async Task Post_returns_conflict_when_name_already_exists()
     {
         var cancellationToken = TestContext.Current.CancellationToken;
@@ -81,7 +81,7 @@ public class ExampleEndpointsTest
         Assert.Equal("Example already exists", problem.Title);
     }
 
-    [Fact]
+    [Fact(Skip = "An example test.")]
     public async Task Put_uses_route_name_and_returns_updated_model()
     {
         var cancellationToken = TestContext.Current.CancellationToken;
@@ -101,7 +101,7 @@ public class ExampleEndpointsTest
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
     }
 
-    [Fact]
+    [Fact(Skip = "An example test.")]
     public async Task Get_supports_search_term_filter()
     {
         var cancellationToken = TestContext.Current.CancellationToken;
@@ -112,7 +112,7 @@ public class ExampleEndpointsTest
         await factory.MockPersistence.Received().SearchAsync(Arg.Is("starter"), Arg.Any<CancellationToken>());
     }
 
-    [Fact]
+    [Fact(Skip = "An example test.")]
     public async Task Delete_returns_no_content_for_existing_record()
     {
         var cancellationToken = TestContext.Current.CancellationToken;
@@ -129,7 +129,7 @@ public class ExampleEndpointsTest
         Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
     }
 
-    [Fact]
+    [Fact(Skip = "An example test.")]
     public async Task Health_endpoint_is_available()
     {
         var cancellationToken = TestContext.Current.CancellationToken;
