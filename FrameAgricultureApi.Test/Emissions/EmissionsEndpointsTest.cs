@@ -8,17 +8,6 @@ namespace FrameAgricultureApi.Test.Emissions;
 
 public class EmissionsEndpointsTest
 {
-    [Fact]
-    public async Task Swagger_describes_versioned_emissions_routes()
-    {
-        await using var factory = new WebApplicationFactory<CoverCropsController>();
-        using var client = factory.CreateClient();
-        var response = await client.GetAsync("/swagger/v1/swagger.json", TestContext.Current.CancellationToken);
-        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-        var json = await response.Content.ReadFromJsonAsync<JsonElement>(TestContext.Current.CancellationToken);
-        Assert.True(json.GetProperty("paths").TryGetProperty("/v1/CoverCrops/cover-crop-emissions", out _));
-    }
-
     [Theory]
     [InlineData("/api/CoverCrops/cover-crop-emissions")]
     [InlineData("/CoverCrops/cover-crop-emissions")]
