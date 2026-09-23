@@ -1,4 +1,4 @@
-using FrameAgricultureApi.CustomErrorHandling;
+using System;
 using System.Reflection;
 
 namespace FrameAgricultureApi.Generic;
@@ -78,7 +78,7 @@ public static class HelperFunctions
         {
             if(stream == null)
             {
-                throw new CustomAppException("Unable to locate the LUT file " + filename + ".\nMissing files need to be added to the project - contact the FLEA developer.");
+                throw new Exception("Unable to locate the LUT file " + filename + ".\nMissing files need to be added to the project - contact the FLEA developer.");
             }
             else
             {
@@ -108,3 +108,4 @@ public static class HelperFunctions
         return input * 365.0;
     }
 }
+

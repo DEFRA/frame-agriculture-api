@@ -1,3 +1,5 @@
+using System;
+
 namespace FrameAgricultureApi.Generic;
 
 /// <summary>

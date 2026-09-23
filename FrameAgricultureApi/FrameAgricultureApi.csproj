@@ -14,7 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="7.3.2" />
     <PackageReference Include="Asp.Versioning.Http" Version="10.2.3" />
     <PackageReference Include="Asp.Versioning.Mvc" Version="10.2.1" />
     <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="10.2.1" />
@@ -37,10 +36,4 @@
   </ItemGroup>
 
 
-  <ItemGroup>
-    <ProjectReference Include="..\FrameAgricultureApi.Components\FrameAgricultureApi.Components.csproj" />
-    <ProjectReference Include="..\FrameAgricultureApi.Libraries.Enteric\FrameAgricultureApi.Libraries.Enteric.csproj" />
-    <ProjectReference Include="..\FrameAgricultureApi.Libraries.Excreta\FrameAgricultureApi.Libraries.Excreta.csproj" />
-    <ProjectReference Include="..\FrameAgricultureApi.Libraries.ValidInputChecks\FrameAgricultureApi.Libraries.ValidInputChecks.csproj" />
-  </ItemGroup>
 </Project>

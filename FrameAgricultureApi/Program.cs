@@ -8,9 +8,6 @@ using FrameAgricultureApi.Utils.Logging;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using MongoDB.Driver;
 using Serilog;
-using Asp.Versioning;
-using FrameAgricultureApi.CustomMiddlewares;
-using Microsoft.OpenApi.Models;
 
 var app = BuildApp(args);
 await app.RunAsync();
@@ -118,7 +115,6 @@ static void ConfigureMiddleware(WebApplication app)
     app.UseSerilogRequestLogging();
 
     app.UseHeaderPropagation();
-    app.UseExceptionHandlingMiddleware();
 }
 
 [ExcludeFromCodeCoverage]

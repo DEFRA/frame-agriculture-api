@@ -1,11 +1,7 @@
-using FrameAgricultureApi.Generic;
-using static FrameAgricultureApi.Enumerators.Enumerators;
+using System;
 
 namespace FrameAgricultureApi.Libraries.CoverCrops;
 
-/// <summary>
-/// Crop residue emissions class
-/// </summary>
 public class CoverCropEmissions : BaseEmissions
 {
     /// <summary>

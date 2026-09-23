@@ -1,14 +1,10 @@
-using FrameAgricultureApi.CustomErrorHandling;
+﻿using System.Reflection;
+using FrameAgricultureApi.Enumerators;
 using FrameAgricultureApi.Generic;
-using System.Reflection;
-using static FrameAgricultureApi.Enumerators.Enumerators;
+using FrameAgricultureApi.Libraries.CoverCrops;
 
 namespace FrameAgricultureApi.Libraries.LookUps;
 
-/// <summary>
-/// Crop lookup Singleton
-/// Provides access to key parameters read in from lookup tables
-/// </summary>
 public class CropLookup
 {
     /// <summary>
@@ -114,7 +110,7 @@ public class CropLookup
         }
         catch(Exception ex)
         {
-            throw new CustomAppException("Error reading fertiliser lookup table: " + ex.Message);
+            throw new Exception("Error reading fertiliser lookup table: " + ex.Message);
         }
         finally
         {
@@ -158,7 +154,7 @@ public class CropLookup
         }
         catch(Exception ex)
         {
-            throw new CustomAppException("Error reading crop residue lookup: " + ex.Message);
+            throw new Exception("Error reading crop residue lookup: " + ex.Message);
         }
         finally
         {
@@ -187,7 +183,7 @@ public class CropLookup
         }
         catch(Exception ex)
         {
-            throw new CustomAppException("Error reading Cover crop lookup: " + ex.Message);
+            throw new Exception("Error reading Cover crop lookup: " + ex.Message);
         }
         finally
         {
@@ -230,7 +226,7 @@ public class CropLookup
         }
         catch(Exception ex)
         {
-            throw new CustomAppException("Error reading nonGHG lookup: " + ex.Message);
+            throw new Exception("Error reading nonGHG lookup: " + ex.Message);
         }
         finally
         {
@@ -280,7 +276,7 @@ public class CropLookup
         }
         catch(Exception ex)
         {
-            throw new CustomAppException("Error reading crop burning lookup: " + ex.Message);
+            throw new Exception("Error reading crop burning lookup: " + ex.Message);
         }
         finally { memoryStream.Close(); }
     }
@@ -606,3 +602,4 @@ public class CropLookup
     /// <returns>Burning efficiency (unitless)</returns>
     public static double RetrieveCombustionEfficiency(CropType cropType) { return Instance.burnCombustionEfficiency[(int)cropType]; ; }
 }
+
