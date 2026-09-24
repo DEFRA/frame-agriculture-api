@@ -1,4 +1,3 @@
-using FrameAgricultureApi.Example.Services;
 using FrameAgricultureApi.Config;
 using FrameAgricultureApi.Utils;
 using FrameAgricultureApi.Utils.Http;
@@ -66,9 +65,6 @@ static void ConfigureServices(WebApplicationBuilder builder)
     ConfigureMongo(services, configuration);
 
     services.AddHealthChecks();
-
-    // App services
-    services.AddSingleton<IExamplePersistence, ExamplePersistence>();
 }
 
 [ExcludeFromCodeCoverage]
