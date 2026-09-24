@@ -48,7 +48,7 @@ static void ConfigureServices(WebApplicationBuilder builder)
 
     services.AddProblemDetails();
     services.AddControllers();
-    services.AddOpenApi("v1");
+    services.AddOpenApi("v0");
 
     services.AddApiVersioning(options =>
     {
@@ -161,7 +161,9 @@ static void ConfigureEndpoints(WebApplication app)
     if (app.Environment.IsDevelopment())
     {
         app.MapOpenApi();
-        app.MapScalarApiReference(options => options.WithTitle("Frame Agriculture API"));
+        app.MapScalarApiReference(options => options
+            .WithTitle("Frame Agriculture API")
+            .AddDocument("v0", "Version 0.0"));
     }
 
     app.MapHealthChecks("/health", new HealthCheckOptions()).DisableRateLimiting();
