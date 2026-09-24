@@ -16,7 +16,7 @@ namespace FrameAgricultureApi.Controllers
         [ProducesResponseType(typeof(StandardOutput), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(BadRequestResult), StatusCodes.Status400BadRequest)]
         [HttpPost("cover-crop-emissions")]
-        [ApiVersion(1.0)]
+        [ApiVersion(0.0)]
         public IActionResult CoverCropEmissions([FromBody] CoverCropRequest jsonInputObject)
         {
             try

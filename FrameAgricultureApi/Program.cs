@@ -53,7 +53,7 @@ static void ConfigureServices(WebApplicationBuilder builder)
     services.AddApiVersioning(options =>
     {
         options.AssumeDefaultVersionWhenUnspecified = true;
-        options.DefaultApiVersion = new ApiVersion(1, 0);
+        options.DefaultApiVersion = new ApiVersion(0, 0);
         options.ReportApiVersions = true;
         options.ApiVersionReader = new UrlSegmentApiVersionReader();
     }).AddMvc().AddApiExplorer(options =>
