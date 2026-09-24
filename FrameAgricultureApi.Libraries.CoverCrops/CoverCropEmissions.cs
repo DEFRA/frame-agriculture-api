@@ -29,17 +29,17 @@ public class CoverCropEmissions : BaseEmissions
     public List<Emission> ExportEmissions()
     {
         List<Emission> retList = [];
-        foreach(CoreEmissions key in EmissionsCore.Keys)
+        foreach (CoreEmissions key in EmissionsCore.Keys)
         {
-            if(!double.IsNaN(EmissionsCore[key].Value))
+            if (!double.IsNaN(EmissionsCore[key].Value))
             {
                 retList.Add(EmissionsCore[key]);
             }
         }
 
-        foreach(AdditionalCoverCropEmissions key in additionalOutputs.Keys)
+        foreach (AdditionalCoverCropEmissions key in additionalOutputs.Keys)
         {
-            if(!double.IsNaN(additionalOutputs[key].Value))
+            if (!double.IsNaN(additionalOutputs[key].Value))
             {
                 retList.Add(additionalOutputs[key]);
             }
@@ -54,9 +54,9 @@ public class CoverCropEmissions : BaseEmissions
     {
         base.RoundCoreEmissions(decimalPlaces);
 
-        foreach(AdditionalCoverCropEmissions key in additionalOutputs.Keys)
+        foreach (AdditionalCoverCropEmissions key in additionalOutputs.Keys)
         {
-            if(!double.IsNaN(additionalOutputs[key].Value))
+            if (!double.IsNaN(additionalOutputs[key].Value))
             {
                 additionalOutputs[key].Value = Math.Round(additionalOutputs[key].Value, decimalPlaces);
             }

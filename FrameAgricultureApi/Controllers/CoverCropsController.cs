@@ -10,7 +10,7 @@ namespace FrameAgricultureApi.Controllers
     [ApiController]
     public class CoverCropsController : ControllerBase
     {
-        
+
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(StandardOutput), StatusCodes.Status200OK)]
@@ -22,14 +22,14 @@ namespace FrameAgricultureApi.Controllers
             try
             {
                 StandardOutput standardOutput = new();
-                if(jsonInputObject != null)
+                if (jsonInputObject != null)
                 {
                     CoverCropEmissions emissions = CoverCrops.CoverCropEmissions(jsonInputObject.CoverCropType);
                     standardOutput = new StandardOutput("Cover Crops", jsonInputObject.CropType.ToString(), "Crop Production", emissions.ExportEmissions());
                 }
                 return Ok(standardOutput);
             }
-            catch(Exception ex) { return BadRequest(ex.Message); }
+            catch (Exception ex) { return BadRequest(ex.Message); }
         }
 
     }

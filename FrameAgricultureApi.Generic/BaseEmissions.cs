@@ -34,13 +34,12 @@ public class BaseEmissions
     /// <param name="decimalPlaces">Numebr of decimal places to be used</param>
     public void RoundCoreEmissions(int decimalPlaces)
     {
-        foreach(CoreEmissions key in EmissionsCore.Keys)
+        foreach (CoreEmissions key in EmissionsCore.Keys)
         {
-            if(!double.IsNaN(EmissionsCore[key].Value))
+            if (!double.IsNaN(EmissionsCore[key].Value))
             {
                 EmissionsCore[key].Value = Math.Round(EmissionsCore[key].Value, decimalPlaces);
             }
         }
     }
 }
-

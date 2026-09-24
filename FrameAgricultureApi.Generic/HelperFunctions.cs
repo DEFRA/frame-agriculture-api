@@ -36,7 +36,7 @@ public static class HelperFunctions
     public static List<int> CreateMitigationMethodList(int[]? mitigationMethods)
     {
 
-        if(mitigationMethods == null || mitigationMethods.Length < 1)
+        if (mitigationMethods == null || mitigationMethods.Length < 1)
         { return []; }
         else
         {
@@ -52,11 +52,11 @@ public static class HelperFunctions
     /// <returns>The sum of the product of the corresponding elements</returns>
     public static double SumProduct(double[] array1, double[] array2)
     {
-        if(array1.Length != array2.Length)
+        if (array1.Length != array2.Length)
         { return double.NaN; }
 
         double sum = 0;
-        for(int i = 0; i < array1.Length; i++)
+        for (int i = 0; i < array1.Length; i++)
         {
             sum += array1[i] * array2[i];
         }
@@ -74,9 +74,9 @@ public static class HelperFunctions
         MemoryStream retstream = new();
         string resourcename = assembly.GetManifestResourceNames()
                .Single(str => str.EndsWith(filename));
-        using(Stream? stream = assembly.GetManifestResourceStream(resourcename))
+        using (Stream? stream = assembly.GetManifestResourceStream(resourcename))
         {
-            if(stream == null)
+            if (stream == null)
             {
                 throw new Exception("Unable to locate the LUT file " + filename + ".\nMissing files need to be added to the project - contact the FLEA developer.");
             }
@@ -108,4 +108,3 @@ public static class HelperFunctions
         return input * 365.0;
     }
 }
-

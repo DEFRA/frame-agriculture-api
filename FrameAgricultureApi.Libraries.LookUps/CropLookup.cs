@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using FrameAgricultureApi.Enumerators;
 using FrameAgricultureApi.Generic;
 using FrameAgricultureApi.Libraries.CoverCrops;
@@ -19,7 +19,7 @@ public class CropLookup
     {
         get
         {
-            if(_instance == null)
+            if (_instance == null)
             {
                 _instance = new CropLookup();
             }
@@ -81,7 +81,7 @@ public class CropLookup
         MemoryStream memoryStream = HelperFunctions.GetLUT(Assembly.GetExecutingAssembly(), "FLEA_Fertiliser_RatioEFs_LUT.dat");
         try
         {
-            using(BinaryReader binaryReader = new BinaryReader(memoryStream))
+            using (BinaryReader binaryReader = new BinaryReader(memoryStream))
             {
                 //Read in the 6 fertiliser type uncertainties for N2ON
                 uncertaintyN2ONFertiliserModelCoefficient.Add(binaryReader.ReadInt32(), binaryReader.ReadDouble());
@@ -108,7 +108,7 @@ public class CropLookup
             }
             memoryStream.Close();
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             throw new Exception("Error reading fertiliser lookup table: " + ex.Message);
         }
@@ -133,9 +133,9 @@ public class CropLookup
         memoryStream = HelperFunctions.GetLUT(Assembly.GetExecutingAssembly(), "FLEA_Crop_Residue_LUT.dat");
         try
         {
-            using(BinaryReader binaryReader = new BinaryReader(memoryStream))
+            using (BinaryReader binaryReader = new BinaryReader(memoryStream))
             {
-                while(binaryReader.BaseStream.Position < binaryReader.BaseStream.Length)
+                while (binaryReader.BaseStream.Position < binaryReader.BaseStream.Length)
                 {
                     int index = binaryReader.ReadInt32();
                     dryMatterContent.Add(index, binaryReader.ReadDouble());
@@ -152,7 +152,7 @@ public class CropLookup
             }
             memoryStream.Close();
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             throw new Exception("Error reading crop residue lookup: " + ex.Message);
         }
@@ -168,9 +168,9 @@ public class CropLookup
         memoryStream = HelperFunctions.GetLUT(Assembly.GetExecutingAssembly(), "FLEA_CoverCrop_LUT.dat");
         try
         {
-            using(BinaryReader binaryReader = new BinaryReader(memoryStream))
+            using (BinaryReader binaryReader = new BinaryReader(memoryStream))
             {
-                while(binaryReader.BaseStream.Position < binaryReader.BaseStream.Length)
+                while (binaryReader.BaseStream.Position < binaryReader.BaseStream.Length)
                 {
 
                     //Cover Crops
@@ -181,7 +181,7 @@ public class CropLookup
 
             memoryStream.Close();
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             throw new Exception("Error reading Cover crop lookup: " + ex.Message);
         }
@@ -206,9 +206,9 @@ public class CropLookup
         memoryStream = HelperFunctions.GetLUT(Assembly.GetExecutingAssembly(), "FLEA_Crop_NonGHG_LUT.dat");
         try
         {
-            using(BinaryReader binaryReader = new BinaryReader(memoryStream))
+            using (BinaryReader binaryReader = new BinaryReader(memoryStream))
             {
-                while(binaryReader.BaseStream.Position < binaryReader.BaseStream.Length)
+                while (binaryReader.BaseStream.Position < binaryReader.BaseStream.Length)
                 {
                     int index = binaryReader.ReadInt32();
                     efNMVOC.Add(index, binaryReader.ReadDouble());
@@ -224,7 +224,7 @@ public class CropLookup
             }
             memoryStream.Close();
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             throw new Exception("Error reading nonGHG lookup: " + ex.Message);
         }
@@ -251,9 +251,9 @@ public class CropLookup
         memoryStream = HelperFunctions.GetLUT(Assembly.GetExecutingAssembly(), "FLEA_CropBurning_LUT.dat");
         try
         {
-            using(BinaryReader binaryReader = new BinaryReader(memoryStream))
+            using (BinaryReader binaryReader = new BinaryReader(memoryStream))
             {
-                while(binaryReader.BaseStream.Position < binaryReader.BaseStream.Length)
+                while (binaryReader.BaseStream.Position < binaryReader.BaseStream.Length)
                 {
 
                     int index = binaryReader.ReadInt32();
@@ -274,7 +274,7 @@ public class CropLookup
             }
             memoryStream.Close();
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             throw new Exception("Error reading crop burning lookup: " + ex.Message);
         }
@@ -360,7 +360,7 @@ public class CropLookup
     /// <returns>N content of residues (kg/kg) as double</returns>
     public static double RetrieveResidueNContent(CropType cropType, bool aboveGround)
     {
-        if(aboveGround)
+        if (aboveGround)
         { return Instance.aboveGroundResidueN[(int)cropType]; }
         else
         {
@@ -602,4 +602,3 @@ public class CropLookup
     /// <returns>Burning efficiency (unitless)</returns>
     public static double RetrieveCombustionEfficiency(CropType cropType) { return Instance.burnCombustionEfficiency[(int)cropType]; ; }
 }
-
