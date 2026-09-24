@@ -9,6 +9,8 @@ using MongoDB.Driver;
 using Serilog;
 using Asp.Versioning;
 using Scalar.AspNetCore;
+using System.Globalization;
+using System.Threading.RateLimiting;
 
 var app = BuildApp(args);
 await app.RunAsync();
@@ -65,8 +67,46 @@ static void ConfigureServices(WebApplicationBuilder builder)
     ConfigureHeaderPropagation(services, configuration);
     ConfigureHttpClients(services);
     ConfigureMongo(services, configuration);
+    ConfigureRateLimiting(services, configuration);
 
     services.AddHealthChecks();
+}
+
+[ExcludeFromCodeCoverage]
+static void ConfigureRateLimiting(IServiceCollection services, IConfiguration configuration)
+{
+    var permitLimit = configuration.GetValue("RateLimiting:PermitLimit", 100);
+    var windowSeconds = configuration.GetValue("RateLimiting:WindowSeconds", 60);
+    ArgumentOutOfRangeException.ThrowIfNegativeOrZero(permitLimit);
+    ArgumentOutOfRangeException.ThrowIfNegativeOrZero(windowSeconds);
+
+    services.AddRateLimiter(options =>
+    {
+        options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+        options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(_ =>
+            RateLimitPartition.GetFixedWindowLimiter("global", _ => new FixedWindowRateLimiterOptions
+            {
+                PermitLimit = permitLimit,
+                Window = TimeSpan.FromSeconds(windowSeconds),
+                QueueLimit = 0,
+                AutoReplenishment = true
+            }));
+
+        options.OnRejected = async (context, cancellationToken) =>
+        {
+            if (context.Lease.TryGetMetadata(MetadataName.RetryAfter, out var retryAfter))
+            {
+                context.HttpContext.Response.Headers.RetryAfter =
+                    Math.Ceiling(retryAfter.TotalSeconds).ToString(CultureInfo.InvariantCulture);
+            }
+
+            await Results.Problem(
+                statusCode: StatusCodes.Status429TooManyRequests,
+                title: "Too many requests",
+                detail: "The request limit has been reached. Please try again later.")
+                .ExecuteAsync(context.HttpContext);
+        };
+    });
 }
 
 [ExcludeFromCodeCoverage]
@@ -111,6 +151,8 @@ static void ConfigureMiddleware(WebApplication app)
     app.UseSerilogRequestLogging();
 
     app.UseHeaderPropagation();
+    app.UseRouting();
+    app.UseRateLimiter();
 }
 
 [ExcludeFromCodeCoverage]
@@ -122,7 +164,7 @@ static void ConfigureEndpoints(WebApplication app)
         app.MapScalarApiReference(options => options.WithTitle("Frame Agriculture API"));
     }
 
-    app.MapHealthChecks("/health", new HealthCheckOptions());
+    app.MapHealthChecks("/health", new HealthCheckOptions()).DisableRateLimiting();
 
     app.MapControllers();
 }

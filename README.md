@@ -83,6 +83,18 @@ dotnet run --project FrameAgricultureApi --launch-profile FrameAgricultureApi
 In Development, open [Scalar](http://localhost:8085/scalar) to browse and try the API.
 The generated OpenAPI document is available at [openapi/v1.json](http://localhost:8085/openapi/v1.json).
 
+### Rate limiting
+
+All requests share a fixed-window limit of 100 requests per 60 seconds per application
+instance, including the development documentation endpoints. `/health` is exempt.
+Excess requests are rejected immediately with HTTP `429`, a problem-details response,
+and a `Retry-After` header indicating how many seconds to wait.
+
+Configure positive values for `RateLimiting:PermitLimit` and `RateLimiting:WindowSeconds`
+in `appsettings.json`, or override them with the environment variables
+`RateLimiting__PermitLimit` and `RateLimiting__WindowSeconds`. Restart the application
+after changing these values. Counters are held in memory and are not shared across replicas.
+
 ### SonarCloud
 
 Example SonarCloud configuration are available in the GitHub Action workflows.
