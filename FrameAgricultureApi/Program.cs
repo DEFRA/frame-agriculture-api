@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using MongoDB.Driver;
 using Serilog;
 using Asp.Versioning;
+using Scalar.AspNetCore;
 
 var app = BuildApp(args);
 await app.RunAsync();
@@ -45,6 +46,7 @@ static void ConfigureServices(WebApplicationBuilder builder)
 
     services.AddProblemDetails();
     services.AddControllers();
+    services.AddOpenApi("v1");
 
     services.AddApiVersioning(options =>
     {
@@ -114,6 +116,12 @@ static void ConfigureMiddleware(WebApplication app)
 [ExcludeFromCodeCoverage]
 static void ConfigureEndpoints(WebApplication app)
 {
+    if (app.Environment.IsDevelopment())
+    {
+        app.MapOpenApi();
+        app.MapScalarApiReference(options => options.WithTitle("Frame Agriculture API"));
+    }
+
     app.MapHealthChecks("/health", new HealthCheckOptions());
 
     app.MapControllers();

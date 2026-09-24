@@ -77,8 +77,11 @@ dotnet test
 
 Run CDP-Deployments application:
 ```bash
-dotnet run --project FrameAgricultureApi --launch-profile Development
+dotnet run --project FrameAgricultureApi --launch-profile FrameAgricultureApi
 ```
+
+In Development, open [Scalar](http://localhost:8085/scalar) to browse and try the API.
+The generated OpenAPI document is available at [openapi/v1.json](http://localhost:8085/openapi/v1.json).
 
 ### SonarCloud
 
