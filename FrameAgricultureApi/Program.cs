@@ -158,14 +158,11 @@ static void ConfigureMiddleware(WebApplication app)
 [ExcludeFromCodeCoverage]
 static void ConfigureEndpoints(WebApplication app)
 {
-    if (app.Environment.IsDevelopment())
-    {
-        app.MapOpenApi();
-        app.MapScalarApiReference(options => options
-            .WithTitle("Frame Agriculture API")
-            .AddDocument("v0", "Version 0.0"));
-    }
-
+    app.MapOpenApi();
+    app.MapScalarApiReference(options => options
+        .WithTitle("Frame Agriculture API")
+        .AddDocument("v0", "Version 0.0"));
+        
     app.MapHealthChecks("/health", new HealthCheckOptions()).DisableRateLimiting();
 
     app.MapControllers();
