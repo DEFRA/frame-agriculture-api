@@ -1,5 +1,3 @@
-using FrameAgricultureApi.Example.Endpoints;
-using FrameAgricultureApi.Example.Services;
 using FrameAgricultureApi.Config;
 using FrameAgricultureApi.Utils;
 using FrameAgricultureApi.Utils.Http;
@@ -8,8 +6,11 @@ using System.Diagnostics.CodeAnalysis;
 using FrameAgricultureApi.Utils.Logging;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using MongoDB.Driver;
-using MongoDB.Driver.Authentication.AWS;
 using Serilog;
+using Asp.Versioning;
+using Scalar.AspNetCore;
+using System.Globalization;
+using System.Threading.RateLimiting;
 
 var app = BuildApp(args);
 await app.RunAsync();
@@ -46,18 +47,66 @@ static void ConfigureServices(WebApplicationBuilder builder)
     services.LoadCustomTrustStoreFromEnvironment();
 
     services.AddProblemDetails();
-    services.AddValidation();
+    services.AddControllers();
+    services.AddOpenApi("v0");
+
+    services.AddApiVersioning(options =>
+    {
+        options.AssumeDefaultVersionWhenUnspecified = true;
+        options.DefaultApiVersion = new ApiVersion(0, 0);
+        options.ReportApiVersions = true;
+        options.ApiVersionReader = new UrlSegmentApiVersionReader();
+    }).AddMvc().AddApiExplorer(options =>
+    {
+        options.GroupNameFormat = "'v'V";
+        options.SubstituteApiVersionInUrl = true;
+    });
 
     services.AddHttpContextAccessor();
 
     ConfigureHeaderPropagation(services, configuration);
     ConfigureHttpClients(services);
     ConfigureMongo(services, configuration);
+    ConfigureRateLimiting(services, configuration);
 
     services.AddHealthChecks();
+}
 
-    // App services
-    services.AddSingleton<IExamplePersistence, ExamplePersistence>();
+[ExcludeFromCodeCoverage]
+static void ConfigureRateLimiting(IServiceCollection services, IConfiguration configuration)
+{
+    var permitLimit = configuration.GetValue("RateLimiting:PermitLimit", 100);
+    var windowSeconds = configuration.GetValue("RateLimiting:WindowSeconds", 60);
+    ArgumentOutOfRangeException.ThrowIfNegativeOrZero(permitLimit);
+    ArgumentOutOfRangeException.ThrowIfNegativeOrZero(windowSeconds);
+
+    services.AddRateLimiter(options =>
+    {
+        options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+        options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(_ =>
+            RateLimitPartition.GetFixedWindowLimiter("global", _ => new FixedWindowRateLimiterOptions
+            {
+                PermitLimit = permitLimit,
+                Window = TimeSpan.FromSeconds(windowSeconds),
+                QueueLimit = 0,
+                AutoReplenishment = true
+            }));
+
+        options.OnRejected = async (context, cancellationToken) =>
+        {
+            if (context.Lease.TryGetMetadata(MetadataName.RetryAfter, out var retryAfter))
+            {
+                context.HttpContext.Response.Headers.RetryAfter =
+                    Math.Ceiling(retryAfter.TotalSeconds).ToString(CultureInfo.InvariantCulture);
+            }
+
+            await Results.Problem(
+                statusCode: StatusCodes.Status429TooManyRequests,
+                title: "Too many requests",
+                detail: "The request limit has been reached. Please try again later.")
+                .ExecuteAsync(context.HttpContext);
+        };
+    });
 }
 
 [ExcludeFromCodeCoverage]
@@ -78,9 +127,6 @@ static void ConfigureHeaderPropagation(IServiceCollection services, IConfigurati
 static void ConfigureHttpClients(IServiceCollection services)
 {
     services.AddTransient<ProxyHttpMessageHandler>();
-
-    // services.AddHttpClientWithTracing<IExampleClient, ExampleClient>();
-    // services.AddHttpClientWithProxy<IExternalClient, ExternalClient>();
 }
 
 [ExcludeFromCodeCoverage]
@@ -105,13 +151,19 @@ static void ConfigureMiddleware(WebApplication app)
     app.UseSerilogRequestLogging();
 
     app.UseHeaderPropagation();
+    app.UseRouting();
+    app.UseRateLimiter();
 }
 
 [ExcludeFromCodeCoverage]
 static void ConfigureEndpoints(WebApplication app)
 {
-    app.MapHealthChecks("/health", new HealthCheckOptions());
+    app.MapOpenApi();
+    app.MapScalarApiReference(options => options
+        .WithTitle("Frame Agriculture API")
+        .AddDocument("v0", "Version 0.0"));
+        
+    app.MapHealthChecks("/health", new HealthCheckOptions()).DisableRateLimiting();
 
-    // Remove before deploying
-    app.MapExampleEndpoints();
+    app.MapControllers();
 }
