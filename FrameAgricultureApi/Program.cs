@@ -165,5 +165,7 @@ static void ConfigureEndpoints(WebApplication app)
         
     app.MapHealthChecks("/health", new HealthCheckOptions()).DisableRateLimiting();
 
+    app.UseStaticFiles();
+
     app.MapControllers();
 }
