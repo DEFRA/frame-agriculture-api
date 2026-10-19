@@ -1,4 +1,4 @@
-using FrameAgricultureApi.Config;
+﻿using FrameAgricultureApi.Config;
 using FrameAgricultureApi.Utils;
 using FrameAgricultureApi.Utils.Http;
 using FrameAgricultureApi.Utils.Mongo;
@@ -159,7 +159,7 @@ static void ConfigureMiddleware(WebApplication app)
 static void ConfigureEndpoints(WebApplication app)
 {
     app.MapOpenApi();
-    app.MapScalarApiReference(options => options
+    app.MapScalarApiReference("/documentation", options => options
         .WithTitle("Frame Agriculture API")
         .AddDocument("v0", "Version 0.0"));
         
