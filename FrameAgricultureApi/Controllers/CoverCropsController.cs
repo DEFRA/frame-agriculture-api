@@ -9,7 +9,7 @@ namespace FrameAgricultureApi.Controllers
     /// <summary>
     /// This is the cover crop controller summary from an XML comment
     /// </summary>
-    [Route("api/[controller]")]
+    [Route("api/cover-crops")]
     [ApiController]
     public class CoverCropsController : ControllerBase
     {
