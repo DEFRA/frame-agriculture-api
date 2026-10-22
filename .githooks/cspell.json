@@ -1,0 +1,16 @@
+{
+  "version": "0.2",
+  "language": "en-GB",
+  "ignorePaths": [
+    "**/bin/**",
+    "**/obj/**",
+    "**/node_modules/**",
+    "**/Migrations/**",
+    "**/*.min.*",
+    "**/*.dll",
+    "**/*.lock"
+  ],
+  "words": [
+  "ACMR"
+]
+}
