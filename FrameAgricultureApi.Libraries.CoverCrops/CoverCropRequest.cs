@@ -3,7 +3,7 @@ using System;
 namespace FrameAgricultureApi.Libraries.CoverCrops;
 
 /// <summary>
-/// Inputs fro calcualtion of emissions from cover crop use
+/// Inputs for calcualtion of emissions from cover crop use
 /// </summary>
 public class CoverCropRequest
 {
