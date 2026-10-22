@@ -4,6 +4,7 @@ echo "Checking spelling..."
 
 git diff --cached --name-only --diff-filter=ACMR |
     ./node_modules/.bin/cspell \
+        --config .githooks/cspell.json \
         --no-summary \
         --no-progress \
         --no-must-find-files \

@@ -4,6 +4,7 @@ Core delivery C# ASP.NET backend template.
 
 * [Install MongoDB](#install-mongodb)
 * [Inspect MongoDB](#inspect-mongodb)
+* [Git hooks](#git-hooks)
 * [Testing](#testing)
 * [Running](#running)
 * [Dependabot](#dependabot)
@@ -50,7 +51,7 @@ sudo mongod --dbpath ~/mongodb-cdp
 #### MongoDB in CDP environments
 
 In CDP environments a MongoDB instance is already set up
-and the credentials exposed as enviromment variables.
+and the credentials exposed as environment variables.
 
 
 ### Inspect MongoDB
@@ -61,6 +62,18 @@ mongosh
 ```
 
 You can use the CDP Terminal to access the environments' MongoDB.
+
+### Git hooks
+
+Install Node.js (which includes npm), then run these commands from the repository root:
+
+```bash
+npm ci
+git config core.hooksPath .githooks
+```
+
+`npm ci` installs the local cspell dependency used by the pre-commit hook. The hook checks
+spelling in staged files and verifies formatting for staged C# files with `dotnet format`.
 
 ### Testing
 

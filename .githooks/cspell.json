@@ -11,6 +11,12 @@
     "**/*.lock"
   ],
   "words": [
-  "ACMR"
+  "ACMR",
+  "Localstack",
+  "DEFRA",
+  "dbpath",
+  "appsettings",
+  "licence",
+  "HMSO",
 ]
 }
