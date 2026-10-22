@@ -163,10 +163,23 @@ static void ConfigureEndpoints(WebApplication app)
         .WithTitle("Frame Agriculture API")
         .AddDocument("v0", "Version 0.0"));
 
-    app.MapGet("/documentation", () => "docs healthy")
-        .WithName("GetDocumentationHealth")
+    app.MapGet("/documentation", () => Results.Content(
+        """
+        <div id="scalar-reference"></div>
+
+        <script type="module">
+            import { createApiReference } from
+                'https://cdn.jsdelivr.net/npm/@scalar/api-reference/esm.js';
+
+            createApiReference('#scalar-reference', {
+                url: '/openapi/v1.json'
+            });
+        </script>
+        """,
+        "text/html"))
+        .WithName("GetDocumentation")
         .WithTags("Documentation")
-        .WithSummary("Checks documentation endpoint health");
+        .WithSummary("Serves the API documentation interface");
 
     app.MapHealthChecks("/health", new HealthCheckOptions()).DisableRateLimiting();
 
