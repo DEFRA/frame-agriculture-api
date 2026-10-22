@@ -162,7 +162,12 @@ static void ConfigureEndpoints(WebApplication app)
     app.MapScalarApiReference(options => options
         .WithTitle("Frame Agriculture API")
         .AddDocument("v0", "Version 0.0"));
-        
+
+    app.MapGet("/documentation", () => "docs healthy")
+        .WithName("GetDocumentationHealth")
+        .WithTags("Documentation")
+        .WithSummary("Checks documentation endpoint health");
+
     app.MapHealthChecks("/health", new HealthCheckOptions()).DisableRateLimiting();
 
     app.UseStaticFiles();
