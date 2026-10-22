@@ -25,7 +25,7 @@ namespace FrameAgricultureApi.Controllers
         /// To allow for the impact of the mitigation to be quantified, two additional outputs are included: the NO3-N leached and indirect N2O-N from NO3 leached emission without the reduction.
         /// 
         ///  The United Kingdom Greenhouse Gas and Ammonia Emissions Inventory for Agriculture methodology is used for the calculations.
-        /// ![Calculation Diagram](http://localhost:8085/images/FLEA_CoverCrops_EquationWorkflows.jpg)
+        /// ![Calculation Diagram](/images/FLEA_CoverCrops_EquationWorkflows.jpg)
         /// </remarks>
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
