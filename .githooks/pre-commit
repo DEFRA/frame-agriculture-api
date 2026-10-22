@@ -1,0 +1,37 @@
+#!/bin/sh
+
+echo "Checking spelling..."
+
+git diff --cached --name-only --diff-filter=ACMR |
+    ./node_modules/.bin/cspell \
+        --no-summary \
+        --no-progress \
+        --no-must-find-files \
+        --file-list stdin
+
+if [ $? -ne 0 ]; then
+    echo "Commit blocked: spelling errors found."
+    exit 1
+fi
+
+# Get staged C# files only
+CS_FILES=$(git diff --cached --name-only --diff-filter=ACMR -- '*.cs')
+
+if [ -n "$CS_FILES" ]; then
+    echo "Checking formatting..."
+
+    dotnet format whitespace \
+        --verify-no-changes \
+        --no-restore \
+        --include $CS_FILES \
+        --exclude **/Migrations \
+        --exclude **/Program.cs
+
+    if [ $? -ne 0 ]; then
+        echo "Commit blocked: formatting issues found."
+        echo "Run 'dotnet format' to fix them."
+        exit 1
+    fi
+fi
+
+echo "All checks passed."
