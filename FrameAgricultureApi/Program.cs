@@ -159,7 +159,7 @@ static void ConfigureMiddleware(WebApplication app)
 static void ConfigureEndpoints(WebApplication app)
 {
     app.MapOpenApi();
-    app.MapScalarApiReference("/documentation", options => options
+    app.MapScalarApiReference(options => options
         .WithTitle("Frame Agriculture API")
         .AddDocument("v0", "Version 0.0"));
         
