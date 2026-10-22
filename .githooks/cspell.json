@@ -18,5 +18,6 @@
   "appsettings",
   "licence",
   "HMSO",
+  "Serilog"
 ]
 }
