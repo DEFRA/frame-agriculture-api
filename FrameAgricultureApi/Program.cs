@@ -172,7 +172,7 @@ static void ConfigureEndpoints(WebApplication app)
                 'https://cdn.jsdelivr.net/npm/@scalar/api-reference/esm.js';
 
             createApiReference('#scalar-reference', {
-                url: '/openapi/v1.json'
+                url: '/openapi/v0.json'
             });
         </script>
         """,
