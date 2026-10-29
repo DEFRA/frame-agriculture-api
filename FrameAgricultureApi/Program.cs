@@ -1,4 +1,4 @@
-﻿using FrameAgricultureApi.Config;
+using FrameAgricultureApi.Config;
 using FrameAgricultureApi.Utils;
 using FrameAgricultureApi.Utils.Http;
 using FrameAgricultureApi.Utils.Mongo;
@@ -52,14 +52,12 @@ static void ConfigureServices(WebApplicationBuilder builder)
 
     services.AddApiVersioning(options =>
     {
-        options.AssumeDefaultVersionWhenUnspecified = true;
-        options.DefaultApiVersion = new ApiVersion(0, 0);
+        options.AssumeDefaultVersionWhenUnspecified = false;
         options.ReportApiVersions = true;
-        options.ApiVersionReader = new UrlSegmentApiVersionReader();
+        options.ApiVersionReader = new QueryStringApiVersionReader("api-version");
     }).AddMvc().AddApiExplorer(options =>
     {
         options.GroupNameFormat = "'v'V";
-        options.SubstituteApiVersionInUrl = true;
     });
 
     services.AddHttpContextAccessor();
