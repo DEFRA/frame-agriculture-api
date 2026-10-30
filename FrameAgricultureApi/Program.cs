@@ -1,10 +1,12 @@
 using FrameAgricultureApi.Config;
+using FrameAgricultureApi.Infrastructure;
 using FrameAgricultureApi.Utils;
 using FrameAgricultureApi.Utils.Http;
 using FrameAgricultureApi.Utils.Mongo;
 using System.Diagnostics.CodeAnalysis;
 using FrameAgricultureApi.Utils.Logging;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using Serilog;
 using Asp.Versioning;
@@ -13,6 +15,7 @@ using System.Globalization;
 using System.Threading.RateLimiting;
 
 var app = BuildApp(args);
+await app.Services.GetRequiredService<MongoDbSeeder>().SeedAsync();
 await app.RunAsync();
 
 [ExcludeFromCodeCoverage]
@@ -141,6 +144,13 @@ static void ConfigureMongo(IServiceCollection services, IConfiguration configura
         .ValidateOnStart();
 
     services.AddSingleton<IMongoDbClientFactory, MongoDbClientFactory>();
+    services.AddSingleton<IMongoDatabase>(provider =>
+    {
+        var client = provider.GetRequiredService<IMongoDbClientFactory>().GetClient();
+        var config = provider.GetRequiredService<IOptions<MongoConfig>>().Value;
+        return client.GetDatabase(config.DatabaseName);
+    });
+    services.AddSingleton<MongoDbSeeder>();
 }
 
 [ExcludeFromCodeCoverage]
