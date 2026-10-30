@@ -17,9 +17,9 @@ public class CoverCropEmissions : BaseEmissions
         InitialiseBaseEmissions();
         additionalOutputs = [];
         additionalOutputs.Clear();
-        additionalOutputs.Add(AdditionalCoverCropEmissions.Nreturn, new Emission("Cover crops N return", "kg N", double.NaN));
-        additionalOutputs.Add(AdditionalCoverCropEmissions.unadjustedNO3N, new Emission("Unadjusted ", "kg NO3-N", double.NaN));
-        additionalOutputs.Add(AdditionalCoverCropEmissions.unadjustedN2ONLeach, new Emission("Unadjusted indirect leach N2O-N", "kg N2O-N", double.NaN));
+        additionalOutputs.Add(AdditionalCoverCropEmissions.NReturn, new Emission("Cover crops N return", "kg N", double.NaN));
+        additionalOutputs.Add(AdditionalCoverCropEmissions.UnadjustedNO3N, new Emission("Unadjusted ", "kg NO3-N", double.NaN));
+        additionalOutputs.Add(AdditionalCoverCropEmissions.UnadjustedN2ONLeach, new Emission("Unadjusted indirect leach N2O-N", "kg N2O-N", double.NaN));
     }
 
     /// <summary>

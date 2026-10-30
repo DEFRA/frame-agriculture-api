@@ -7,23 +7,23 @@ namespace FrameAgricultureApi.Test.ComponentTests;
 
 public class CoverCropTests
 {
-public static IEnumerable<object[]> UnmitigatedCoverCropEmissions_TestGenerator()
+    public static IEnumerable<object[]> UnmitigatedCoverCropEmissions_TestGenerator()
     {
         var dataList = new List<object[]>();
 
         CoverCropEmissions coverCropEmissions = new CoverCropEmissions();
         coverCropEmissions.InitialiseCoverCropEmissions();
 
-        coverCropEmissions.additionalOutputs[AdditionalCoverCropEmissions.Nreturn].Value = 77;
+        coverCropEmissions.additionalOutputs[AdditionalCoverCropEmissions.NReturn].Value = 77;
         coverCropEmissions.EmissionsCore[CoreEmissions.DirectN2ON].Value = 0.77;
 
         coverCropEmissions.EmissionsCore[CoreEmissions.LeachedNO3N].Value = 12.705;
-        coverCropEmissions.additionalOutputs[AdditionalCoverCropEmissions.unadjustedNO3N].Value = 23.1;
+        coverCropEmissions.additionalOutputs[AdditionalCoverCropEmissions.UnadjustedNO3N].Value = 23.1;
         coverCropEmissions.EmissionsCore[CoreEmissions.N2ONleached].Value = 0.0953;
-        coverCropEmissions.additionalOutputs[AdditionalCoverCropEmissions.unadjustedN2ONLeach].Value = 0.1733;
+        coverCropEmissions.additionalOutputs[AdditionalCoverCropEmissions.UnadjustedN2ONLeach].Value = 0.1733;
         coverCropEmissions.EmissionsCore[CoreEmissions.DirectNON].Value = 0.3080;
         coverCropEmissions.EmissionsCore[CoreEmissions.DirectN2N].Value = 2.31;
-        coverCropEmissions.EmissionsCore[CoreEmissions.N2ONvolatalised].Value = 0.004312;
+        coverCropEmissions.EmissionsCore[CoreEmissions.N2ONVolatalised].Value = 0.004312;
 
         dataList.Add(
             new object[]

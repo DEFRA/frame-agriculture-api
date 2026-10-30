@@ -34,5 +34,5 @@ public enum CoreEmissions
     /// <summary>
     /// Indirect N2O-N volatalised from redepostion of NH3-N and NO-N (kg)
     /// </summary>
-    N2ONvolatalised
+    N2ONVolatalised
 }
