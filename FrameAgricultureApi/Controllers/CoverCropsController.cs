@@ -13,6 +13,12 @@ namespace FrameAgricultureApi.Controllers
     [ApiController]
     public class CoverCropsController : ControllerBase
     {
+        private readonly CoverCrops _coverCrops;
+
+        public CoverCropsController(CoverCrops coverCrops)
+        {
+            _coverCrops = coverCrops;
+        }
 
         /// <summary>
         /// Calculates the emissions associated with the nitrogen returned to the soil from cover crops.
@@ -40,7 +46,7 @@ namespace FrameAgricultureApi.Controllers
                 StandardOutput standardOutput = new();
                 if (jsonInputObject != null)
                 {
-                    CoverCropEmissions emissions = CoverCrops.CoverCropEmissions(jsonInputObject.CoverCropType);
+                    CoverCropEmissions emissions = _coverCrops.CoverCropEmissions(jsonInputObject.CoverCropType);
                     standardOutput = new StandardOutput("Cover Crops", jsonInputObject.CropType.ToString(), "Crop Production", emissions.ExportEmissions());
                 }
                 return Ok(standardOutput);

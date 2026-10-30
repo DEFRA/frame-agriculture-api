@@ -1,6 +1,5 @@
 using System;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -14,11 +13,10 @@ public class MongoService<TDocument> : IMongoService<TDocument>
     private readonly IMongoCollection<TDocument> collection;
     private readonly ILogger<TDocument> logger;
 
-    public MongoService(IOptions<DatabaseConfiguration> databaseConfiguration, ILogger<TDocument> logger)
+    public MongoService(IMongoDatabase database, ILogger<TDocument> logger)
     {
-        var client = new MongoClient(databaseConfiguration.Value.ConnectionString);
-        database = client.GetDatabase(databaseConfiguration.Value.DatabaseName);
-        collection = database.GetCollection<TDocument>(GetCollectionName(typeof(TDocument)));
+        this.database = database ?? throw new ArgumentNullException(nameof(database));
+        collection = this.database.GetCollection<TDocument>(GetCollectionName(typeof(TDocument)));
         this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
     private protected string? GetCollectionName(Type documentType)

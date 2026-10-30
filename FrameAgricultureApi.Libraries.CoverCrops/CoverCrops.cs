@@ -1,5 +1,7 @@
 using System;
 using FrameAgricultureApi.Generic;
+using FrameAgricultureApi.Infrastructure;
+using FrameAgricultureApi.Infrastructure.Entities;
 using FrameAgricultureApi.Libraries.LookUps;
 
 namespace FrameAgricultureApi.Libraries.CoverCrops;
@@ -10,17 +12,24 @@ namespace FrameAgricultureApi.Libraries.CoverCrops;
 /// </summary>
 public class CoverCrops
 {
+    private readonly IMongoService<CoverCropLookUpEntity> CoverCropsCollection;
+
+    public CoverCrops(IMongoService<CoverCropLookUpEntity> coverCropsCollection)
+    {
+        CoverCropsCollection = coverCropsCollection ?? throw new ArgumentNullException(nameof(coverCropsCollection));
+    }
+
     /// <summary>
     /// Calculates emissions from cover crops
     /// </summary>
     /// <param name="coverCropType">Enumerator indicating the cover crop type</param>
     /// <returns>An object of type CoverCropEmissions</returns>
-    public static CoverCropEmissions CoverCropEmissions(CoverCropType coverCropType)
+    public CoverCropEmissions CoverCropEmissions(CoverCropType coverCropType)
     {
         CoverCropEmissions myEmissions = new();
         myEmissions.InitialiseCoverCropEmissions();
 
-        double additionalNReturn = CropLookup.RetrieveAdditionalNReturn_CoverCrop(coverCropType);
+        double additionalNReturn = CoverCropsCollection.FindById("6a9f0cd7a6c94fe61cdcfb48").Value;
         myEmissions.additionalOutputs[AdditionalCoverCropEmissions.NReturn].Value = additionalNReturn;
 
         myEmissions.EmissionsCore[CoreEmissions.DirectN2ON].Value = GenericEquations.Emission_PercentageEF(additionalNReturn, CropLookup.RetrieveIPCCEmissionFactor1());

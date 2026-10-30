@@ -1,5 +1,6 @@
 using FrameAgricultureApi.Config;
 using FrameAgricultureApi.Infrastructure;
+using FrameAgricultureApi.Libraries.CoverCrops;
 using FrameAgricultureApi.Utils;
 using FrameAgricultureApi.Utils.Http;
 using FrameAgricultureApi.Utils.Mongo;
@@ -64,6 +65,7 @@ static void ConfigureServices(WebApplicationBuilder builder)
     });
 
     services.AddHttpContextAccessor();
+    services.AddScoped<CoverCrops>();
 
     ConfigureHeaderPropagation(services, configuration);
     ConfigureHttpClients(services);
@@ -151,6 +153,7 @@ static void ConfigureMongo(IServiceCollection services, IConfiguration configura
         return client.GetDatabase(config.DatabaseName);
     });
     services.AddSingleton<MongoDbSeeder>();
+    services.AddScoped(typeof(IMongoService<>), typeof(FrameAgricultureApi.Infrastructure.MongoService<>));
 }
 
 [ExcludeFromCodeCoverage]
