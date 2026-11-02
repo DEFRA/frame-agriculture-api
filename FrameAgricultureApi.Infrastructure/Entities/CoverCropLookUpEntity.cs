@@ -1,5 +1,5 @@
 using System;
-using FrameAgricultureApi.Libraries.CoverCrops;
+using FrameAgricultureApi.Core.Enums;
 
 namespace FrameAgricultureApi.Infrastructure.Entities;
 

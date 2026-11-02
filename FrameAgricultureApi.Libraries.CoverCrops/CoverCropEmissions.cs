@@ -1,4 +1,5 @@
 using System;
+using FrameAgricultureApi.Core.Enums;
 
 namespace FrameAgricultureApi.Libraries.CoverCrops;
 

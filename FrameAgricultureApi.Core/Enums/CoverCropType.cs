@@ -1,6 +1,4 @@
-using System;
-
-namespace FrameAgricultureApi.Libraries.CoverCrops;
+namespace FrameAgricultureApi.Core.Enums;
 
 /// <summary>
 /// Cover crop type enumerator

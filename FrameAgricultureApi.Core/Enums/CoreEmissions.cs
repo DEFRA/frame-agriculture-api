@@ -1,6 +1,4 @@
-using System;
-
-namespace FrameAgricultureApi.Libraries.CoverCrops;
+namespace FrameAgricultureApi.Core.Enums;
 
 /// <summary>
 /// Core emissions enumerator
@@ -28,11 +26,11 @@ public enum CoreEmissions
     /// </summary>
     LeachedNO3N,
     /// <summary>
-    /// INdirect N2O-N from leached NO3-N (kg)
+    /// Indirect N2O-N from leached NO3-N (kg)
     /// </summary>
     N2ONleached,
     /// <summary>
-    /// Indirect N2O-N volatalised from redepostion of NH3-N and NO-N (kg)
+    /// Indirect N2O-N volatilised from redeposition of NH3-N and NO-N (kg)
     /// </summary>
-    N2ONVolatalised
+    N2ONVolatilised
 }

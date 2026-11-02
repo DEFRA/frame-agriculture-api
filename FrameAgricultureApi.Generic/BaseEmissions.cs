@@ -1,4 +1,5 @@
 using System;
+using FrameAgricultureApi.Core.Enums;
 
 namespace FrameAgricultureApi.Libraries.CoverCrops;
 
@@ -22,7 +23,7 @@ public class BaseEmissions
         EmissionsCore.Add(CoreEmissions.DirectN2ON, new Emission("Direct N2O-N", "kg N2O-N", double.NaN));
         EmissionsCore.Add(CoreEmissions.DirectNH3N, new Emission("Direct NH3-N", "kg NH3-N", double.NaN));
         EmissionsCore.Add(CoreEmissions.N2ONleached, new Emission("Indirect N2O-N (leached)", "kg N2O-N", double.NaN));
-        EmissionsCore.Add(CoreEmissions.N2ONVolatalised, new Emission("Indirect N2O-N (volatilisation)", "kg N2O-N", double.NaN));
+        EmissionsCore.Add(CoreEmissions.N2ONVolatilised, new Emission("Indirect N2O-N (volatilisation)", "kg N2O-N", double.NaN));
         EmissionsCore.Add(CoreEmissions.LeachedNO3N, new Emission("Direct NO3-N (leached)", "kg NO3-N", double.NaN));
         EmissionsCore.Add(CoreEmissions.DirectNON, new Emission("Direct NO-N", "kg NO-N", double.NaN));
         EmissionsCore.Add(CoreEmissions.DirectN2N, new Emission("Direct N2-N", "kg N2-N", double.NaN));

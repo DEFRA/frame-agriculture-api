@@ -1,6 +1,4 @@
-using System;
-
-namespace FrameAgricultureApi.Enumerators;
+namespace FrameAgricultureApi.Core.Enums;
 
 /// <summary>
 /// Enumerator for Fertiliser type
@@ -30,11 +28,11 @@ public enum FertiliserType
     /// </summary>
     CalciumAmmoniumNitrate = 4,
     /// <summary>
-    /// Ammonium sukphate or diammonium phosphate = 5
+    /// Ammonium sulphate or diammonium phosphate = 5
     /// </summary>
     AmmoniumSulphate_DiammoniumPhosphate = 5,
     /// <summary>
     /// All other nitrogen fertiliser (including blends) = 6
     /// </summary>
-    OtherNitrogenincludingCompoundBlends = 6
+    OtherNitrogenIncludingCompoundBlends = 6
 }

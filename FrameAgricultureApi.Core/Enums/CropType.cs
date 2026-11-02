@@ -1,6 +1,4 @@
-using System;
-
-namespace FrameAgricultureApi.Libraries.CoverCrops;
+namespace FrameAgricultureApi.Core.Enums;
 
 /// <summary>
 /// Enumerator for crop type
@@ -9,7 +7,7 @@ namespace FrameAgricultureApi.Libraries.CoverCrops;
 public enum CropType
 {
     /// <summary>
-    /// Oast = 1
+    /// Oats = 1
     /// </summary>
     Oats = 1,
     /// <summary>
@@ -31,7 +29,7 @@ public enum CropType
     /// <summary>
     /// Spring barley (non-malting) = 6
     /// </summary>
-    Spring_barley_nonmalting = 6,
+    Spring_barley_non_malting = 6,
     /// <summary>
     /// Winter barley = 7
     /// </summary>
@@ -43,7 +41,7 @@ public enum CropType
     /// <summary>
     /// Winter barley (non-malting) = 9
     /// </summary>
-    Winter_barley_nonmalting = 9,
+    Winter_barley_non_malting = 9,
     /// <summary>
     /// Wheat = 10
     /// </summary>
@@ -55,7 +53,7 @@ public enum CropType
     /// <summary>
     /// non-milling wheat = 12
     /// </summary>
-    Wheat_nonmilling = 12,
+    Wheat_non_milling = 12,
     /// <summary>
     /// Minor cereals = 13
     /// </summary>
@@ -81,21 +79,21 @@ public enum CropType
     /// </summary>
     Linseed = 18,
     /// <summary>
-    /// Flas = 19
+    /// Flax = 19
     /// </summary>
     Flax = 19,
     /// <summary>
-    /// Field beasn (harvested dry) = 10
+    /// Field beans (harvested dry) = 10
     /// </summary>
-    Field_beans_harvesteddry = 20,
+    Field_beans_harvested_dry = 20,
     /// <summary>
     /// Field peas (harvested dry) = 21
     /// </summary>
-    Field_peas_harvesteddry = 21,
+    Field_peas_harvested_dry = 21,
     /// <summary>
     /// Field beans and peas (combined, but not vining peas) = 22
     /// </summary>
-    Field_beans_and_peas_combined_notViningpeas = 22,
+    Field_beans_and_peas_combined_not_Vining_peas = 22,
     /// <summary>
     /// NOT USED = 23
     /// </summary>
@@ -121,7 +119,7 @@ public enum CropType
     /// </summary>
     Sugar_beet = 28,
     /// <summary>
-    /// Mazie = 29
+    /// Maize = 29
     /// </summary>
     Maize = 29,
     /// <summary>
@@ -129,7 +127,7 @@ public enum CropType
     /// </summary>
     Grain_maize = 30,
     /// <summary>
-    /// Forage mazie = 31
+    /// Forage maize = 31
     /// </summary>
     Forage_maize = 31,
     /// <summary>
@@ -137,7 +135,7 @@ public enum CropType
     /// </summary>
     Rootcrops_for_stockfeed = 32,
     /// <summary>
-    /// Leady forage crops = 33
+    /// Leafy forage crops = 33
     /// </summary>
     Leafy_forage_crops = 33,
     /// <summary>
@@ -147,7 +145,7 @@ public enum CropType
     /// <summary>
     /// Vegetables (not differentiated) = 35
     /// </summary>
-    Vegetables_notdifferentiated = 35,
+    Vegetables_not_differentiated = 35,
     /// <summary>
     /// Vegetables (brassicas) = 36
     /// </summary>
@@ -159,7 +157,7 @@ public enum CropType
     /// <summary>
     /// Vegetables (other non-legumes) = 38
     /// </summary>
-    Vegetables_othernonlegumes = 38,
+    Vegetables_other_non_legumes = 38,
     /// <summary>
     /// Other horticultural crops = 39
     /// </summary>
@@ -187,7 +185,7 @@ public enum CropType
     /// <summary>
     /// Short rotation coppice willow = 45
     /// </summary>
-    Willow_shortrotationcoppice = 45,
+    Willow_short_rotation_coppice = 45,
     /// <summary>
     /// Other field crops = 46
     /// </summary>

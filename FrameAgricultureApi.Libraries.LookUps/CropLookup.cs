@@ -1,7 +1,6 @@
 using System.Reflection;
-using FrameAgricultureApi.Enumerators;
+using FrameAgricultureApi.Core.Enums;
 using FrameAgricultureApi.Generic;
-using FrameAgricultureApi.Libraries.CoverCrops;
 
 namespace FrameAgricultureApi.Libraries.LookUps;
 
@@ -41,7 +40,7 @@ public class CropLookup
     private Dictionary<int, double> aboveGroundResidueN = new Dictionary<int, double>();
     private Dictionary<int, double> iPCCSlope = new Dictionary<int, double>();
     private Dictionary<int, double> iPCCIntercept = new Dictionary<int, double>();
-    private Dictionary<int, double> ratioAbovetoBelowGround = new Dictionary<int, double>();
+    private Dictionary<int, double> ratioAboveToBelowGround = new Dictionary<int, double>();
     private Dictionary<int, double> belowGroundResidueN = new Dictionary<int, double>();
     private Dictionary<int, double> yieldN = new Dictionary<int, double>();
     private Dictionary<int, double> contributionAmmonia = new Dictionary<int, double>();
@@ -123,7 +122,7 @@ public class CropLookup
         aboveGroundResidueN.Clear();
         iPCCSlope.Clear();
         iPCCIntercept.Clear();
-        ratioAbovetoBelowGround.Clear();
+        ratioAboveToBelowGround.Clear();
         belowGroundResidueN.Clear();
         yieldN.Clear();
         contributionAmmonia.Clear();
@@ -143,7 +142,7 @@ public class CropLookup
                     aboveGroundResidueN.Add(index, binaryReader.ReadDouble());
                     iPCCSlope.Add(index, binaryReader.ReadDouble());
                     iPCCIntercept.Add(index, binaryReader.ReadDouble());
-                    ratioAbovetoBelowGround.Add(index, binaryReader.ReadDouble());
+                    ratioAboveToBelowGround.Add(index, binaryReader.ReadDouble());
                     belowGroundResidueN.Add(index, binaryReader.ReadDouble());
                     harvestIndex.Add(index, binaryReader.ReadDouble());
                     yieldN.Add(index, binaryReader.ReadDouble());
@@ -310,15 +309,15 @@ public class CropLookup
     /// <summary>
     /// returns ratio of N2N to N2ON
     /// </summary>
-    /// <returns>rario as double</returns>
+    /// <returns>ratio as double</returns>
     public static double RetrieveRatioN2N() { return Instance.ratioN2N; }
     /// <summary>
     /// Returns fraction of N leached as NO3N
     /// </summary>
-    /// <returns>Fracleach value as double</returns>
+    /// <returns>FracLeach value as double</returns>
     public static double RetrieveFracLeach() { return Instance.fracLeach; }
     /// <summary>
-    /// Returns IPCC emision Factor 1
+    /// Returns IPCC emission Factor 1
     /// </summary>
     /// <returns>EF as double</returns>
     public static double RetrieveIPCCEmissionFactor1() { return Instance.iPCCEF1; }
@@ -335,7 +334,7 @@ public class CropLookup
 
     //Retrieve Residue data
     /// <summary>
-    /// Retrieces dry matter content for crop type as percentage of fresh weight yield
+    /// Retrieves dry matter content for crop type as percentage of fresh weight yield
     /// </summary>
     /// <param name="cropType">Crop Type as an enumerator</param>
     /// <returns>Percentage dry matter content as double</returns>
@@ -344,10 +343,10 @@ public class CropLookup
         return Instance.dryMatterContent[(int)cropType];
     }
     /// <summary>
-    /// Returns the residues remaining in the field if resiudes are baled and removed as a percentage
+    /// Returns the residues remaining in the field if residues are baled and removed as a percentage
     /// </summary>
     /// <param name="cropType">Crop type as enumerator</param>
-    /// <returns>Percentage of residue remainin in field as double</returns>
+    /// <returns>Percentage of residue remaining in field as double</returns>
     public static double RetrieveResiduesRemaining(CropType cropType)
     {
         return Instance.residuesRemaining[(int)cropType];
@@ -355,8 +354,8 @@ public class CropLookup
     /// <summary>
     /// Returns the N content of the crop residues, either above or below ground
     /// </summary>
-    /// <param name="cropType">Crop type as ennumerator</param>
-    /// <param name="aboveGround">boolean to indicate if above ground or below groudn residue N content required (set to true for above ground, false for below ground)</param>
+    /// <param name="cropType">Crop type as enumerator</param>
+    /// <param name="aboveGround">boolean to indicate if above ground or below ground residue N content required (set to true for above ground, false for below ground)</param>
     /// <returns>N content of residues (kg/kg) as double</returns>
     public static double RetrieveResidueNContent(CropType cropType, bool aboveGround)
     {
@@ -405,13 +404,13 @@ public class CropLookup
         return Instance.iPCCIntercept[(int)cropType];
     }
     /// <summary>
-    /// Retrieve ratio of above to belwo groudn residues
+    /// Retrieve ratio of above to below ground residues
     /// </summary>
     /// <param name="cropType">Crop type as enumerator</param>
     /// <returns>Ratio as double</returns>
-    public static double RetrieveAbovetoBelowGroundRatio(CropType cropType)
+    public static double RetrieveAboveToBelowGroundRatio(CropType cropType)
     {
-        return Instance.ratioAbovetoBelowGround[(int)cropType];
+        return Instance.ratioAboveToBelowGround[(int)cropType];
     }
     /// <summary>
     /// Retrieve the IPCC Emission Factor 1 based on crop type
@@ -432,7 +431,7 @@ public class CropLookup
         return Instance.harvestIndex[(int)cropType];
     }
     /// <summary>
-    /// MRetrieve FracLeach based on crop type
+    /// Retrieve FracLeach based on crop type
     /// </summary>
     /// <param name="cropType">Integer enumerator indicating the crop type</param>
     /// <returns>Percentage of N Leached as double</returns>
@@ -452,7 +451,7 @@ public class CropLookup
 
     //Retrieve Cover Crop data
     /// <summary>
-    /// Retrive the additional N added to the soil as a result of using cover crops
+    /// Retrieve the additional N added to the soil as a result of using cover crops
     /// </summary>
     /// <param name="coverCropType">Integer enumerator indicating the cover crop type</param>
     /// <returns>kg N per hectare returned to soil as double</returns>
@@ -469,7 +468,7 @@ public class CropLookup
 
     //Retrieve NonGHG Emission Factor data
     /// <summary>
-    /// Retrieves the Non-methance Volatile Orgainc COmpounds emitted due to crop production
+    /// Retrieves the Non-methane Volatile Organic Compounds emitted due to crop production
     /// </summary>
     /// <param name="cropType">Integer enumerator indicating the crop type</param>
     /// <returns>kg NMVOC emitted per hectare as double</returns>
@@ -478,59 +477,59 @@ public class CropLookup
         return Instance.efNMVOC[(int)cropType];
     }
     /// <summary>
-    /// Retrieves the 2.5 nanonmeter particulate matter emitted due to crop cultivation
+    /// Retrieves the 2.5 nanometre particulate matter emitted due to crop cultivation
     /// </summary>
     /// <param name="cropType">Integer enumerator indicating the crop type</param>
-    /// <returns>kg PM2.5 emitted per hecattre as double</returns>
+    /// <returns>kg PM2.5 emitted per hectare as double</returns>
     public static double RetrieveCultivationPM2_5(CropType cropType)
     { return Instance.efPM2_5Cultivation[(int)cropType]; }
     /// <summary>
-    /// Retrieves the 2.5 nanometer particulate matter emitted due to crop harvesting
+    /// Retrieves the 2.5 nanometre particulate matter emitted due to crop harvesting
     /// </summary>
     /// <param name="cropType">Integer enumerator indicating the crop type</param>
     /// <returns>kg PM2.5 emitted per hectare as double</returns>
     public static double RetrieveHarvestingPM2_5(CropType cropType)
     { return Instance.efPM2_5Harvesting[(int)cropType]; }
     /// <summary>
-    /// Retrieves the 2.5 nanometer particulate matter emitted due to crop cleaning
+    /// Retrieves the 2.5 nanometre particulate matter emitted due to crop cleaning
     /// </summary>
     /// <param name="cropType">Integer enumerator indicating the crop type</param>
     /// <returns>kg PM2.5 emitted per hectare</returns>
     public static double RetrieveCleaningPM2_5(CropType cropType)
     { return Instance.efPM2_5Cleaning[(int)cropType]; }
     /// <summary>
-    /// Retrieves the 2.5 nanometer particulate matter emitted due to crop drying
+    /// Retrieves the 2.5 nanometre particulate matter emitted due to crop drying
     /// </summary>
     /// <param name="cropType">Integer enumerator indicating the crop type</param>
     /// <returns>kg PM2.5 emitted per hectare</returns>
     public static double RetrieveDryingPM2_5(CropType cropType)
     { return Instance.efPM2_5Drying[(int)cropType]; }
     /// <summary>
-    /// Retrieves the 10 nanonmeter particulate matter emitted due to crop cultivation
+    /// Retrieves the 10 nanometre particulate matter emitted due to crop cultivation
     /// </summary>
     /// <param name="cropType">Integer enumerator indicating the crop type</param>
-    /// <returns>kg PM10 emitted per hecattre as double</returns>
+    /// <returns>kg PM10 emitted per hectare as double</returns>
     public static double RetrieveCultivationPM10(CropType cropType)
     { return Instance.efPM10Cultivation[(int)cropType]; }
     /// <summary>
-    /// Retrieves the 10 nanonmeter particulate matter emitted due to crop harvesting
+    /// Retrieves the 10 nanometre particulate matter emitted due to crop harvesting
     /// </summary>
     /// <param name="cropType">Integer enumerator indicating the crop type</param>
-    /// <returns>kg PM10 emitted per hecattre as double</returns>
+    /// <returns>kg PM10 emitted per hectare as double</returns>
     public static double RetrieveHarvestingPM10(CropType cropType)
     { return Instance.efPM10Harvesting[(int)cropType]; }
     /// <summary>
-    /// Retrieves the 10 nanonmeter particulate matter emitted due to crop cleaning
+    /// Retrieves the 10 nanometre particulate matter emitted due to crop cleaning
     /// </summary>
     /// <param name="cropType">Integer enumerator indicating the crop type</param>
-    /// <returns>kg PM10 emitted per hecattre as double</returns>
+    /// <returns>kg PM10 emitted per hectare as double</returns>
     public static double RetrieveCleaningPM10(CropType cropType)
     { return Instance.efPM10Cleaning[(int)cropType]; }
     /// <summary>
-    /// Retrieves the 10 nanonmeter particulate matter emitted due to crop drying
+    /// Retrieves the 10 nanometre particulate matter emitted due to crop drying
     /// </summary>
     /// <param name="cropType">Integer enumerator indicating the crop type</param>
-    /// <returns>kg PM10 emitted per hecattre as double</returns>
+    /// <returns>kg PM10 emitted per hectare as double</returns>
     public static double RetrieveDryingPM10(CropType cropType)
     { return Instance.efPM10Drying[(int)cropType]; }
 
@@ -544,61 +543,61 @@ public class CropLookup
     /// <summary>
     /// Retrieve carbon monoxide emission from burning
     /// </summary>
-    /// <param name="cropType">Integer enumerator indicating the crop typ</param>
+    /// <param name="cropType">Integer enumerator indicating the crop type</param>
     /// <returns>CO emission (kg per kg DM burned)</returns>
     public static double RetrieveCombustionCO(CropType cropType) { return Instance.burnCO[(int)cropType]; }
     /// <summary>
     /// Retrieve nitrous oxide emission from crop burning
     /// </summary>
-    /// <param name="cropType">Integer enumerator indicating the crop typ</param>
-    /// <returns>N2O-N emissino (kg per kg DM burned)</returns>
+    /// <param name="cropType">Integer enumerator indicating the crop type</param>
+    /// <returns>N2O-N emission (kg per kg DM burned)</returns>
     public static double RetrieveCombustionN2ON(CropType cropType) { return Instance.burnN2ON[(int)cropType]; }
     /// <summary>
     /// Retrieve ammonia emission from crop burning
     /// </summary>
-    /// <param name="cropType">Integer enumerator indicating the crop typ</param>
+    /// <param name="cropType">Integer enumerator indicating the crop type</param>
     /// <returns>NH3-N emission (kg per kg DM burned)</returns>
     public static double RetrieveCombustionNH3N(CropType cropType) { return Instance.burnNH3N[(int)cropType]; }
     /// <summary>
     /// Retrieve NMVOC emission from crop burning
     /// </summary>
-    /// <param name="cropType">Integer enumerator indicating the crop typ</param>
+    /// <param name="cropType">Integer enumerator indicating the crop type</param>
     /// <returns>NMVOC emission (kg per kg DM burned)</returns>
     public static double RetrieveCombustionNMVOC(CropType cropType) { return Instance.burnNMVOC[(int)cropType]; }
     /// <summary>
     /// Retrieve NOxN emission from crop burning
     /// </summary>
-    /// <param name="cropType">Integer enumerator indicating the crop typ</param>
+    /// <param name="cropType">Integer enumerator indicating the crop type</param>
     /// <returns>NOx-N emission (kg per kg DM burned)</returns>
     public static double RetrieveCombustionNOxN(CropType cropType) { return Instance.burnNOxN[(int)cropType]; }
     /// <summary>
     /// Retrieve PM2.5 emission from crop burning
     /// </summary>
-    /// <param name="cropType">Integer enumerator indicating the crop typ</param>
-    /// <returns>".5 nanometer particulate matter emission (kg per kg DM burned)</returns>
+    /// <param name="cropType">Integer enumerator indicating the crop type</param>
+    /// <returns>".5 nanometre particulate matter emission (kg per kg DM burned)</returns>
     public static double RetrieveCombustionPM2_5(CropType cropType) { return Instance.burnPM2_5[(int)cropType]; }
     /// <summary>
     /// Retrieve PM10 emission from crop burning
     /// </summary>
-    /// <param name="cropType">Integer enumerator indicating the crop typ</param>
-    /// <returns>10 nanometer particulate matter emission (kg per kg DM burned)</returns>
+    /// <param name="cropType">Integer enumerator indicating the crop type</param>
+    /// <returns>10 nanometre particulate matter emission (kg per kg DM burned)</returns>
     public static double RetrieveCombustionPM10(CropType cropType) { return Instance.burnPM10[(int)cropType]; }
     /// <summary>
-    /// Retrieve Sulpher dioxide emission from crop burning
+    /// Retrieve Sulphur dioxide emission from crop burning
     /// </summary>
-    /// <param name="cropType">Integer enumerator indicating the crop typ</param>
+    /// <param name="cropType">Integer enumerator indicating the crop type</param>
     /// <returns>SO2 emission (kg per kg DM burned)</returns>
     public static double RetrieveCombustionSO2(CropType cropType) { return Instance.burnSO2[(int)cropType]; }
     /// <summary>
     /// Retrieve total suspended particulates emitted from crop burning
     /// </summary>
-    /// <param name="cropType">Integer enumerator indicating the crop typ</param>
+    /// <param name="cropType">Integer enumerator indicating the crop type</param>
     /// <returns>TSP emission (kg per kg DM burned)</returns>
     public static double RetrieveCombustionTSP(CropType cropType) { return Instance.burnTSP[(int)cropType]; }
     /// <summary>
-    /// Retireve combustion efficieny for corp burning
+    /// Retrieve combustion efficiency for crop burning
     /// </summary>
-    /// <param name="cropType">Integer enumerator indicating the crop typ</param>
-    /// <returns>Burning efficiency (unitless)</returns>
+    /// <param name="cropType">Integer enumerator indicating the crop type</param>
+    /// <returns>Burning efficiency (dimensionless)</returns>
     public static double RetrieveCombustionEfficiency(CropType cropType) { return Instance.burnCombustionEfficiency[(int)cropType]; ; }
 }

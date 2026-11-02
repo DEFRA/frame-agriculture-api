@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FrameAgricultureApi.Enumerators\FrameAgricultureApi.Enumerators.csproj" />
+    <ProjectReference Include="..\FrameAgricultureApi.Core\FrameAgricultureApi.Core.csproj" />
     <ProjectReference Include="..\FrameAgricultureApi.Generic\FrameAgricultureApi.Generic.csproj" />
     <ProjectReference Include="..\FrameAgricultureApi.Infrastructure\FrameAgricultureApi.Infrastructure.csproj" />
     <ProjectReference Include="..\FrameAgricultureApi.Libraries.LookUps\FrameAgricultureApi.Libraries.LookUps.csproj" />

@@ -1,4 +1,4 @@
-using FrameAgricultureApi.Libraries.CoverCrops;
+using FrameAgricultureApi.Core.Enums;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace FrameAgricultureApi.Infrastructure.Entities;

@@ -1,6 +1,6 @@
 using System.Text.Json;
+using FrameAgricultureApi.Core.Enums;
 using FrameAgricultureApi.Infrastructure.Entities;
-using FrameAgricultureApi.Libraries.CoverCrops;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;

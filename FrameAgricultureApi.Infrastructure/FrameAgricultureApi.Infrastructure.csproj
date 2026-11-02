@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FrameAgricultureApi.Enumerators\FrameAgricultureApi.Enumerators.csproj" />
+    <ProjectReference Include="..\FrameAgricultureApi.Core\FrameAgricultureApi.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

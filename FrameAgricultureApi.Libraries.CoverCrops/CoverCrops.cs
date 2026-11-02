@@ -1,4 +1,5 @@
 using System;
+using FrameAgricultureApi.Core.Enums;
 using FrameAgricultureApi.Generic;
 using FrameAgricultureApi.Infrastructure;
 using FrameAgricultureApi.Infrastructure.Entities;
@@ -53,7 +54,7 @@ public class CoverCrops
         myEmissions.additionalOutputs[AdditionalCoverCropEmissions.UnadjustedN2ONLeach].Value = GenericEquations.Emission_PercentageEF(myEmissions.additionalOutputs[AdditionalCoverCropEmissions.UnadjustedNO3N].Value, CropLookup.RetrieveIPCCEmissionFactor5());
         myEmissions.EmissionsCore[CoreEmissions.DirectNON].Value = GenericEquations.Emission_ProportionEF(myEmissions.EmissionsCore[CoreEmissions.DirectN2ON].Value, CropLookup.RetrieveRatioNON());
         myEmissions.EmissionsCore[CoreEmissions.DirectN2N].Value = GenericEquations.Emission_ProportionEF(myEmissions.EmissionsCore[CoreEmissions.DirectN2ON].Value, CropLookup.RetrieveRatioN2N());
-        myEmissions.EmissionsCore[CoreEmissions.N2ONVolatalised].Value = GenericEquations.Emission_PercentageEF(myEmissions.EmissionsCore[CoreEmissions.DirectNON].Value, CropLookup.RetrieveIPCCEmissionFactor4());
+        myEmissions.EmissionsCore[CoreEmissions.N2ONVolatilised].Value = GenericEquations.Emission_PercentageEF(myEmissions.EmissionsCore[CoreEmissions.DirectNON].Value, CropLookup.RetrieveIPCCEmissionFactor4());
 
         return myEmissions;
     }

@@ -26,7 +26,7 @@ public class CoverCropTests
     //     coverCropEmissions.additionalOutputs[AdditionalCoverCropEmissions.UnadjustedN2ONLeach].Value = 0.1733;
     //     coverCropEmissions.EmissionsCore[CoreEmissions.DirectNON].Value = 0.3080;
     //     coverCropEmissions.EmissionsCore[CoreEmissions.DirectN2N].Value = 2.31;
-    //     coverCropEmissions.EmissionsCore[CoreEmissions.N2ONVolatalised].Value = 0.004312;
+    //     coverCropEmissions.EmissionsCore[CoreEmissions.N2ONVolatilised].Value = 0.004312;
 
     //     dataList.Add(
     //         new object[]

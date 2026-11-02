@@ -1,9 +1,10 @@
 using System;
+using FrameAgricultureApi.Core.Enums;
 
 namespace FrameAgricultureApi.Libraries.CoverCrops;
 
 /// <summary>
-/// Inputs for calcualtion of emissions from cover crop use
+/// Inputs for calculation of emissions from cover crop use
 /// </summary>
 public class CoverCropRequest
 {

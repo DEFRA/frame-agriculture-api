@@ -1,6 +1,4 @@
-using System;
-
-namespace FrameAgricultureApi.Libraries.CoverCrops;
+namespace FrameAgricultureApi.Core.Enums;
 
 /// <summary>
 /// Additional outputs from cover crop calculations enumerator
