@@ -3,6 +3,7 @@ using FrameAgricultureApi.Generic;
 using FrameAgricultureApi.Infrastructure;
 using FrameAgricultureApi.Infrastructure.Entities;
 using FrameAgricultureApi.Libraries.LookUps;
+using MongoDB.Driver;
 
 namespace FrameAgricultureApi.Libraries.CoverCrops;
 
@@ -12,11 +13,21 @@ namespace FrameAgricultureApi.Libraries.CoverCrops;
 /// </summary>
 public class CoverCrops
 {
-    private readonly IMongoService<CoverCropLookUpEntity> CoverCropsCollection;
+    private readonly IMongoService<CoverCropLookUpEntity> _coverCropsCollection;
+    private readonly IMongoService<CropNonGhgLookUpEntity> _cropNonGhgCollection;
+    private readonly IMongoService<CropResidueLookUpEntity> _cropResidueCollection;
+    private readonly IMongoService<FertiliserRatioEfsLookUpEntity> _fertiliserRatioEfsCollection;
 
-    public CoverCrops(IMongoService<CoverCropLookUpEntity> coverCropsCollection)
+    public CoverCrops(
+        IMongoService<CoverCropLookUpEntity> coverCropsCollection,
+        IMongoService<CropNonGhgLookUpEntity> cropNonGhgCollection,
+        IMongoService<CropResidueLookUpEntity> cropResidueCollection,
+        IMongoService<FertiliserRatioEfsLookUpEntity> fertiliserRatioEfsCollection)
     {
-        CoverCropsCollection = coverCropsCollection ?? throw new ArgumentNullException(nameof(coverCropsCollection));
+        _coverCropsCollection = coverCropsCollection ?? throw new ArgumentNullException(nameof(coverCropsCollection));
+        _cropNonGhgCollection = cropNonGhgCollection ?? throw new ArgumentNullException(nameof(cropNonGhgCollection));
+        _cropResidueCollection = cropResidueCollection ?? throw new ArgumentNullException(nameof(cropResidueCollection));
+        _fertiliserRatioEfsCollection = fertiliserRatioEfsCollection ?? throw new ArgumentNullException(nameof(fertiliserRatioEfsCollection));
     }
 
     /// <summary>
@@ -29,7 +40,9 @@ public class CoverCrops
         CoverCropEmissions myEmissions = new();
         myEmissions.InitialiseCoverCropEmissions();
 
-        double additionalNReturn = CoverCropsCollection.FindById("6a9f0cd7a6c94fe61cdcfb48").Value;
+        var filterBuilder = Builders<CoverCropLookUpEntity>.Filter;
+        var coverCropsFilter = filterBuilder.Eq(x => x.Item, "N return");
+        var additionalNReturn = _coverCropsCollection.FindOne(coverCropsFilter).Value;
         myEmissions.additionalOutputs[AdditionalCoverCropEmissions.NReturn].Value = additionalNReturn;
 
         myEmissions.EmissionsCore[CoreEmissions.DirectN2ON].Value = GenericEquations.Emission_PercentageEF(additionalNReturn, CropLookup.RetrieveIPCCEmissionFactor1());

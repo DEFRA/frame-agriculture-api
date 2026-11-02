@@ -30,6 +30,19 @@ services:
     volumes:
       - mongodb-data:/data
 
+  mongo-express:
+    image: mongo-express:1.0.2
+    ports:
+      - '127.0.0.1:8082:8081'
+    depends_on:
+      mongodb:
+        condition: service_started
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://mongodb:27017/
+      ME_CONFIG_BASICAUTH: 'false'
+    networks:
+      - cdp-tenant
+
   ################################################################################
 
   # your-frontend:
