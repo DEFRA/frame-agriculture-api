@@ -16,4 +16,8 @@
     <ProjectReference Include="..\FrameAgricultureApi.Enumerators\FrameAgricultureApi.Enumerators.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Include="SeedData\*.json" />
+  </ItemGroup>
+
 </Project>

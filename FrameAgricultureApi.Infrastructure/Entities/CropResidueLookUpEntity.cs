@@ -9,6 +9,7 @@ public class CropResidueLookUpEntity : MongoDocument
     public string CropName { get; set; } = string.Empty;
     public CropType CropTypeId { get; set; }
 
+    [BsonElement("AboveGroundResiduesRemainingAfterBalingPercentage")]
     public double AboveGroundResiduesRemainingAfterBalingPercentage { get; set; }
 
     public double AboveGroundResidueNContent { get; set; }
@@ -17,6 +18,7 @@ public class CropResidueLookUpEntity : MongoDocument
     public double? CropYieldNContent { get; set; }
     public double DryMatterContentPercentage { get; set; }
     public double Fate1 { get; set; }
+    [BsonElement("Fate2Incorporate")]
     public double Fate2Incorporate { get; set; }
 
     public double HarvestIndex { get; set; }
