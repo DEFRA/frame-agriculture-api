@@ -161,6 +161,7 @@ static void ConfigureMiddleware(WebApplication app)
 {
     app.UseSerilogRequestLogging();
 
+    app.UseStatusCodePages();
     if (!app.Environment.IsDevelopment())
     {
         app.UseExceptionHandler("/error");
