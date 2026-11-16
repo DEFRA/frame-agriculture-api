@@ -82,6 +82,7 @@ public class MongoDbSeederTests
             var entity = call.Arg<TDocument>();
             // The real MongoDB driver assigns the ID when inserting this document.
             Assert.Equal(ObjectId.Empty, entity.Id);
+            Assert.Equal("0.0", entity.Version);
             operations.Add($"seed:{name}");
             return Task.CompletedTask;
         });

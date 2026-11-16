@@ -9,5 +9,6 @@ public interface IMongoDocument
     [BsonId]
     [BsonRequired]
     ObjectId Id { get; set; }
+    string Version { get; set; }
     DateTime CreatedAt { get; }
 }

@@ -1,10 +1,12 @@
 [
   {
+    "Version": "0.0",
     "CoverCropType": 0,
     "Item": "N return",
     "Value": 77
   },
   {
+    "Version": "0.0",
     "CoverCropType": 0,
     "Item": "Frac Leach Reduction",
     "Value": 45
