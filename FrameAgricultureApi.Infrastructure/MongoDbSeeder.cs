@@ -1,5 +1,3 @@
-using System.Text.Json;
-using FrameAgricultureApi.Core.Enums;
 using FrameAgricultureApi.Infrastructure.Entities;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
@@ -16,7 +14,7 @@ public class MongoDbSeeder(IMongoDatabase database)
         await DeleteCollectionDataAsync<CropResidueLookUpEntity>("Crop_Residue");
         await DeleteCollectionDataAsync<FertiliserRatioEfsLookUpEntity>("Fertiliser_RatioEFs");
 
-        await SeedCoverCropsAsync();
+        await SeedCollectionAsync<CoverCropLookUpEntity>("CoverCrops.json", "CoverCrops");
         await SeedCollectionAsync<CropNonGhgLookUpEntity>("CropNonGHG.json", "Crop_NonGHG");
         await SeedCollectionAsync<CropResidueLookUpEntity>("CropResidue.json", "Crop_Residue");
         await SeedCollectionAsync<FertiliserRatioEfsLookUpEntity>("FertiliserRatioEFs.json", "Fertiliser_RatioEFs");
@@ -27,31 +25,6 @@ public class MongoDbSeeder(IMongoDatabase database)
     {
         var collection = database.GetCollection<TDocument>(collectionName);
         await collection.DeleteManyAsync(Builders<TDocument>.Filter.Empty);
-    }
-
-    private async Task SeedCoverCropsAsync()
-    {
-        var collection = database.GetCollection<CoverCropLookUpEntity>("CoverCrops");
-        using var stream = OpenSeedData("CoverCrops.json");
-        var seedData = await JsonSerializer.DeserializeAsync<List<CoverCropSeedData>>(stream)
-            ?? throw new InvalidOperationException("CoverCrops seed data must be a JSON array.");
-
-        foreach (var seed in seedData)
-        {
-            var filter = Builders<CoverCropLookUpEntity>.Filter
-                .Eq(x => x.Id, ObjectId.Parse(seed.Id));
-
-            var update = Builders<CoverCropLookUpEntity>.Update
-                .SetOnInsert(x => x.CoverCropType, seed.CoverCropType)
-                .SetOnInsert(x => x.Item, seed.Item)
-                .SetOnInsert(x => x.Value, seed.Value);
-
-            await collection.UpdateOneAsync(
-                filter,
-                update,
-                new UpdateOptions { IsUpsert = true }
-            );
-        }
     }
 
     private async Task SeedCollectionAsync<TDocument>(string fileName, string collectionName)
@@ -75,17 +48,7 @@ public class MongoDbSeeder(IMongoDatabase database)
             }
 
             var entity = BsonSerializer.Deserialize<TDocument>(mappedDocument);
-            if (entity.Id == ObjectId.Empty)
-            {
-                throw new InvalidOperationException($"Each record in {fileName} must have a non-empty _id.");
-            }
-
-            var values = entity.ToBsonDocument();
-            values.Remove("_id");
-            var filter = Builders<TDocument>.Filter.Eq(x => x.Id, entity.Id);
-            var update = new BsonDocumentUpdateDefinition<TDocument>(new BsonDocument("$setOnInsert", values));
-
-            await collection.UpdateOneAsync(filter, update, new UpdateOptions { IsUpsert = true });
+            await collection.InsertOneAsync(entity);
         }
     }
 
@@ -95,6 +58,4 @@ public class MongoDbSeeder(IMongoDatabase database)
             $"FrameAgricultureApi.Infrastructure.SeedData.{fileName}")
             ?? throw new InvalidOperationException($"Seed data resource '{fileName}' was not found.");
     }
-
-    private sealed record CoverCropSeedData(string Id, CoverCropType CoverCropType, string Item, double Value);
 }

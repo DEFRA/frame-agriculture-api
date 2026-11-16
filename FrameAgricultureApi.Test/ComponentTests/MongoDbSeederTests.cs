@@ -11,7 +11,7 @@ namespace FrameAgricultureApi.Test.ComponentTests;
 public class MongoDbSeederTests
 {
     [Fact]
-    public async Task SeedAsync_ClearsAllSeededCollectionsBeforeLoadingDataWithStableIds()
+    public async Task SeedAsync_ClearsAllSeededCollectionsBeforeLoadingDataWithoutExplicitIds()
     {
         MongoConventions.Register();
         var database = Substitute.For<IMongoDatabase>();
@@ -25,40 +25,45 @@ public class MongoDbSeederTests
         await seeder.SeedAsync();
 
         AssertDeleteBeforeSeed(operations);
-        Assert.Equal(2, GetSeedUpdates(coverCrops).Count);
-        var nonGhgUpdates = GetSeedUpdates(nonGhg);
-        Assert.Equal(48, nonGhgUpdates.Count);
-        Assert.Equal(ObjectId.Parse("6ae4ca7efe2f84e05c3ec6b2"), nonGhgUpdates[0].Id);
-        Assert.Equal("Oats", nonGhgUpdates[0].Values["cropName"].AsString);
-        Assert.Equal(1, nonGhgUpdates[0].Values["cropTypeId"].AsInt32);
-        Assert.Equal(0.86, nonGhgUpdates[0].Values["EF_NMVOC"].AsDouble);
-        Assert.Equal(0.0125, nonGhgUpdates[0].Values["EF_PM2_5_Cleaning"].AsDouble);
+        var coverCropDocuments = GetSeedInserts(coverCrops);
+        Assert.Equal(2, coverCropDocuments.Count);
+        Assert.Equal(0, coverCropDocuments[0]["coverCropType"].AsInt32);
+        Assert.Equal("N return", coverCropDocuments[0]["item"].AsString);
+        Assert.Equal(77, coverCropDocuments[0]["value"].AsDouble);
+        Assert.Equal(45, coverCropDocuments[1]["value"].AsDouble);
+        var nonGhgDocuments = GetSeedInserts(nonGhg);
+        Assert.Equal(48, nonGhgDocuments.Count);
+        Assert.Equal("Oats", nonGhgDocuments[0]["cropName"].AsString);
+        Assert.Equal(1, nonGhgDocuments[0]["cropTypeId"].AsInt32);
+        Assert.Equal(0.86, nonGhgDocuments[0]["EF_NMVOC"].AsDouble);
+        Assert.Equal(0.0125, nonGhgDocuments[0]["EF_PM2_5_Cleaning"].AsDouble);
 
-        var residueUpdates = GetSeedUpdates(residues);
-        Assert.Equal(48, residueUpdates.Count);
-        Assert.Equal(50, residueUpdates[0].Values["AboveGroundResiduesRemainingAfterBalingPercentage"].AsDouble);
-        Assert.Equal(38.8, residueUpdates[0].Values["Fate2Incorporate"].AsDouble);
-        Assert.True(residueUpdates[1].Values["rAFate1"].IsBsonNull);
-        Assert.Contains(residueUpdates, update => update.Values["cropYieldNContent"].IsBsonNull);
+        var residueDocuments = GetSeedInserts(residues);
+        Assert.Equal(48, residueDocuments.Count);
+        Assert.Equal(50, residueDocuments[0]["AboveGroundResiduesRemainingAfterBalingPercentage"].AsDouble);
+        Assert.Equal(38.8, residueDocuments[0]["Fate2Incorporate"].AsDouble);
+        Assert.True(residueDocuments[1]["rAFate1"].IsBsonNull);
+        Assert.Contains(residueDocuments, document => document["cropYieldNContent"].IsBsonNull);
 
-        var fertiliserUpdates = GetSeedUpdates(fertilisers);
-        Assert.Equal(6, fertiliserUpdates.Count);
-        Assert.Equal("Ratio_NON", fertiliserUpdates[0].Values["parameter"].AsString);
-        Assert.Equal(0.4, fertiliserUpdates[0].Values["value"].AsDouble);
-        Assert.Equal(3, fertiliserUpdates[1].Values["value"].AsDouble);
+        var fertiliserDocuments = GetSeedInserts(fertilisers);
+        Assert.Equal(6, fertiliserDocuments.Count);
+        Assert.Equal("Ratio_NON", fertiliserDocuments[0]["parameter"].AsString);
+        Assert.Equal(0.4, fertiliserDocuments[0]["value"].AsDouble);
+        Assert.Equal(3, fertiliserDocuments[1]["value"].AsDouble);
 
         operations.Clear();
         await seeder.SeedAsync();
 
         AssertDeleteBeforeSeed(operations);
-        AssertRepeatedUpdates(coverCrops, 2);
-        AssertRepeatedUpdates(nonGhg, 48);
-        AssertRepeatedUpdates(residues, 48);
-        AssertRepeatedUpdates(fertilisers, 6);
+        AssertRepeatedInserts(coverCrops, 2);
+        AssertRepeatedInserts(nonGhg, 48);
+        AssertRepeatedInserts(residues, 48);
+        AssertRepeatedInserts(fertilisers, 6);
     }
 
     private static IMongoCollection<TDocument> RegisterCollection<TDocument>(
         IMongoDatabase database, string name, List<string> operations)
+        where TDocument : MongoDocument
     {
         var collection = Substitute.For<IMongoCollection<TDocument>>();
         database.GetCollection<TDocument>(name).Returns(collection);
@@ -71,11 +76,14 @@ public class MongoDbSeederTests
             operations.Add($"delete:{name}");
             return Task.FromResult<DeleteResult>(new DeleteResult.Acknowledged(0));
         });
-        collection.UpdateOneAsync(Arg.Any<FilterDefinition<TDocument>>(),
-            Arg.Any<UpdateDefinition<TDocument>>(), Arg.Any<UpdateOptions>()).Returns(_ =>
+        collection.InsertOneAsync(Arg.Any<TDocument>(), Arg.Any<InsertOneOptions>(),
+            Arg.Any<CancellationToken>()).Returns(call =>
         {
+            var entity = call.Arg<TDocument>();
+            // The real MongoDB driver assigns the ID when inserting this document.
+            Assert.Equal(ObjectId.Empty, entity.Id);
             operations.Add($"seed:{name}");
-            return Task.FromResult<UpdateResult>(new UpdateResult.Acknowledged(0, 0, null));
+            return Task.CompletedTask;
         });
         return collection;
     }
@@ -90,32 +98,23 @@ public class MongoDbSeederTests
         Assert.All(operations.Skip(4), operation => Assert.StartsWith("seed:", operation));
     }
 
-    private static List<(ObjectId Id, BsonDocument Values)> GetSeedUpdates<TDocument>(IMongoCollection<TDocument> collection)
+    private static List<BsonDocument> GetSeedInserts<TDocument>(IMongoCollection<TDocument> collection)
+        where TDocument : MongoDocument
     {
-        var registry = BsonSerializer.SerializerRegistry;
-        var renderArgs = new RenderArgs<TDocument>(registry.GetSerializer<TDocument>(), registry);
-        var updates = new List<(ObjectId Id, BsonDocument Values)>();
-        foreach (var call in collection.ReceivedCalls().Where(call => call.GetMethodInfo().Name == "UpdateOneAsync"))
-        {
-            var arguments = call.GetArguments();
-            var filter = ((FilterDefinition<TDocument>)arguments[0]!).Render(renderArgs);
-            var update = ((UpdateDefinition<TDocument>)arguments[1]!).Render(renderArgs).AsBsonDocument;
-            Assert.True(((UpdateOptions)arguments[2]!).IsUpsert);
-            Assert.Equal("$setOnInsert", Assert.Single(update.Elements).Name);
-            Assert.False(update["$setOnInsert"].AsBsonDocument.Contains("_id"));
-            updates.Add((filter["_id"].AsObjectId, update["$setOnInsert"].AsBsonDocument));
-        }
-        return updates;
+        return collection.ReceivedCalls()
+            .Where(call => call.GetMethodInfo().Name == "InsertOneAsync")
+            .Select(call => ((TDocument)call.GetArguments()[0]!).ToBsonDocument())
+            .ToList();
     }
 
-    private static void AssertRepeatedUpdates<TDocument>(IMongoCollection<TDocument> collection, int count)
+    private static void AssertRepeatedInserts<TDocument>(IMongoCollection<TDocument> collection, int count)
+        where TDocument : MongoDocument
     {
-        var updates = GetSeedUpdates(collection);
-        Assert.Equal(count * 2, updates.Count);
-        Assert.Equal(count, updates.Select(update => update.Id).Distinct().Count());
+        var documents = GetSeedInserts(collection);
+        Assert.Equal(count * 2, documents.Count);
         for (var index = 0; index < count; index++)
         {
-            Assert.Equal(updates[index], updates[index + count]);
+            Assert.Equal(documents[index], documents[index + count]);
         }
     }
 }
