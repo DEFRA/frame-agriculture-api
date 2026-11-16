@@ -4,6 +4,7 @@ using FrameAgricultureApi.Generic;
 using FrameAgricultureApi.Infrastructure;
 using FrameAgricultureApi.Infrastructure.Entities;
 using FrameAgricultureApi.Libraries.LookUps;
+using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
 
 namespace FrameAgricultureApi.Libraries.CoverCrops;
@@ -14,6 +15,7 @@ namespace FrameAgricultureApi.Libraries.CoverCrops;
 /// </summary>
 public class CoverCrops
 {
+    private readonly ILogger<CoverCrops> _logger;
     private readonly IMongoService<CoverCropLookUpEntity> _coverCropsCollection;
     private readonly IMongoService<CropNonGhgLookUpEntity> _cropNonGhgCollection;
     private readonly IMongoService<CropResidueLookUpEntity> _cropResidueCollection;
@@ -23,8 +25,10 @@ public class CoverCrops
         IMongoService<CoverCropLookUpEntity> coverCropsCollection,
         IMongoService<CropNonGhgLookUpEntity> cropNonGhgCollection,
         IMongoService<CropResidueLookUpEntity> cropResidueCollection,
-        IMongoService<FertiliserRatioEfsLookUpEntity> fertiliserRatioEfsCollection)
+        IMongoService<FertiliserRatioEfsLookUpEntity> fertiliserRatioEfsCollection,
+        ILogger<CoverCrops> logger)
     {
+        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _coverCropsCollection = coverCropsCollection ?? throw new ArgumentNullException(nameof(coverCropsCollection));
         _cropNonGhgCollection = cropNonGhgCollection ?? throw new ArgumentNullException(nameof(cropNonGhgCollection));
         _cropResidueCollection = cropResidueCollection ?? throw new ArgumentNullException(nameof(cropResidueCollection));
@@ -38,6 +42,7 @@ public class CoverCrops
     /// <returns>An object of type CoverCropEmissions</returns>
     public CoverCropEmissions CoverCropEmissions(CoverCropType coverCropType)
     {
+        _logger.LogInformation("TestLog: This is a test log to see if it appears in the dashboard.");
         CoverCropEmissions myEmissions = new();
         myEmissions.InitialiseCoverCropEmissions();
 
