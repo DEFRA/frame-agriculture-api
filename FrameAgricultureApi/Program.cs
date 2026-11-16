@@ -161,6 +161,11 @@ static void ConfigureMiddleware(WebApplication app)
 {
     app.UseSerilogRequestLogging();
 
+    if (!app.Environment.IsDevelopment())
+    {
+        app.UseExceptionHandler("/error");
+    }
+
     app.UseHeaderPropagation();
     app.UseRouting();
     app.UseRateLimiter();
