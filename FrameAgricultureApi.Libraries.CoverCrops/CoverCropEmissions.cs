@@ -30,11 +30,14 @@ public class CoverCropEmissions : BaseEmissions
     public List<Emission> ExportEmissions()
     {
         List<Emission> retList = [];
-        foreach (CoreEmissions key in EmissionsCore.Keys)
+        foreach (var pathways in EmissionsCore.Values)
         {
-            if (!double.IsNaN(EmissionsCore[key].Value))
+            foreach (var emission in pathways.Values)
             {
-                retList.Add(EmissionsCore[key]);
+                if (!double.IsNaN(emission.Value))
+                {
+                    retList.Add(emission);
+                }
             }
         }
 

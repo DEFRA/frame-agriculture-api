@@ -4,29 +4,45 @@ using FrameAgricultureApi.Core.Enums;
 namespace FrameAgricultureApi.Libraries.CoverCrops;
 
 /// <summary>
-/// Standard emissions (Nitrogen emissions) class. Contains a dictionary of emission objects by CoreEmission enumerator
+/// Standard emissions (Nitrogen emissions) class. Contains emission objects grouped by pollutant and pathway.
 /// </summary>
 public class BaseEmissions
 {
     /// <summary>
-    /// Dictionary containing core emissions as name, unit and value
+    /// Dictionary containing core emissions by pollutant, then pathway, as name, unit and value.
     /// </summary>
-    public Dictionary<CoreEmissions, Emission> EmissionsCore { get; set; } = [];
+    public Dictionary<SummarisePollutantType, Dictionary<SummarisePathwayType, Emission>> EmissionsCore { get; set; } = [];
 
     /// <summary>
     /// Initialisation of Emissions Dictionary
     /// </summary>
     public void InitialiseBaseEmissions()
     {
-        EmissionsCore = [];
-        EmissionsCore.Clear();
-        EmissionsCore.Add(CoreEmissions.DirectN2ON, new Emission("Direct N2O-N", "kg N2O-N", double.NaN));
-        EmissionsCore.Add(CoreEmissions.DirectNH3N, new Emission("Direct NH3-N", "kg NH3-N", double.NaN));
-        EmissionsCore.Add(CoreEmissions.N2ONleached, new Emission("Indirect N2O-N (leached)", "kg N2O-N", double.NaN));
-        EmissionsCore.Add(CoreEmissions.N2ONVolatilised, new Emission("Indirect N2O-N (volatilisation)", "kg N2O-N", double.NaN));
-        EmissionsCore.Add(CoreEmissions.LeachedNO3N, new Emission("Direct NO3-N (leached)", "kg NO3-N", double.NaN));
-        EmissionsCore.Add(CoreEmissions.DirectNON, new Emission("Direct NO-N", "kg NO-N", double.NaN));
-        EmissionsCore.Add(CoreEmissions.DirectN2N, new Emission("Direct N2-N", "kg N2-N", double.NaN));
+        EmissionsCore = new()
+        {
+            [SummarisePollutantType.NitrousOxide] = new()
+            {
+                [SummarisePathwayType.Direct] = new Emission("Direct N2O-N", "kg N2O-N", double.NaN),
+                [SummarisePathwayType.IndirectLeaching] = new Emission("Indirect N2O-N (leached)", "kg N2O-N", double.NaN),
+                [SummarisePathwayType.IndirectDeposition] = new Emission("Indirect N2O-N (volatilisation)", "kg N2O-N", double.NaN)
+            },
+            [SummarisePollutantType.Ammonia] = new()
+            {
+                [SummarisePathwayType.Direct] = new Emission("Direct NH3-N", "kg NH3-N", double.NaN)
+            },
+            [SummarisePollutantType.Nitrate] = new()
+            {
+                [SummarisePathwayType.Direct] = new Emission("Direct NO3-N (leached)", "kg NO3-N", double.NaN)
+            },
+            [SummarisePollutantType.NitricOxide] = new()
+            {
+                [SummarisePathwayType.Direct] = new Emission("Direct NO-N", "kg NO-N", double.NaN)
+            },
+            [SummarisePollutantType.Dinitrogen] = new()
+            {
+                [SummarisePathwayType.Direct] = new Emission("Direct N2-N", "kg N2-N", double.NaN)
+            }
+        };
     }
 
     /// <summary>
@@ -35,11 +51,14 @@ public class BaseEmissions
     /// <param name="decimalPlaces">Number of decimal places to be used</param>
     public void RoundCoreEmissions(int decimalPlaces)
     {
-        foreach (CoreEmissions key in EmissionsCore.Keys)
+        foreach (var pathways in EmissionsCore.Values)
         {
-            if (!double.IsNaN(EmissionsCore[key].Value))
+            foreach (var emission in pathways.Values)
             {
-                EmissionsCore[key].Value = Math.Round(EmissionsCore[key].Value, decimalPlaces);
+                if (!double.IsNaN(emission.Value))
+                {
+                    emission.Value = Math.Round(emission.Value, decimalPlaces);
+                }
             }
         }
     }
