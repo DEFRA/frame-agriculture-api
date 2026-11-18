@@ -1,38 +1,52 @@
+using FrameAgricultureApi.Core;
+using FrameAgricultureApi.Core.Enums;
+
+
 /// <summary>
 /// Base Emission class. Emission defined to have a name, units and a value.
+/// </summary>
+public class BaseEmission
+{
+
+    public SummarisePollutantType SummarisePollutantType { get; set; }
+    public SummarisePathwayType SummarisePathwayType { get; set; }
+    public Unit Unit { get; set; } = new();
+    public double Value { get; set; } = double.NaN;
+}
+
+/// <summary>
+/// A named emission value in the standard API output.
 /// </summary>
 public class Emission
 {
     /// <summary>
-    /// Name of the emission
+    /// Display name of the emission.
     /// </summary>
     public string Name { get; }
 
     /// <summary>
-    /// The units of the emission
+    /// Display units, including the substance measured.
     /// </summary>
     public string Units { get; }
 
     /// <summary>
-    /// The value of the emission
+    /// Calculated emission value.
     /// </summary>
     public double Value { get; set; }
 
     /// <summary>
-    /// Emissions base construnctor
+    /// Creates an empty output emission.
     /// </summary>
-    public Emission()
+    public Emission() : this("", "", double.NaN)
     {
-        Name = "";
-        Units = "";
-        Value = double.NaN;
     }
+
     /// <summary>
-    /// Overloaded constructo rto set values at instantiation
+    /// Creates a named output emission.
     /// </summary>
-    /// <param name="name">Emission name</param>
-    /// <param name="units">Emission units</param>
-    /// <param name="value">Emission value</param>
+    /// <param name="name">Display name.</param>
+    /// <param name="units">Display units.</param>
+    /// <param name="value">Calculated value.</param>
     public Emission(string name, string units, double value)
     {
         Name = name;

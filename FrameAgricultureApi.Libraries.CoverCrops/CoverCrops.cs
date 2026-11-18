@@ -51,15 +51,15 @@ public class CoverCrops
         var additionalNReturn = _coverCropsCollection.FindOne(coverCropsFilter).Value;
         myEmissions.additionalOutputs[AdditionalCoverCropEmissions.NReturn].Value = additionalNReturn;
 
-        myEmissions.EmissionsCore[SummarisePollutantType.NitrousOxide][SummarisePathwayType.Direct].Value = GenericEquations.Emission_PercentageEF(additionalNReturn, CropLookup.RetrieveIPCCEmissionFactor1());
+        myEmissions.DirectN20_N.Value = GenericEquations.Emission_PercentageEF(additionalNReturn, CropLookup.RetrieveIPCCEmissionFactor1());
         double adjustedFracLeach = CropLookup.RetrieveFracLeach() * ((100 - CropLookup.RetrievedCoverCropFracLeachReduction()) * HelperFunctions.Percent_to_Proportion);
-        myEmissions.EmissionsCore[SummarisePollutantType.Nitrate][SummarisePathwayType.Direct].Value = GenericEquations.Emission_PercentageEF(additionalNReturn, adjustedFracLeach);
+        myEmissions.DirectNO3_NLeached.Value = GenericEquations.Emission_PercentageEF(additionalNReturn, adjustedFracLeach);
         myEmissions.additionalOutputs[AdditionalCoverCropEmissions.UnadjustedNO3N].Value = GenericEquations.Emission_PercentageEF(additionalNReturn, CropLookup.RetrieveFracLeach());
-        myEmissions.EmissionsCore[SummarisePollutantType.NitrousOxide][SummarisePathwayType.IndirectLeaching].Value = GenericEquations.Emission_PercentageEF(myEmissions.EmissionsCore[SummarisePollutantType.Nitrate][SummarisePathwayType.Direct].Value, CropLookup.RetrieveIPCCEmissionFactor5());
+        myEmissions.IndirectN20_NLeached.Value = GenericEquations.Emission_PercentageEF(myEmissions.DirectNO3_NLeached.Value, CropLookup.RetrieveIPCCEmissionFactor5());
         myEmissions.additionalOutputs[AdditionalCoverCropEmissions.UnadjustedN2ONLeach].Value = GenericEquations.Emission_PercentageEF(myEmissions.additionalOutputs[AdditionalCoverCropEmissions.UnadjustedNO3N].Value, CropLookup.RetrieveIPCCEmissionFactor5());
-        myEmissions.EmissionsCore[SummarisePollutantType.NitricOxide][SummarisePathwayType.Direct].Value = GenericEquations.Emission_ProportionEF(myEmissions.EmissionsCore[SummarisePollutantType.NitrousOxide][SummarisePathwayType.Direct].Value, CropLookup.RetrieveRatioNON());
-        myEmissions.EmissionsCore[SummarisePollutantType.Dinitrogen][SummarisePathwayType.Direct].Value = GenericEquations.Emission_ProportionEF(myEmissions.EmissionsCore[SummarisePollutantType.NitrousOxide][SummarisePathwayType.Direct].Value, CropLookup.RetrieveRatioN2N());
-        myEmissions.EmissionsCore[SummarisePollutantType.NitrousOxide][SummarisePathwayType.IndirectDeposition].Value = GenericEquations.Emission_PercentageEF(myEmissions.EmissionsCore[SummarisePollutantType.NitricOxide][SummarisePathwayType.Direct].Value, CropLookup.RetrieveIPCCEmissionFactor4());
+        myEmissions.DirectNO_N.Value = GenericEquations.Emission_ProportionEF(myEmissions.DirectN20_N.Value, CropLookup.RetrieveRatioNON());
+        myEmissions.DirectN2_N.Value = GenericEquations.Emission_ProportionEF(myEmissions.DirectN20_N.Value, CropLookup.RetrieveRatioN2N());
+        myEmissions.IndirectN20_NVolatilisation.Value = GenericEquations.Emission_PercentageEF(myEmissions.DirectNO_N.Value, CropLookup.RetrieveIPCCEmissionFactor4());
 
         return myEmissions;
     }

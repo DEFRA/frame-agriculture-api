@@ -30,14 +30,21 @@ public class CoverCropEmissions : BaseEmissions
     public List<Emission> ExportEmissions()
     {
         List<Emission> retList = [];
-        foreach (var pathways in EmissionsCore.Values)
+        (BaseEmission Emission, string Name, string Units)[] coreOutputs =
+        [
+            (DirectN20_N, "Direct N2O-N", "kg N2O-N"),
+            (IndirectN20_NLeached, "Indirect N2O-N (leached)", "kg N2O-N"),
+            (IndirectN20_NVolatilisation, "Indirect N2O-N (volatilisation)", "kg N2O-N"),
+            (DirectNH3_N, "Direct NH3-N", "kg NH3-N"),
+            (DirectNO3_NLeached, "Direct NO3-N (leached)", "kg NO3-N"),
+            (DirectNO_N, "Direct NO-N", "kg NO-N"),
+            (DirectN2_N, "Direct N2-N", "kg N2-N")
+        ];
+        foreach (var output in coreOutputs)
         {
-            foreach (var emission in pathways.Values)
+            if (!double.IsNaN(output.Emission.Value))
             {
-                if (!double.IsNaN(emission.Value))
-                {
-                    retList.Add(emission);
-                }
+                retList.Add(new Emission(output.Name, output.Units, output.Emission.Value));
             }
         }
 
