@@ -9,8 +9,8 @@ namespace FrameAgricultureApi.Core;
 public class CoverCropEmission
 {
 
-    public SummarisePollutantType? SummarisePollutantType { get; set; }
-    public SummarisePathwayType? SummarisePathwayType { get; set; }
+    public SummarisePollutantType SummarisePollutantType { get; set; }
+    public SummarisePathwayType SummarisePathwayType { get; set; }
     public Unit Unit { get; set; } = new();
     public double Value { get; set; } = double.NaN;
 }

@@ -48,5 +48,7 @@ public enum SummarisePollutantType
     /// <summary>
     /// Total Suspended Particles.
     /// </summary>
-    TotalSuspendedParticles = 10
+    TotalSuspendedParticles = 10,
+    Nitrogen = 12,
+    NitrateNitrogen = 13,
 }

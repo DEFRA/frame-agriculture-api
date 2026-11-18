@@ -14,8 +14,10 @@ public class CoverCropEmissions : BaseEmissions
     /// </summary>
     public CoverCropEmission N { get; set; } = new()
     {
-        SummarisePollutantType = null,
-        SummarisePathwayType = null,
+        // Todo I have just assumed N is nitrogen 
+        SummarisePollutantType = SummarisePollutantType.Nitrogen,
+        // Todo I have assumed this is direct
+        SummarisePathwayType = SummarisePathwayType.Direct,
         Unit = new()
         {
             Symbol = UnitSymbols.Kg,
@@ -28,8 +30,9 @@ public class CoverCropEmissions : BaseEmissions
     /// </summary>
     public CoverCropEmission UnadjustedN03_N { get; set; } = new()
     {
-        SummarisePollutantType = SummarisePollutantType.Nitrate,
-        SummarisePathwayType = null,
+        SummarisePollutantType = SummarisePollutantType.NitrateNitrogen,
+        // Todo I have assumed this is direct
+        SummarisePathwayType = SummarisePathwayType.Direct,
         Unit = new()
         {
             Symbol = UnitSymbols.Kg,
