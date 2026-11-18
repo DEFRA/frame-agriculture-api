@@ -1,4 +1,5 @@
 using System;
+using FrameAgricultureApi.Core;
 using FrameAgricultureApi.Core.Enums;
 
 namespace FrameAgricultureApi.Libraries.CoverCrops;
@@ -10,18 +11,42 @@ public class CoverCropEmissions : BaseEmissions
     /// </summary>
     public Dictionary<AdditionalCoverCropEmissions, Emission> additionalOutputs = [];
 
-    /// <summary>
-    /// Initialisation method
-    /// </summary>
-    public void InitialiseCoverCropEmissions()
+    public CoverCropEmission N = new()
     {
-        InitialiseBaseEmissions();
-        additionalOutputs = [];
-        additionalOutputs.Clear();
-        additionalOutputs.Add(AdditionalCoverCropEmissions.NReturn, new Emission("Cover crops N return", "kg N", double.NaN));
-        additionalOutputs.Add(AdditionalCoverCropEmissions.UnadjustedNO3N, new Emission("Unadjusted ", "kg NO3-N", double.NaN));
-        additionalOutputs.Add(AdditionalCoverCropEmissions.UnadjustedN2ONLeach, new Emission("Unadjusted indirect leach N2O-N", "kg N2O-N", double.NaN));
-    }
+        // Todo I have just assumed N is nitrate 
+        SummarisePollutantType = SummarisePollutantType.Nitrate,
+        SummarisePathwayType = null,
+        Unit = new()
+        {
+            Symbol = UnitSymbols.Kg,
+            MultipleToBaseFactor = 1
+        }
+    };
+
+    public CoverCropEmission UnadjustedN03_N = new()
+    {
+        //Todo N03_N is Ammonia nitrate which isn't in the summaries pollutant type
+        SummarisePollutantType = SummarisePollutantType.,
+        SummarisePathwayType = null,
+        Unit = new()
+        {
+            Symbol = UnitSymbols.Kg,
+            MultipleToBaseFactor = 1
+        }
+    };
+
+    public CoverCropEmission UnadjustedIndirectedN20_NLeached = new()
+    {
+        // Todo What is N20_N
+        SummarisePollutantType = SummarisePollutantType.NitrousOxide,
+        SummarisePathwayType = SummarisePathwayType.IndirectLeaching,
+        Unit = new()
+        {
+            Symbol = UnitSymbols.Kg,
+            MultipleToBaseFactor = 1
+        }
+    };
+
 
     /// <summary>
     /// Export emissions method
