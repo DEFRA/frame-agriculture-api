@@ -49,14 +49,14 @@ public class CoverCrops
         var filterBuilder = Builders<CoverCropLookUpEntity>.Filter;
         var coverCropsFilter = filterBuilder.Eq(x => x.Item, "N return");
         var additionalNReturn = _coverCropsCollection.FindOne(coverCropsFilter).Value;
-        myEmissions.additionalOutputs[AdditionalCoverCropEmissions.NReturn].Value = additionalNReturn;
+        myEmissions.N.Value = additionalNReturn;
 
         myEmissions.DirectN20_N.Value = GenericEquations.Emission_PercentageEF(additionalNReturn, CropLookup.RetrieveIPCCEmissionFactor1());
         double adjustedFracLeach = CropLookup.RetrieveFracLeach() * ((100 - CropLookup.RetrievedCoverCropFracLeachReduction()) * HelperFunctions.Percent_to_Proportion);
         myEmissions.DirectNO3_NLeached.Value = GenericEquations.Emission_PercentageEF(additionalNReturn, adjustedFracLeach);
-        myEmissions.additionalOutputs[AdditionalCoverCropEmissions.UnadjustedNO3N].Value = GenericEquations.Emission_PercentageEF(additionalNReturn, CropLookup.RetrieveFracLeach());
+        myEmissions.UnadjustedN03_N.Value = GenericEquations.Emission_PercentageEF(additionalNReturn, CropLookup.RetrieveFracLeach());
         myEmissions.IndirectN20_NLeached.Value = GenericEquations.Emission_PercentageEF(myEmissions.DirectNO3_NLeached.Value, CropLookup.RetrieveIPCCEmissionFactor5());
-        myEmissions.additionalOutputs[AdditionalCoverCropEmissions.UnadjustedN2ONLeach].Value = GenericEquations.Emission_PercentageEF(myEmissions.additionalOutputs[AdditionalCoverCropEmissions.UnadjustedNO3N].Value, CropLookup.RetrieveIPCCEmissionFactor5());
+        myEmissions.UnadjustedIndirectedN20_NLeached.Value = GenericEquations.Emission_PercentageEF(myEmissions.UnadjustedN03_N.Value, CropLookup.RetrieveIPCCEmissionFactor5());
         myEmissions.DirectNO_N.Value = GenericEquations.Emission_ProportionEF(myEmissions.DirectN20_N.Value, CropLookup.RetrieveRatioNON());
         myEmissions.DirectN2_N.Value = GenericEquations.Emission_ProportionEF(myEmissions.DirectN20_N.Value, CropLookup.RetrieveRatioN2N());
         myEmissions.IndirectN20_NVolatilisation.Value = GenericEquations.Emission_PercentageEF(myEmissions.DirectNO_N.Value, CropLookup.RetrieveIPCCEmissionFactor4());

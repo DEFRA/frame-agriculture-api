@@ -1,19 +1,33 @@
-using System;
 using FrameAgricultureApi.Core;
 using FrameAgricultureApi.Core.Enums;
 
 namespace FrameAgricultureApi.Libraries.CoverCrops;
 
+/// <summary>
+/// Core emissions and additional nitrogen outputs from cover crop calculations.
+/// </summary>
 public class CoverCropEmissions : BaseEmissions
 {
     /// <summary>
-    /// Additional outputs dictionary
+    /// Nitrogen returned by cover crops, measured in kilograms of nitrogen.
+    /// This is an input to the emission calculations rather than a pollutant emission.
     /// </summary>
-    public Dictionary<AdditionalCoverCropEmissions, Emission> additionalOutputs = [];
-
-    public CoverCropEmission N = new()
+    public CoverCropEmission N { get; set; } = new()
     {
-        // Todo I have just assumed N is nitrate 
+        SummarisePollutantType = null,
+        SummarisePathwayType = null,
+        Unit = new()
+        {
+            Symbol = UnitSymbols.Kg,
+            MultipleToBaseFactor = 1
+        }
+    };
+
+    /// <summary>
+    /// Nitrate leached without the cover crop reduction, measured in kilograms of nitrogen.
+    /// </summary>
+    public CoverCropEmission UnadjustedN03_N { get; set; } = new()
+    {
         SummarisePollutantType = SummarisePollutantType.Nitrate,
         SummarisePathwayType = null,
         Unit = new()
@@ -23,21 +37,11 @@ public class CoverCropEmissions : BaseEmissions
         }
     };
 
-    public CoverCropEmission UnadjustedN03_N = new()
+    /// <summary>
+    /// Indirect nitrous oxide from unadjusted nitrate leaching, measured in kilograms of nitrogen.
+    /// </summary>
+    public CoverCropEmission UnadjustedIndirectedN20_NLeached { get; set; } = new()
     {
-        //Todo N03_N is Ammonia nitrate which isn't in the summaries pollutant type
-        SummarisePollutantType = SummarisePollutantType.,
-        SummarisePathwayType = null,
-        Unit = new()
-        {
-            Symbol = UnitSymbols.Kg,
-            MultipleToBaseFactor = 1
-        }
-    };
-
-    public CoverCropEmission UnadjustedIndirectedN20_NLeached = new()
-    {
-        // Todo What is N20_N
         SummarisePollutantType = SummarisePollutantType.NitrousOxide,
         SummarisePathwayType = SummarisePathwayType.IndirectLeaching,
         Unit = new()
@@ -47,6 +51,18 @@ public class CoverCropEmissions : BaseEmissions
         }
     };
 
+
+    /// <summary>
+    /// Resets core and additional emission values before calculation.
+    /// </summary>
+    public void InitialiseCoverCropEmissions()
+    {
+        InitialiseBaseEmissions();
+        foreach (var emission in GetAdditionalEmissions())
+        {
+            emission.Value = double.NaN;
+        }
+    }
 
     /// <summary>
     /// Export emissions method
@@ -73,11 +89,17 @@ public class CoverCropEmissions : BaseEmissions
             }
         }
 
-        foreach (AdditionalCoverCropEmissions key in additionalOutputs.Keys)
+        (CoverCropEmission Emission, string Name, string Units)[] additionalOutputs =
+        [
+            (N, "Cover crops N return", "kg N"),
+            (UnadjustedN03_N, "Unadjusted ", "kg NO3-N"),
+            (UnadjustedIndirectedN20_NLeached, "Unadjusted indirect leach N2O-N", "kg N2O-N")
+        ];
+        foreach (var output in additionalOutputs)
         {
-            if (!double.IsNaN(additionalOutputs[key].Value))
+            if (!double.IsNaN(output.Emission.Value))
             {
-                retList.Add(additionalOutputs[key]);
+                retList.Add(new Emission(output.Name, output.Units, output.Emission.Value));
             }
         }
         return retList;
@@ -90,12 +112,19 @@ public class CoverCropEmissions : BaseEmissions
     {
         base.RoundCoreEmissions(decimalPlaces);
 
-        foreach (AdditionalCoverCropEmissions key in additionalOutputs.Keys)
+        foreach (var emission in GetAdditionalEmissions())
         {
-            if (!double.IsNaN(additionalOutputs[key].Value))
+            if (!double.IsNaN(emission.Value))
             {
-                additionalOutputs[key].Value = Math.Round(additionalOutputs[key].Value, decimalPlaces);
+                emission.Value = Math.Round(emission.Value, decimalPlaces);
             }
         }
+    }
+
+    private IEnumerable<CoverCropEmission> GetAdditionalEmissions()
+    {
+        yield return N;
+        yield return UnadjustedN03_N;
+        yield return UnadjustedIndirectedN20_NLeached;
     }
 }
