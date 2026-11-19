@@ -9,7 +9,6 @@
   <ItemGroup>
     <ProjectReference Include="..\FrameAgricultureApi.Core\FrameAgricultureApi.Core.csproj" />
     <ProjectReference Include="..\FrameAgricultureApi.Infrastructure\FrameAgricultureApi.Infrastructure.csproj" />
-    <ProjectReference Include="..\FrameAgricultureApi.Libraries.LookUps\FrameAgricultureApi.Libraries.LookUps.csproj" />
   </ItemGroup>
 
 </Project>

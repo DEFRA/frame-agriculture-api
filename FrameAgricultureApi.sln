@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameAgricultureApi.Test", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameAgricultureApi.Infrastructure", "FrameAgricultureApi.Infrastructure\FrameAgricultureApi.Infrastructure.csproj", "{31CC8999-5F40-43C3-9906-B86C16DF026B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameAgricultureApi.Libraries.LookUps", "FrameAgricultureApi.Libraries.LookUps\FrameAgricultureApi.Libraries.LookUps.csproj", "{1981504B-6BE9-420B-B039-D31B6908FC5B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameAgricultureApi.Core", "FrameAgricultureApi.Core\FrameAgricultureApi.Core.csproj", "{B933B784-6F51-432D-AF9F-F23180F7D02B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameAgricultureApi.ComponentLogic", "FrameAgricultureApi.ComponentLogic\FrameAgricultureApi.ComponentLogic.csproj", "{1C3D06F2-1826-449D-BB52-60DD84390053}"
@@ -61,18 +59,6 @@ Global
 		{31CC8999-5F40-43C3-9906-B86C16DF026B}.Release|x64.Build.0 = Release|Any CPU
 		{31CC8999-5F40-43C3-9906-B86C16DF026B}.Release|x86.ActiveCfg = Release|Any CPU
 		{31CC8999-5F40-43C3-9906-B86C16DF026B}.Release|x86.Build.0 = Release|Any CPU
-		{1981504B-6BE9-420B-B039-D31B6908FC5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1981504B-6BE9-420B-B039-D31B6908FC5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1981504B-6BE9-420B-B039-D31B6908FC5B}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{1981504B-6BE9-420B-B039-D31B6908FC5B}.Debug|x64.Build.0 = Debug|Any CPU
-		{1981504B-6BE9-420B-B039-D31B6908FC5B}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{1981504B-6BE9-420B-B039-D31B6908FC5B}.Debug|x86.Build.0 = Debug|Any CPU
-		{1981504B-6BE9-420B-B039-D31B6908FC5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1981504B-6BE9-420B-B039-D31B6908FC5B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1981504B-6BE9-420B-B039-D31B6908FC5B}.Release|x64.ActiveCfg = Release|Any CPU
-		{1981504B-6BE9-420B-B039-D31B6908FC5B}.Release|x64.Build.0 = Release|Any CPU
-		{1981504B-6BE9-420B-B039-D31B6908FC5B}.Release|x86.ActiveCfg = Release|Any CPU
-		{1981504B-6BE9-420B-B039-D31B6908FC5B}.Release|x86.Build.0 = Release|Any CPU
 		{B933B784-6F51-432D-AF9F-F23180F7D02B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B933B784-6F51-432D-AF9F-F23180F7D02B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B933B784-6F51-432D-AF9F-F23180F7D02B}.Debug|x64.ActiveCfg = Debug|Any CPU
