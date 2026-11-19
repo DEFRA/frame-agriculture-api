@@ -4,6 +4,7 @@ using Asp.Versioning;
 using FrameAgricultureApi.Libraries.CoverCrops;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using FrameAgricultureApi.Libraries.CoverCrops.Outputs;
 
 namespace FrameAgricultureApi.Controllers
 {
@@ -36,7 +37,7 @@ namespace FrameAgricultureApi.Controllers
         /// </remarks>
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(StandardOutput), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(CoverCropOutput), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(BadRequestResult), StatusCodes.Status400BadRequest)]
         [HttpPost("cover-crop-emissions")]
         [ApiVersion(0.0)]
@@ -44,11 +45,10 @@ namespace FrameAgricultureApi.Controllers
         {
             try
             {
-                StandardOutput standardOutput = new();
+                CoverCropOutput standardOutput = new();
                 if (jsonInputObject != null)
                 {
                     CoverCropEmissions emissions = _coverCrops.CoverCropEmissions(jsonInputObject.CoverCropType);
-                    standardOutput = new StandardOutput("Cover Crops", jsonInputObject.CropType.ToString(), "Crop Production", emissions.ExportEmissions());
                 }
                 return Ok(standardOutput);
             }
