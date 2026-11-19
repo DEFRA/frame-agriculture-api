@@ -24,15 +24,7 @@ public class CoverCropTests
     [Fact]
     public void CoverCropEmissions_PreservesCalculatedValuesForEachPollutantAndPathway()
     {
-        var coverCropLookup = Substitute.For<IMongoService<CoverCropLookUpEntity>>();
-        coverCropLookup.FindOne(Arg.Any<FilterDefinition<CoverCropLookUpEntity>>())
-            .Returns(new CoverCropLookUpEntity { Item = "N return", Value = 77 });
-        var coverCrops = new CoverCrops(
-            coverCropLookup,
-            Substitute.For<IMongoService<CropNonGhgLookUpEntity>>(),
-            Substitute.For<IMongoService<CropResidueLookUpEntity>>(),
-            Substitute.For<IMongoService<FertiliserRatioEfsLookUpEntity>>(),
-            NullLogger<CoverCrops>.Instance);
+        var coverCrops = CreateComponent();
 
         var emissions = coverCrops.CoverCropEmissions(CoverCropType.All);
         emissions.RoundEmissions(4);
@@ -50,42 +42,58 @@ public class CoverCropTests
         Assert.Equal(23.1, emissions.UnadjustedN03_N.Value, 4);
         Assert.Equal(0.1732, emissions.UnadjustedIndirectedN20_NLeached.Value, 4);
 
-        var exported = emissions.ExportEmissions();
-        Assert.Equal(9, exported.Count);
-        Assert.DoesNotContain(exported, emission => double.IsNaN(emission.Value));
-        var leached = Assert.Single(exported, emission => emission.Name == "Indirect N2O-N (leached)");
-        Assert.Equal("kg N2O-N", leached.Units);
-        Assert.Equal(0.0953, leached.Value, 4);
-        var nitrogenReturn = Assert.Single(exported, emission => emission.Name == "Cover crops N return");
-        Assert.Equal("kg N", nitrogenReturn.Units);
-        Assert.Equal(77, nitrogenReturn.Value);
-        var unadjustedNitrate = Assert.Single(exported, emission => emission.Units == "kg NO3-N" && emission.Name.StartsWith("Unadjusted"));
-        Assert.Equal(23.1, unadjustedNitrate.Value, 4);
-        var unadjustedNitrousOxide = Assert.Single(exported, emission => emission.Name == "Unadjusted indirect leach N2O-N");
-        Assert.Equal(0.1732, unadjustedNitrousOxide.Value, 4);
-
-        var controller = new CoverCropsController(coverCrops);
-        var result = Assert.IsType<OkObjectResult>(controller.CoverCropEmissions(new CoverCropRequest
-        {
-            CoverCropType = CoverCropType.All,
-            CropType = CropType.Wheat
-        }));
-        var response = Assert.IsType<StandardOutput>(result.Value);
-        Assert.Equal(9, response.Emissions.Count);
-        Assert.Equal("Cover Crops", response.Source);
-        using var responseJson = JsonDocument.Parse(JsonSerializer.Serialize(response));
-        Assert.Equal(9, responseJson.RootElement.GetProperty("Emissions").GetArrayLength());
+        Assert.Equal(SummarisePollutantType.Nitrogen, emissions.N.SummarisePollutantType);
+        Assert.Equal(SummarisePathwayType.Direct, emissions.N.SummarisePathwayType);
+        Assert.Equal(SummarisePollutantType.NitrateNitrogen, emissions.UnadjustedN03_N.SummarisePollutantType);
+        Assert.Equal(SummarisePathwayType.Direct, emissions.UnadjustedN03_N.SummarisePathwayType);
     }
 
     /// <summary>
-    /// Verifies rounding, export, serialisation and reinitialisation of grouped emissions.
+    /// Verifies the controller returns the requested cover crop type and calculated nested outputs.
     /// </summary>
     [Fact]
-    public void RoundEmissions_AndExport_HandleEveryPathwayAndSkipUnsetValues()
+    public void Controller_ReturnsCoverCropOutputWithCalculatedEmissions()
+    {
+        var controller = new CoverCropsController(CreateComponent());
+        var result = Assert.IsType<OkObjectResult>(controller.CoverCropEmissions(new CoverCropRequest
+        {
+            CoverCropType = CoverCropType.All,
+            NReturn = 77
+        }));
+        var response = Assert.IsType<CoverCropOutput>(result.Value);
+        Assert.Equal(SectorType.Crop, response.SectorType);
+        Assert.Equal(CoverCropType.All, response.CoverCropType);
+        Assert.Equal(77, response.Emissions.N.Value);
+        Assert.Equal(0.77, response.Emissions.DirectN20_N.Value, 10);
+        Assert.Equal(12.705, response.Emissions.DirectNO3_NLeached.Value, 10);
+
+        var options = new JsonSerializerOptions
+        {
+            NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals
+        };
+        var json = JsonSerializer.Serialize(response, options);
+        using var responseJson = JsonDocument.Parse(json);
+        var emissionsJson = responseJson.RootElement.GetProperty("Emissions");
+        Assert.Equal(JsonValueKind.Object, emissionsJson.ValueKind);
+        Assert.Equal(77, emissionsJson.GetProperty("N").GetProperty("Value").GetDouble());
+        Assert.Equal("NaN", emissionsJson.GetProperty("DirectNH3_N").GetProperty("Value").GetString());
+
+        var restored = JsonSerializer.Deserialize<CoverCropOutput>(json, options)!;
+        Assert.Equal(response.CropType, restored.CropType);
+        Assert.Equal(response.CoverCropType, restored.CoverCropType);
+        Assert.Equal(response.Emissions.DirectNO3_NLeached.Value, restored.Emissions.DirectNO3_NLeached.Value);
+        Assert.True(double.IsNaN(restored.Emissions.DirectNH3_N.Value));
+    }
+
+    /// <summary>
+    /// Verifies rounding, serialisation and reinitialisation of nested emission values.
+    /// </summary>
+    [Fact]
+    public void RoundEmissions_AndSerialisation_PreserveEveryPathwayAndUnsetValues()
     {
         var emissions = new CoverCropEmissions();
         emissions.InitialiseCoverCropEmissions();
-        Assert.Empty(emissions.ExportEmissions());
+        AssertAllValuesUnset(emissions);
 
         BaseEmission[] core =
         [
@@ -112,10 +120,9 @@ public class CoverCropTests
             Assert.Equal(FrameAgricultureApi.Core.UnitSymbols.Kg, emission.Unit.Symbol);
             Assert.Equal(1m, emission.Unit.MultipleToBaseFactor);
         });
-        var exported = emissions.ExportEmissions();
-        Assert.Equal(8, exported.Count);
-        Assert.Equal(7, exported.Count(emission => emission.Value == 1.235));
         Assert.Equal(77.123, emissions.N.Value);
+        Assert.True(double.IsNaN(emissions.UnadjustedN03_N.Value));
+        Assert.True(double.IsNaN(emissions.UnadjustedIndirectedN20_NLeached.Value));
 
         var options = new JsonSerializerOptions
         {
@@ -125,19 +132,19 @@ public class CoverCropTests
         var restored = JsonSerializer.Deserialize<CoverCropEmissions>(json, options)!;
         Assert.Equal(1.235, restored.IndirectN20_NVolatilisation.Value);
         Assert.Equal(77.123, restored.N.Value);
-        Assert.Null(restored.N.SummarisePollutantType);
-        Assert.Null(restored.N.SummarisePathwayType);
+        Assert.Equal(SummarisePollutantType.Nitrogen, restored.N.SummarisePollutantType);
+        Assert.Equal(SummarisePathwayType.Direct, restored.N.SummarisePathwayType);
         Assert.True(double.IsNaN(restored.UnadjustedN03_N.Value));
 
         emissions.InitialiseCoverCropEmissions();
-        Assert.Empty(emissions.ExportEmissions());
+        AssertAllValuesUnset(emissions);
     }
 
     /// <summary>
-    /// Verifies additional outputs are rounded, exported, serialised and reset independently.
+    /// Verifies additional outputs retain values, units and metadata through serialisation and reset.
     /// </summary>
     [Fact]
-    public void AdditionalEmissions_PreserveMetadataAndValuesAcrossExportAndSerialisation()
+    public void AdditionalEmissions_PreserveMetadataAndValuesAcrossSerialisation()
     {
         var emissions = new CoverCropEmissions();
         emissions.N.Value = 77.12345;
@@ -148,9 +155,6 @@ public class CoverCropTests
         Assert.Equal(77.123, emissions.N.Value);
         Assert.Equal(23.123, emissions.UnadjustedN03_N.Value);
         Assert.Equal(0.173, emissions.UnadjustedIndirectedN20_NLeached.Value);
-        var exported = emissions.ExportEmissions();
-        Assert.Equal(3, exported.Count);
-        Assert.Equal(new[] { 77.123, 23.123, 0.173 }, exported.Select(output => output.Value));
 
         var options = new JsonSerializerOptions
         {
@@ -158,17 +162,48 @@ public class CoverCropTests
         };
         var restored = JsonSerializer.Deserialize<CoverCropEmissions>(JsonSerializer.Serialize(emissions, options), options)!;
         Assert.Equal(23.123, restored.UnadjustedN03_N.Value);
-        Assert.Equal(SummarisePollutantType.Nitrate, restored.UnadjustedN03_N.SummarisePollutantType);
-        Assert.Null(restored.UnadjustedN03_N.SummarisePathwayType);
+        Assert.Equal(SummarisePollutantType.NitrateNitrogen, restored.UnadjustedN03_N.SummarisePollutantType);
+        Assert.Equal(SummarisePathwayType.Direct, restored.UnadjustedN03_N.SummarisePathwayType);
+        Assert.Equal(FrameAgricultureApi.Core.UnitSymbols.Kg, restored.UnadjustedN03_N.Unit.Symbol);
+        Assert.Equal(1m, restored.UnadjustedN03_N.Unit.MultipleToBaseFactor);
         Assert.Equal(0.173, restored.UnadjustedIndirectedN20_NLeached.Value);
         Assert.Equal(SummarisePollutantType.NitrousOxide, restored.UnadjustedIndirectedN20_NLeached.SummarisePollutantType);
         Assert.Equal(SummarisePathwayType.IndirectLeaching, restored.UnadjustedIndirectedN20_NLeached.SummarisePathwayType);
 
         emissions.InitialiseCoverCropEmissions();
-        Assert.Empty(emissions.ExportEmissions());
-        Assert.True(double.IsNaN(emissions.N.Value));
-        Assert.True(double.IsNaN(emissions.UnadjustedN03_N.Value));
-        Assert.True(double.IsNaN(emissions.UnadjustedIndirectedN20_NLeached.Value));
+        AssertAllValuesUnset(emissions);
+        Assert.Equal(SummarisePollutantType.NitrateNitrogen, emissions.UnadjustedN03_N.SummarisePollutantType);
+        Assert.Equal(SummarisePathwayType.IndirectLeaching, emissions.UnadjustedIndirectedN20_NLeached.SummarisePathwayType);
     }
 
+    private static CoverCrops CreateComponent()
+    {
+        var coverCropLookup = Substitute.For<IMongoService<CoverCropLookUpEntity>>();
+        coverCropLookup.FindOne(Arg.Any<FilterDefinition<CoverCropLookUpEntity>>())
+            .Returns(new CoverCropLookUpEntity { CoverCropType = CoverCropType.All, Item = "N return", Value = 77 });
+        return new CoverCrops(
+            coverCropLookup,
+            Substitute.For<IMongoService<CropNonGhgLookUpEntity>>(),
+            Substitute.For<IMongoService<CropResidueLookUpEntity>>(),
+            Substitute.For<IMongoService<FertiliserRatioEfsLookUpEntity>>(),
+            NullLogger<CoverCrops>.Instance);
+    }
+
+    private static void AssertAllValuesUnset(CoverCropEmissions emissions)
+    {
+        double[] values =
+        [
+            emissions.DirectN20_N.Value,
+            emissions.IndirectN20_NLeached.Value,
+            emissions.IndirectN20_NVolatilisation.Value,
+            emissions.DirectNH3_N.Value,
+            emissions.DirectNO3_NLeached.Value,
+            emissions.DirectNO_N.Value,
+            emissions.DirectN2_N.Value,
+            emissions.N.Value,
+            emissions.UnadjustedN03_N.Value,
+            emissions.UnadjustedIndirectedN20_NLeached.Value
+        ];
+        Assert.All(values, value => Assert.True(double.IsNaN(value)));
+    }
 }

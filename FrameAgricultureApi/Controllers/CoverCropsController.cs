@@ -25,8 +25,7 @@ namespace FrameAgricultureApi.Controllers
         /// Calculates the emissions associated with the nitrogen returned to the soil from cover crops.
         /// </summary>
         /// <param name="jsonInputObject">A CoverCropInputs object that contains the crop type and cover crop type enumerators as integer values.</param>
-        /// <returns>Standard Output object in Json serialisation, where each Emission has a name (string), units (string) and a value (double).
-        /// Further text strings provide information on the source of the emission and the stage within the source.</returns>
+        /// <returns>Cover crop output containing the crop types and nested emission values, units, pollutant and pathway metadata.</returns>
         /// <remarks>
         /// As cover crops reduce the fraction of nitrogen leached, the core calculations returns NO3-N leached and Indirect N2O-N from NO3-N leached emission with this reduction applied.
         /// To allow for the impact of the mitigation to be quantified, two additional outputs are included: the NO3-N leached and indirect N2O-N from NO3 leached emission without the reduction.
@@ -47,7 +46,8 @@ namespace FrameAgricultureApi.Controllers
                 CoverCropOutput standardOutput = new();
                 if (jsonInputObject != null)
                 {
-                    CoverCropEmissions emissions = _coverCrops.CoverCropEmissions(jsonInputObject.CoverCropType);
+                    standardOutput.CoverCropType = jsonInputObject.CoverCropType;
+                    standardOutput.Emissions = _coverCrops.CoverCropEmissions(jsonInputObject.CoverCropType);
                 }
                 return Ok(standardOutput);
             }
