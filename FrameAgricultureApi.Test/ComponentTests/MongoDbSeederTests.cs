@@ -33,8 +33,8 @@ public class MongoDbSeederTests
         Assert.Equal(45, coverCropDocuments[1]["value"].AsDouble);
         var nonGhgDocuments = GetSeedInserts(nonGhg);
         Assert.Equal(48, nonGhgDocuments.Count);
-        Assert.Equal("Oats", nonGhgDocuments[0]["cropName"].AsString);
-        Assert.Equal(1, nonGhgDocuments[0]["cropTypeId"].AsInt32);
+        Assert.Equal("Oats", nonGhgDocuments[0]["CropName"].AsString);
+        Assert.Equal(1, nonGhgDocuments[0]["CropTypeId"].AsInt32);
         Assert.Equal(0.86, nonGhgDocuments[0]["EF_NMVOC"].AsDouble);
         Assert.Equal(0.0125, nonGhgDocuments[0]["EF_PM2_5_Cleaning"].AsDouble);
 
@@ -42,14 +42,14 @@ public class MongoDbSeederTests
         Assert.Equal(48, residueDocuments.Count);
         Assert.Equal(50, residueDocuments[0]["AboveGroundResiduesRemainingAfterBalingPercentage"].AsDouble);
         Assert.Equal(38.8, residueDocuments[0]["Fate2Incorporate"].AsDouble);
-        Assert.True(residueDocuments[1]["rAFate1"].IsBsonNull);
-        Assert.Contains(residueDocuments, document => document["cropYieldNContent"].IsBsonNull);
+        Assert.True(residueDocuments[1]["RAFate1"].IsBsonNull);
+        Assert.Contains(residueDocuments, document => document["CropYieldNContent"].IsBsonNull);
 
         var fertiliserDocuments = GetSeedInserts(fertilisers);
         Assert.Equal(6, fertiliserDocuments.Count);
-        Assert.Equal("Ratio_NON", fertiliserDocuments[0]["parameter"].AsString);
-        Assert.Equal(0.4, fertiliserDocuments[0]["value"].AsDouble);
-        Assert.Equal(3, fertiliserDocuments[1]["value"].AsDouble);
+        Assert.Equal("Ratio_NON", fertiliserDocuments[0]["Parameter"].AsString);
+        Assert.Equal(0.4, fertiliserDocuments[0]["Value"].AsDouble);
+        Assert.Equal(3, fertiliserDocuments[1]["Value"].AsDouble);
 
         operations.Clear();
         await seeder.SeedAsync();

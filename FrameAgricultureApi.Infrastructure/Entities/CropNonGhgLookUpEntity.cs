@@ -6,7 +6,9 @@ namespace FrameAgricultureApi.Infrastructure.Entities;
 [BsonCollection("Crop_NonGHG")]
 public class CropNonGhgLookUpEntity : MongoDocument
 {
+    [BsonElement("CropName")]
     public string CropName { get; set; } = string.Empty;
+    [BsonElement("CropTypeId")]
     public CropType CropTypeId { get; set; }
 
     [BsonElement("EF_NMVOC")]
