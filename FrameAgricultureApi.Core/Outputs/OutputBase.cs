@@ -2,7 +2,7 @@ using FrameAgricultureApi.Core.Enums;
 
 namespace FrameAgricultureApi.Core.Outputs;
 
-public class OutputBase
+public abstract class OutputBase
 {
-    public SectorType SectorType { get; set; }
+    public abstract SectorType SectorType { get; }
 }
