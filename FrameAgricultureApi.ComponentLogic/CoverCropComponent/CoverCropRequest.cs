@@ -1,7 +1,7 @@
 using System;
 using FrameAgricultureApi.Core.Enums;
 
-namespace FrameAgricultureApi.Libraries.CoverCrops;
+namespace FrameAgricultureApi.ComponentLogic.CoverCropComponent;
 
 /// <summary>
 /// Inputs for calculation of emissions from cover crop use

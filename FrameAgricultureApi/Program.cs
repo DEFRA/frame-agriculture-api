@@ -1,6 +1,6 @@
 using FrameAgricultureApi.Config;
 using FrameAgricultureApi.Infrastructure;
-using FrameAgricultureApi.Libraries.CoverCrops;
+using FrameAgricultureApi.ComponentLogic.CoverCropComponent;
 using FrameAgricultureApi.Utils;
 using FrameAgricultureApi.Utils.Http;
 using FrameAgricultureApi.Utils.Mongo;

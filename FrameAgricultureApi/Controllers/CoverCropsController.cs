@@ -1,7 +1,7 @@
 using FrameAgricultureApi.Core.Outputs;
 using System.Net.Mime;
 using Asp.Versioning;
-using FrameAgricultureApi.Libraries.CoverCrops;
+using FrameAgricultureApi.ComponentLogic.CoverCropComponent;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

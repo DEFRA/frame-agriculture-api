@@ -36,7 +36,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FrameAgricultureApi.Infrastructure\FrameAgricultureApi.Infrastructure.csproj" />
-    <ProjectReference Include="..\FrameAgricultureApi.Libraries.CoverCrops\FrameAgricultureApi.Libraries.CoverCrops.csproj" />
+    <ProjectReference Include="..\FrameAgricultureApi.ComponentLogic\FrameAgricultureApi.ComponentLogic.csproj" />
   </ItemGroup>
 
 

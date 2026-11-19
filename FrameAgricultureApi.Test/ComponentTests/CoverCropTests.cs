@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 using FrameAgricultureApi.Controllers;
 using FrameAgricultureApi.Core.Enums;
 using Microsoft.AspNetCore.Mvc;
-using FrameAgricultureApi.Libraries.CoverCrops;
+using FrameAgricultureApi.ComponentLogic.CoverCropComponent;
 using FrameAgricultureApi.Infrastructure;
 using FrameAgricultureApi.Infrastructure.Entities;
 using Microsoft.Extensions.Logging.Abstractions;

@@ -8,7 +8,7 @@ using FrameAgricultureApi.Libraries.LookUps;
 using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
 
-namespace FrameAgricultureApi.Libraries.CoverCrops;
+namespace FrameAgricultureApi.ComponentLogic.CoverCropComponent;
 
 
 /// <summary>
