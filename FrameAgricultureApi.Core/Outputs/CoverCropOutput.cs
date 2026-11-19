@@ -1,7 +1,6 @@
 using FrameAgricultureApi.Core.Enums;
-using FrameAgricultureApi.Core.Outputs;
 
-namespace FrameAgricultureApi.Libraries.CoverCrops.Outputs;
+namespace FrameAgricultureApi.Core.Outputs;
 
 /// <summary>
 /// Crop cultivation outputs from cover crop emission calculations.

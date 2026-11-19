@@ -4,7 +4,6 @@ using Asp.Versioning;
 using FrameAgricultureApi.Libraries.CoverCrops;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using FrameAgricultureApi.Libraries.CoverCrops.Outputs;
 
 namespace FrameAgricultureApi.Controllers
 {

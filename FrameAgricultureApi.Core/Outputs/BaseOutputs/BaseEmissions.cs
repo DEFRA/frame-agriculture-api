@@ -1,7 +1,7 @@
 using FrameAgricultureApi.Core;
 using FrameAgricultureApi.Core.Enums;
 
-namespace FrameAgricultureApi.Libraries.CoverCrops;
+namespace FrameAgricultureApi.Core.Outputs;
 
 /// <summary>
 /// Standard nitrogen emissions, identified by pollutant and pathway.

@@ -1,8 +1,7 @@
-using FrameAgricultureApi.Core.Outputs;
 using FrameAgricultureApi.Core;
 using FrameAgricultureApi.Core.Enums;
 
-namespace FrameAgricultureApi.Libraries.CoverCrops;
+namespace FrameAgricultureApi.Core.Outputs;
 
 /// <summary>
 /// Core emissions and additional nitrogen outputs from cover crop calculations.

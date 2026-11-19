@@ -1,3 +1,4 @@
+using FrameAgricultureApi.Core.Outputs;
 using System;
 using FrameAgricultureApi.Core.Enums;
 using FrameAgricultureApi.Generic;
