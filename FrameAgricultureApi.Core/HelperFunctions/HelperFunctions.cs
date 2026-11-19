@@ -9,7 +9,7 @@ namespace FrameAgricultureApi.Generic;
 public static class HelperFunctions
 {
     /// <summary>
-    /// Cionstant for number of days in a week
+    /// Constant for number of days in a week
     /// </summary>
     public static readonly double DaysPerWeek = 7.0;
     /// <summary>
@@ -21,17 +21,17 @@ public static class HelperFunctions
     /// </summary>
     public static readonly double Days_per_year = 365.0;
     /// <summary>
-    /// Constant multiplier to convert from percentage to propoortion
+    /// Constant multiplier to convert from percentage to proportion
     /// </summary>
     public static readonly double Percent_to_Proportion = 0.01;
     /// <summary>
     /// Constant multiplier to convert tonnes to kg
     /// </summary>
-    public static readonly double tonnestokg = 1000.0;
+    public static readonly double tonnesToKg = 1000.0;
     /// <summary>
-    /// Creates mitigation method lst from nullabel array input
+    /// Creates mitigation method lst from nullable array input
     /// </summary>
-    /// <param name="mitigationMethods">Mitigaiton methods as nullable integer array </param>
+    /// <param name="mitigationMethods">Mitigation methods as nullable integer array </param>
     /// <returns>A list of integers</returns>
     public static List<int> CreateMitigationMethodList(int[]? mitigationMethods)
     {
@@ -45,7 +45,7 @@ public static class HelperFunctions
     }
 
     /// <summary>
-    /// Sum Prodyuct function that multiplier the corrsponding elements fo two arrays togetehr and then sums the resulting products
+    /// Sum Product function that multiplier the corresponding elements fo two arrays together and then sums the resulting products
     /// </summary>
     /// <param name="array1">The first array</param>
     /// <param name="array2">The second array</param>
@@ -63,7 +63,7 @@ public static class HelperFunctions
         return sum;
     }
     /// <summary>
-    /// Retrieves lookup table as memeory strema from assembly resources
+    /// Retrieves lookup table as memory stream from assembly resources
     /// </summary>
     /// <param name="assembly"></param>
     /// <param name="filename"></param>
@@ -71,7 +71,7 @@ public static class HelperFunctions
     /// <exception cref="Exception"></exception>
     public static MemoryStream GetLUT(Assembly assembly, string filename)
     {
-        MemoryStream retstream = new();
+        MemoryStream newStream = new();
         string resourcename = assembly.GetManifestResourceNames()
                .Single(str => str.EndsWith(filename));
         using (Stream? stream = assembly.GetManifestResourceStream(resourcename))
@@ -82,17 +82,17 @@ public static class HelperFunctions
             }
             else
             {
-                stream.CopyTo(retstream);
+                stream.CopyTo(newStream);
             }
         }
-        retstream.Position = 0;
-        return retstream;
+        newStream.Position = 0;
+        return newStream;
     }
     /// <summary>
     /// Function to convert daily inputs ot monthly inputs
     /// </summary>
     /// <param name="input">Value ot be converted</param>
-    /// <returns>Converetd value</returns>
+    /// <returns>Converted value</returns>
     public static double DailyToMonthlyConverter(double input)
     {
         return input * 365.0 / 12.0;
@@ -102,7 +102,7 @@ public static class HelperFunctions
     /// Function to convert daily inputs to annual inputs
     /// </summary>
     /// <param name="input">Value ot be converted</param>
-    /// <returns>Converetd value</returns>
+    /// <returns>Converted value</returns>
     public static double DailyToAnnualConverter(double input)
     {
         return input * 365.0;

@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FrameAgricultureApi.Core\FrameAgricultureApi.Core.csproj" />
-    <ProjectReference Include="..\FrameAgricultureApi.Generic\FrameAgricultureApi.Generic.csproj" />
   </ItemGroup>
 
   <ItemGroup>
