@@ -1,9 +1,9 @@
 namespace FrameAgricultureApi.Core.Enums;
 
 /// <summary>
-/// Type of Fertiliser to Grass Sector.
+/// Type of fertiliser applied to crops and grass.
 /// </summary>
-public enum GrassFertilisingLocationType
+public enum CropAndGrassFertilisingLocationType
 {
     /// <summary>
     /// All.

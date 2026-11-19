@@ -1,9 +1,9 @@
 namespace FrameAgricultureApi.Core.Enums;
 
 /// <summary>
-/// Minor Spreading Location.
+/// Location for spreading animal manure.
 /// </summary>
-public enum MinorSpreadingLocationType
+public enum AnimalSpreadingLocationType
 {
     /// <summary>
     /// All.

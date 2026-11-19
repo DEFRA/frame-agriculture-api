@@ -1,9 +1,9 @@
 namespace FrameAgricultureApi.Core.Enums;
 
 /// <summary>
-/// Type of Dairy Housing.
+/// Type of housing for beef and dairy cattle.
 /// </summary>
-public enum DairyHousingLocationType
+public enum CattleHousingLocationType
 {
     /// <summary>
     /// All.

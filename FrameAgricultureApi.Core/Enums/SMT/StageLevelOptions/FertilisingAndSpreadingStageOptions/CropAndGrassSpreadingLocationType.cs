@@ -1,9 +1,9 @@
 namespace FrameAgricultureApi.Core.Enums;
 
 /// <summary>
-/// Type of Waste to Grass Sector.
+/// Type of waste spread on crops and grass.
 /// </summary>
-public enum GrassSpreadingLocationType
+public enum CropAndGrassSpreadingLocationType
 {
     /// <summary>
     /// All.
