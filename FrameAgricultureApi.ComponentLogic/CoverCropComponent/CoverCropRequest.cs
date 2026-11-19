@@ -1,4 +1,6 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+using FrameAgricultureApi.Core;
 using FrameAgricultureApi.Core.Enums;
 
 namespace FrameAgricultureApi.ComponentLogic.CoverCropComponent;
@@ -8,13 +10,35 @@ namespace FrameAgricultureApi.ComponentLogic.CoverCropComponent;
 /// </summary>
 public class CoverCropRequest
 {
-    /// <summary>
-    /// The crop type (integer value of enumerator)
-    /// </summary>
-    public CropType CropType { get; set; }
+    public CoverCropInputs CoverCropInputs { get; set; }
+    public CoverCropEmissionFactors CoverCropEmissionFactors { get; set; }
+    public CoverCropMitigationFactors CoverCropMitigationFactors { get; set; }
+}
 
-    /// <summary>
-    /// Cover Crop Type (integer value of enumerator)
-    /// </summary>
-    public CoverCropType CoverCropType { get; set; }
+public class CoverCropInputs
+{
+    [Required]
+    public required double NReturn { get; set; }
+}
+
+public class CoverCropEmissionFactors
+{
+    [Required]
+    public required double IpccEf1 { get; set; }
+    [Required]
+    public required double IpccEf4 { get; set; }
+    [Required]
+    public required double IpccEf5 { get; set; }
+    [Required]
+    public required double FracLeach { get; set; }
+    [Required]
+    public required double N0_N_ratio { get; set; }
+    [Required]
+    public required double N2_N_ratio { get; set; }
+}
+
+public class CoverCropMitigationFactors
+{
+    [Required]
+    public required double FracLeachReduction { get; set; }
 }

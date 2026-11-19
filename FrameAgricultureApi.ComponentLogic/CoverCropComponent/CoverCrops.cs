@@ -36,31 +36,22 @@ public class CoverCrops
         _fertiliserRatioEfsCollection = fertiliserRatioEfsCollection ?? throw new ArgumentNullException(nameof(fertiliserRatioEfsCollection));
     }
 
-    /// <summary>
-    /// Calculates emissions from cover crops
-    /// </summary>
-    /// <param name="coverCropType">Enumerator indicating the cover crop type</param>
-    /// <returns>An object of type CoverCropEmissions</returns>
-    public CoverCropEmissions CoverCropEmissions(CoverCropType coverCropType)
+    public CoverCropEmissions CoverCropEmissions(CoverCropRequest coverCropRequest)
     {
-        _logger.LogInformation("TestLog: This is a test log to see if it appears in the dashboard.");
         CoverCropEmissions myEmissions = new();
         myEmissions.InitialiseCoverCropEmissions();
 
-        var filterBuilder = Builders<CoverCropLookUpEntity>.Filter;
-        var coverCropsFilter = filterBuilder.Eq(x => x.Item, "N return");
-        var additionalNReturn = _coverCropsCollection.FindOne(coverCropsFilter).Value;
-        myEmissions.N.Value = additionalNReturn;
+        myEmissions.N.Value = coverCropRequest.CoverCropInputs.NReturn;
 
-        myEmissions.DirectN20_N.Value = GenericEquations.Emission_PercentageEF(additionalNReturn, CropLookup.RetrieveIPCCEmissionFactor1());
-        double adjustedFracLeach = CropLookup.RetrieveFracLeach() * ((100 - CropLookup.RetrievedCoverCropFracLeachReduction()) * HelperFunctions.Percent_to_Proportion);
-        myEmissions.DirectNO3_NLeached.Value = GenericEquations.Emission_PercentageEF(additionalNReturn, adjustedFracLeach);
-        myEmissions.UnadjustedN03_N.Value = GenericEquations.Emission_PercentageEF(additionalNReturn, CropLookup.RetrieveFracLeach());
-        myEmissions.IndirectN20_NLeached.Value = GenericEquations.Emission_PercentageEF(myEmissions.DirectNO3_NLeached.Value, CropLookup.RetrieveIPCCEmissionFactor5());
-        myEmissions.UnadjustedIndirectedN20_NLeached.Value = GenericEquations.Emission_PercentageEF(myEmissions.UnadjustedN03_N.Value, CropLookup.RetrieveIPCCEmissionFactor5());
-        myEmissions.DirectNO_N.Value = GenericEquations.Emission_ProportionEF(myEmissions.DirectN20_N.Value, CropLookup.RetrieveRatioNON());
-        myEmissions.DirectN2_N.Value = GenericEquations.Emission_ProportionEF(myEmissions.DirectN20_N.Value, CropLookup.RetrieveRatioN2N());
-        myEmissions.IndirectN20_NVolatilisation.Value = GenericEquations.Emission_PercentageEF(myEmissions.DirectNO_N.Value, CropLookup.RetrieveIPCCEmissionFactor4());
+        myEmissions.DirectN20_N.Value = GenericEquations.Emission_PercentageEF(coverCropRequest.CoverCropInputs.NReturn, coverCropRequest.CoverCropEmissionFactors.IpccEf1);
+        double adjustedFracLeach = coverCropRequest.CoverCropEmissionFactors.FracLeach * ((100 - coverCropRequest.CoverCropMitigationFactors.FracLeachReduction) * HelperFunctions.Percent_to_Proportion);
+        myEmissions.DirectNO3_NLeached.Value = GenericEquations.Emission_PercentageEF(coverCropRequest.CoverCropInputs.NReturn, adjustedFracLeach);
+        myEmissions.UnadjustedN03_N.Value = GenericEquations.Emission_PercentageEF(coverCropRequest.CoverCropInputs.NReturn, coverCropRequest.CoverCropEmissionFactors.FracLeach);
+        myEmissions.IndirectN20_NLeached.Value = GenericEquations.Emission_PercentageEF(myEmissions.DirectNO3_NLeached.Value, coverCropRequest.CoverCropEmissionFactors.IpccEf5);
+        myEmissions.UnadjustedIndirectedN20_NLeached.Value = GenericEquations.Emission_PercentageEF(myEmissions.UnadjustedN03_N.Value, coverCropRequest.CoverCropEmissionFactors.IpccEf5);
+        myEmissions.DirectNO_N.Value = GenericEquations.Emission_ProportionEF(myEmissions.DirectN20_N.Value, coverCropRequest.CoverCropEmissionFactors.N0_N_ratio);
+        myEmissions.DirectN2_N.Value = GenericEquations.Emission_ProportionEF(myEmissions.DirectN20_N.Value, coverCropRequest.CoverCropEmissionFactors.N2_N_ratio);
+        myEmissions.IndirectN20_NVolatilisation.Value = GenericEquations.Emission_PercentageEF(myEmissions.DirectNO_N.Value, coverCropRequest.CoverCropEmissionFactors.IpccEf4);
 
         return myEmissions;
     }

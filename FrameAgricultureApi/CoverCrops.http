@@ -8,6 +8,5 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "cropType": 10,
-  "coverCropType": 0
+  "NReturn": 10,
 }

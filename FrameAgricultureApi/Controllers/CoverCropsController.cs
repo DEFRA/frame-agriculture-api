@@ -46,8 +46,7 @@ namespace FrameAgricultureApi.Controllers
                 CoverCropOutput standardOutput = new();
                 if (jsonInputObject != null)
                 {
-                    standardOutput.CoverCropType = jsonInputObject.CoverCropType;
-                    standardOutput.Emissions = _coverCrops.CoverCropEmissions(jsonInputObject.CoverCropType);
+                    standardOutput.Emissions = _coverCrops.CoverCropEmissions(jsonInputObject);
                 }
                 return Ok(standardOutput);
             }
