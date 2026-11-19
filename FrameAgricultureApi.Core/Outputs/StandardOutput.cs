@@ -14,7 +14,7 @@ public class StandardOutput
     /// </summary>
     public string Source { get; set; }
     /// <summary>
-    /// The stage of emissions (e.g. residues, fertiliser type, graxing,housing, etc.)
+    /// The stage of emissions (e.g. residues, fertiliser type, grazing,housing, etc.)
     /// </summary>
     public string Stage { get; set; }
     /// <summary>
@@ -26,20 +26,20 @@ public class StandardOutput
     /// Constructor for standard outputs
     /// </summary>
     /// <param name="source">source of emissions</param>
-    /// <param name="mytype">the emission type</param>
+    /// <param name="myType">the emission type</param>
     /// <param name="stage">stage name for emissions</param>
     /// <param name="emissions">List of Emission objects for all emissions</param>
-    public StandardOutput(string source, string mytype, string stage, List<Emission> emissions)
+    public StandardOutput(string source, string myType, string stage, List<Emission> emissions)
     {
         Emissions = new List<Emission>();
         Emissions.AddRange(emissions);
         Source = source;
-        MyType = mytype;
+        MyType = myType;
         Stage = stage;
         Emissions = emissions;
     }
     /// <summary>
-    /// Defualt "empty" constructor for standard output
+    /// Default "empty" constructor for standard output
     /// </summary>
     public StandardOutput()
     {
