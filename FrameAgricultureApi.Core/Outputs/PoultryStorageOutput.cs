@@ -5,4 +5,5 @@ namespace FrameAgricultureApi.Core.Outputs;
 public class PoultryStorageOutput : PoultryStandardOutput
 {
     public override StageType StageType => StageType.Storing;
+    public PoultryStoringLocationType PoultryStoringLocationType { get; set; }
 }

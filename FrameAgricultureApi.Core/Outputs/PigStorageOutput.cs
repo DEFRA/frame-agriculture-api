@@ -5,4 +5,5 @@ namespace FrameAgricultureApi.Core.Outputs;
 public class PigStorageOutput : PigStandardOutput
 {
     public override StageType StageType => StageType.Storing;
+    public PigStoringLocationType PigStoringLocationType { get; set; }
 }
