@@ -2,7 +2,8 @@ using FrameAgricultureApi.Core.Enums;
 
 namespace FrameAgricultureApi.Core.Outputs;
 
-public class MinorLivestockStandardOutput : OutputBase
+public abstract class MinorLivestockStandardOutput : OutputBase
 {
+    public override SectorType SectorType => SectorType.Minor;
     public MinorItemType MinorItemType { get; set; }
 }
