@@ -5,4 +5,5 @@ namespace FrameAgricultureApi.Core.Outputs;
 public class MinorLivestockHousingOutput : MinorLivestockStandardOutput
 {
     public override StageType StageType => StageType.Housing;
+    public MinorHousingLocationType MinorHousingLocationType { get; set; }
 }
