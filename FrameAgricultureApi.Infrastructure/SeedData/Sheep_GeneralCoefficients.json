@@ -1,0 +1,97 @@
+[
+  {
+    "Version": "0.0",
+    "Name": "Manure Methane Producing Capacity",
+    "Value": 0.19
+  },
+  {
+    "Version": "0.0",
+    "Name": "Ammonia Emission Factor (Grazed Excreta)",
+    "Value": 6
+  },
+  {
+    "Version": "0.0",
+    "Name": "Ammonia Emission Factor (Housed Excreta)",
+    "Value": 28
+  },
+  {
+    "Version": "0.0",
+    "Name": "Ammonia Emission Factor (Spread Manure)",
+    "Value": 68.32
+  },
+  {
+    "Version": "0.0",
+    "Name": "Ammonia Emission Factor (Stored Manure)",
+    "Value": 26.3
+  },
+  {
+    "Version": "0.0",
+    "Name": "Nitrate Emission Factor Stored manure",
+    "Value": 2.4
+  },
+  {
+    "Version": "0.0",
+    "Name": "Nitrous Oxide Emission Factor atmospheric deposition",
+    "Value": 1.4
+  },
+  {
+    "Version": "0.0",
+    "Name": "Nitrous Oxide Emission Factor Grazed Dung",
+    "Value": 0.097
+  },
+  {
+    "Version": "0.0",
+    "Name": "Nitrous Oxide Emission factor grazed Dung _NO",
+    "Value": 0.193
+  },
+  {
+    "Version": "0.0",
+    "Name": "Nitrous Oxide Emission Factor Grazed Urine",
+    "Value": 0.315
+  },
+  {
+    "Version": "0.0",
+    "Name": "Nitrous Oxide Emission factor grazed Urine _NO",
+    "Value": 0.629
+  },
+  {
+    "Version": "0.0",
+    "Name": "Nitrous Oxide Emission Factor Housed Excreta",
+    "Value": 0.5
+  },
+  {
+    "Version": "0.0",
+    "Name": "Nitrous Oxide Emission Factor Leach Nitrate",
+    "Value": 0.75
+  },
+  {
+    "Version": "0.0",
+    "Name": "Nitrous Oxide Emission Factor Spread Manure",
+    "Value": 0.33
+  },
+  {
+    "Version": "0.0",
+    "Name": "Methane Conversion Factor (Grazed Excreta)",
+    "Value": 1
+  },
+  {
+    "Version": "0.0",
+    "Name": "Methane Conversion Factor (Housed Excreta)",
+    "Value": 2
+  },
+  {
+    "Version": "0.0",
+    "Name": "Energy Balance Input Uncertainty",
+    "Value": 100
+  },
+  {
+    "Version": "0.0",
+    "Name": "Energy Balance Uncertainty",
+    "Value": 100
+  },
+  {
+    "Version": "0.0",
+    "Name": "Coeff Methane Dry Matter Uncertainty",
+    "Value": 0
+  }
+]

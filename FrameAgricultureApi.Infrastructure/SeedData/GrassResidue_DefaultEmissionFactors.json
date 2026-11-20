@@ -1,0 +1,27 @@
+[
+  {
+    "Version": "0.0",
+    "Name": "Direct N2ON",
+    "Value (%)": 1
+  },
+  {
+    "Version": "0.0",
+    "Name": "Nitrate_Leached N2ON",
+    "Value (%)": 0.75
+  },
+  {
+    "Version": "0.0",
+    "Name": "Deposition N2ON",
+    "Value (%)": 1.4
+  },
+  {
+    "Version": "0.0",
+    "Name": "Ratio NON to N2ON",
+    "Value (%)": 0.1
+  },
+  {
+    "Version": "0.0",
+    "Name": "Ration N2N to N2ON",
+    "Value (%)": 3
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "Version": "0.0",
+    "Method_ID": 5,
+    "UID": 25,
+    "Name": "Cover Crops",
+    "Component Enum": 2,
+    "Ammonia_RF": 0,
+    "Leaching_RF": 45,
+    "Methane_RF": 0,
+    "Mineralisation_RF": 0,
+    "NitrousOxide_RF": 0
+  }
+]

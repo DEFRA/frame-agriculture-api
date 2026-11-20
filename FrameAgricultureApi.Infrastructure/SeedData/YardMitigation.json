@@ -1,0 +1,14 @@
+[
+  {
+    "Version": "0.0",
+    "Name": "Daily Yard Washing",
+    "Method_ID": 6,
+    "UID": 26,
+    "Component Enum": 3,
+    "Ammonia_RF": 70,
+    "Leaching_RF": 0,
+    "Methane_RF": 0,
+    "Mineralisation_RF": 0,
+    "NitrousOxide_RF": 0
+  }
+]

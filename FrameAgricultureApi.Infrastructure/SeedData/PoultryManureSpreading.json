@@ -1,0 +1,98 @@
+[
+  {
+    "Version": "0.0",
+    "LandUse": "Grassland",
+    "MatterType": "PoultryLayer Manure",
+    "LandUseId": 1,
+    "MatterTypeId": 9,
+    "FractionLeach": 10,
+    "N2O_N_EmissionFactor": 1.01,
+    "N2_N_Ratio": 3,
+    "NH3_N_EmissionFactor": 52.3,
+    "NO_N_Ratio": 0.6
+  },
+  {
+    "Version": "0.0",
+    "LandUse": "Grassland",
+    "MatterType": "Poultry Litter",
+    "LandUseId": 1,
+    "MatterTypeId": 10,
+    "FractionLeach": 10,
+    "N2O_N_EmissionFactor": 1.01,
+    "N2_N_Ratio": 3,
+    "NH3_N_EmissionFactor": 52.3,
+    "NO_N_Ratio": 0.6
+  },
+  {
+    "Version": "0.0",
+    "LandUse": "Grassland",
+    "MatterType": "Duck FYM",
+    "LandUseId": 1,
+    "MatterTypeId": 11,
+    "FractionLeach": 10,
+    "N2O_N_EmissionFactor": 1.01,
+    "N2_N_Ratio": 3,
+    "NH3_N_EmissionFactor": 68.3,
+    "NO_N_Ratio": 0.6
+  },
+  {
+    "Version": "0.0",
+    "LandUse": "Grassland",
+    "MatterType": "Poultry Manure Digestate",
+    "LandUseId": 1,
+    "MatterTypeId": 12,
+    "FractionLeach": 10,
+    "N2O_N_EmissionFactor": 0.7475,
+    "N2_N_Ratio": 3,
+    "NH3_N_EmissionFactor": 24.2,
+    "NO_N_Ratio": 0.6
+  },
+  {
+    "Version": "0.0",
+    "LandUse": "Arable",
+    "MatterType": "PoultryLayer Manure",
+    "LandUseId": 2,
+    "MatterTypeId": 9,
+    "FractionLeach": 30,
+    "N2O_N_EmissionFactor": 1.01,
+    "N2_N_Ratio": 3,
+    "NH3_N_EmissionFactor": 52.3,
+    "NO_N_Ratio": 0.4
+  },
+  {
+    "Version": "0.0",
+    "LandUse": "Arable",
+    "MatterType": "Poultry Litter",
+    "LandUseId": 2,
+    "MatterTypeId": 10,
+    "FractionLeach": 30,
+    "N2O_N_EmissionFactor": 1.01,
+    "N2_N_Ratio": 3,
+    "NH3_N_EmissionFactor": 52.3,
+    "NO_N_Ratio": 0.4
+  },
+  {
+    "Version": "0.0",
+    "LandUse": "Arable",
+    "MatterType": "Duck FYM",
+    "LandUseId": 2,
+    "MatterTypeId": 11,
+    "FractionLeach": 30,
+    "N2O_N_EmissionFactor": 1.01,
+    "N2_N_Ratio": 3,
+    "NH3_N_EmissionFactor": 68.3,
+    "NO_N_Ratio": 0.4
+  },
+  {
+    "Version": "0.0",
+    "LandUse": "Arable",
+    "MatterType": "Poultry Manure Digestate",
+    "LandUseId": 2,
+    "MatterTypeId": 12,
+    "FractionLeach": 30,
+    "N2O_N_EmissionFactor": 0.7475,
+    "N2_N_Ratio": 3,
+    "NH3_N_EmissionFactor": 24.2,
+    "NO_N_Ratio": 0.4
+  }
+]

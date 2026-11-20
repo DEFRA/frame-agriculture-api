@@ -1,0 +1,170 @@
+[
+  {
+    "Version": "0.0",
+    "BeefCattleBreed": 4,
+    "BeefCattleRole": 1,
+    "K": 46.37,
+    "c": 1.8258
+  },
+  {
+    "Version": "0.0",
+    "BeefCattleBreed": 4,
+    "BeefCattleRole": 2,
+    "K": 35.7,
+    "c": 1.978
+  },
+  {
+    "Version": "0.0",
+    "BeefCattleBreed": 4,
+    "BeefCattleRole": 3,
+    "K": 85.2,
+    "c": 1.5215
+  },
+  {
+    "Version": "0.0",
+    "BeefCattleBreed": 4,
+    "BeefCattleRole": 4,
+    "K": 37.09,
+    "c": 1.1411
+  },
+  {
+    "Version": "0.0",
+    "BeefCattleBreed": 4,
+    "BeefCattleRole": 5,
+    "K": 32.02,
+    "c": 1.5215
+  },
+  {
+    "Version": "0.0",
+    "BeefCattleBreed": 4,
+    "BeefCattleRole": 6,
+    "K": 46.37,
+    "c": 1.8258
+  },
+  {
+    "Version": "0.0",
+    "BeefCattleBreed": 5,
+    "BeefCattleRole": 1,
+    "K": 52.16,
+    "c": 1.8258
+  },
+  {
+    "Version": "0.0",
+    "BeefCattleBreed": 5,
+    "BeefCattleRole": 2,
+    "K": 41.73,
+    "c": 1.5215
+  },
+  {
+    "Version": "0.0",
+    "BeefCattleBreed": 5,
+    "BeefCattleRole": 3,
+    "K": 89.26,
+    "c": 1.5976
+  },
+  {
+    "Version": "0.0",
+    "BeefCattleBreed": 5,
+    "BeefCattleRole": 4,
+    "K": 32.46,
+    "c": 1.1411
+  },
+  {
+    "Version": "0.0",
+    "BeefCattleBreed": 5,
+    "BeefCattleRole": 5,
+    "K": 24.63,
+    "c": 1.5215
+  },
+  {
+    "Version": "0.0",
+    "BeefCattleBreed": 5,
+    "BeefCattleRole": 6,
+    "K": 52.16,
+    "c": 1.8258
+  },
+  {
+    "Version": "0.0",
+    "BeefCattleBreed": 6,
+    "BeefCattleRole": 1,
+    "K": 55.06,
+    "c": 1.8562
+  },
+  {
+    "Version": "0.0",
+    "BeefCattleBreed": 6,
+    "BeefCattleRole": 2,
+    "K": 41.44,
+    "c": 2.2823
+  },
+  {
+    "Version": "0.0",
+    "BeefCattleBreed": 6,
+    "BeefCattleRole": 3,
+    "K": 73.03,
+    "c": 1.5824
+  },
+  {
+    "Version": "0.0",
+    "BeefCattleBreed": 6,
+    "BeefCattleRole": 4,
+    "K": 27.82,
+    "c": 0.9129
+  },
+  {
+    "Version": "0.0",
+    "BeefCattleBreed": 6,
+    "BeefCattleRole": 5,
+    "K": 37.67,
+    "c": 1.5215
+  },
+  {
+    "Version": "0.0",
+    "BeefCattleBreed": 6,
+    "BeefCattleRole": 6,
+    "K": 55.06,
+    "c": 1.8562
+  },
+  {
+    "Version": "0.0",
+    "BeefCattleBreed": 7,
+    "BeefCattleRole": 1,
+    "K": 57.96,
+    "c": 1.5215
+  },
+  {
+    "Version": "0.0",
+    "BeefCattleBreed": 7,
+    "BeefCattleRole": 2,
+    "K": 57.96,
+    "c": 1.5215
+  },
+  {
+    "Version": "0.0",
+    "BeefCattleBreed": 7,
+    "BeefCattleRole": 3,
+    "K": 75.35,
+    "c": 1.5976
+  },
+  {
+    "Version": "0.0",
+    "BeefCattleBreed": 7,
+    "BeefCattleRole": 4,
+    "K": 40.8,
+    "c": 1.3694
+  },
+  {
+    "Version": "0.0",
+    "BeefCattleBreed": 7,
+    "BeefCattleRole": 5,
+    "K": 57.96,
+    "c": 1.5215
+  },
+  {
+    "Version": "0.0",
+    "BeefCattleBreed": 7,
+    "BeefCattleRole": 6,
+    "K": 57.96,
+    "c": 1.5215
+  }
+]

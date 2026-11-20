@@ -1,0 +1,258 @@
+[
+  {
+    "Version": "0.0",
+    "Sector": "Dairy",
+    "AnimalTypeId": 1,
+    "AnimalType": "Calf",
+    "SectorId": 4,
+    "B0": 0.18
+  },
+  {
+    "Version": "0.0",
+    "Sector": "Dairy",
+    "AnimalTypeId": 2,
+    "AnimalType": "Replacement",
+    "SectorId": 4,
+    "B0": 0.18
+  },
+  {
+    "Version": "0.0",
+    "Sector": "Dairy",
+    "AnimalTypeId": 3,
+    "AnimalType": "Heifer",
+    "SectorId": 4,
+    "B0": 0.18
+  },
+  {
+    "Version": "0.0",
+    "Sector": "Dairy",
+    "AnimalTypeId": 4,
+    "AnimalType": "Cow",
+    "SectorId": 4,
+    "B0": 0.18
+  },
+  {
+    "Version": "0.0",
+    "Sector": "Beef",
+    "AnimalTypeId": 1,
+    "AnimalType": "Heifer for breeding",
+    "SectorId": 3,
+    "B0": 0.18
+  },
+  {
+    "Version": "0.0",
+    "Sector": "Beef",
+    "AnimalTypeId": 2,
+    "AnimalType": "Females for slaughter",
+    "SectorId": 3,
+    "B0": 0.18
+  },
+  {
+    "Version": "0.0",
+    "Sector": "Beef",
+    "AnimalTypeId": 3,
+    "AnimalType": "Bulls for breeding",
+    "SectorId": 3,
+    "B0": 0.18
+  },
+  {
+    "Version": "0.0",
+    "Sector": "Beef",
+    "AnimalTypeId": 4,
+    "AnimalType": "Cereal-fed bull",
+    "SectorId": 3,
+    "B0": 0.18
+  },
+  {
+    "Version": "0.0",
+    "Sector": "Beef",
+    "AnimalTypeId": 5,
+    "AnimalType": "Steers",
+    "SectorId": 3,
+    "B0": 0.18
+  },
+  {
+    "Version": "0.0",
+    "Sector": "Beef",
+    "AnimalTypeId": 6,
+    "AnimalType": "Cows",
+    "SectorId": 3,
+    "B0": 0.18
+  },
+  {
+    "Version": "0.0",
+    "Sector": "Minor Livestock",
+    "AnimalTypeId": 1,
+    "AnimalType": "Goats",
+    "SectorId": 7,
+    "B0": 0
+  },
+  {
+    "Version": "0.0",
+    "Sector": "Minor Livestock",
+    "AnimalTypeId": 2,
+    "AnimalType": "Deer",
+    "SectorId": 7,
+    "B0": 0
+  },
+  {
+    "Version": "0.0",
+    "Sector": "Minor Livestock",
+    "AnimalTypeId": 3,
+    "AnimalType": "Agricultural Horses",
+    "SectorId": 7,
+    "B0": 0
+  },
+  {
+    "Version": "0.0",
+    "Sector": "Minor Livestock",
+    "AnimalTypeId": 4,
+    "AnimalType": "Professional Horses",
+    "SectorId": 7,
+    "B0": 0
+  },
+  {
+    "Version": "0.0",
+    "Sector": "Minor Livestock",
+    "AnimalTypeId": 5,
+    "AnimalType": "Domestic Horses",
+    "SectorId": 7,
+    "B0": 0
+  },
+  {
+    "Version": "0.0",
+    "Sector": "Pigs",
+    "AnimalTypeId": 1,
+    "AnimalType": "Sows",
+    "SectorId": 5,
+    "B0": 0.45
+  },
+  {
+    "Version": "0.0",
+    "Sector": "Pigs",
+    "AnimalTypeId": 2,
+    "AnimalType": "Gilts",
+    "SectorId": 5,
+    "B0": 0.45
+  },
+  {
+    "Version": "0.0",
+    "Sector": "Pigs",
+    "AnimalTypeId": 3,
+    "AnimalType": "Boars",
+    "SectorId": 5,
+    "B0": 0.45
+  },
+  {
+    "Version": "0.0",
+    "Sector": "Pigs",
+    "AnimalTypeId": 4,
+    "AnimalType": "Weaner >80kg",
+    "SectorId": 5,
+    "B0": 0.45
+  },
+  {
+    "Version": "0.0",
+    "Sector": "Pigs",
+    "AnimalTypeId": 5,
+    "AnimalType": "Weaner 20 to 80 kg",
+    "SectorId": 5,
+    "B0": 0.45
+  },
+  {
+    "Version": "0.0",
+    "Sector": "Pigs",
+    "AnimalTypeId": 6,
+    "AnimalType": "Weaner <20kg",
+    "SectorId": 5,
+    "B0": 0.45
+  },
+  {
+    "Version": "0.0",
+    "Sector": "Poultry",
+    "AnimalTypeId": 2,
+    "AnimalType": "Laying Hens",
+    "SectorId": 6,
+    "B0": 0.39
+  },
+  {
+    "Version": "0.0",
+    "Sector": "Poultry",
+    "AnimalTypeId": 1,
+    "AnimalType": "Growing Pullets",
+    "SectorId": 6,
+    "B0": 0.36
+  },
+  {
+    "Version": "0.0",
+    "SectorId": 6,
+    "Sector": "Poultry",
+    "AnimalType": "Breeding Flock",
+    "AnimalTypeId": 3,
+    "B0": 0.36
+  },
+  {
+    "Version": "0.0",
+    "SectorId": 6,
+    "Sector": "Poultry",
+    "AnimalType": "Broilers",
+    "AnimalTypeId": 4,
+    "B0": 0.36
+  },
+  {
+    "Version": "0.0",
+    "SectorId": 6,
+    "Sector": "Poultry",
+    "AnimalType": "Turkeys",
+    "AnimalTypeId": 5,
+    "B0": 0.36
+  },
+  {
+    "Version": "0.0",
+    "SectorId": 6,
+    "Sector": "Poultry",
+    "AnimalType": "Other Poultry",
+    "AnimalTypeId": 8,
+    "B0": 0.36
+  },
+  {
+    "Version": "0.0",
+    "SectorId": 6,
+    "Sector": "Poultry",
+    "AnimalType": "Ducks",
+    "AnimalTypeId": 6,
+    "B0": 0.36
+  },
+  {
+    "Version": "0.0",
+    "SectorId": 6,
+    "Sector": "Poultry",
+    "AnimalType": "Geese",
+    "AnimalTypeId": 7,
+    "B0": 0.36
+  },
+  {
+    "Version": "0.0",
+    "SectorId": 9,
+    "Sector": "Sheep",
+    "AnimalType": "Ram",
+    "AnimalTypeId": 1,
+    "B0": 0.19
+  },
+  {
+    "Version": "0.0",
+    "SectorId": 9,
+    "Sector": "Sheep",
+    "AnimalType": "Lamb",
+    "AnimalTypeId": 2,
+    "B0": 0.19
+  },
+  {
+    "Version": "0.0",
+    "SectorId": 9,
+    "Sector": "Sheep",
+    "AnimalType": "Ewe",
+    "AnimalTypeId": 3,
+    "B0": 0.19
+  }
+]

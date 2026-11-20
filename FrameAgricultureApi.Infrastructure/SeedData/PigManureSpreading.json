@@ -1,0 +1,98 @@
+[
+  {
+    "Version": "0.0",
+    "LandUseId": 1,
+    "MatterType": "Pig Slurry",
+    "MatterTypeId": 5,
+    "LandUse": "Grassland",
+    "FractionLeach": 10,
+    "N2O_N_EmissionFactor": 0.7475,
+    "N2_N_Ratio": 3,
+    "NH3_N_EmissionFactor": 24.2,
+    "NO_N_Ratio": 0.6
+  },
+  {
+    "Version": "0.0",
+    "LandUseId": 1,
+    "MatterType": "Pig FYM",
+    "MatterTypeId": 6,
+    "LandUse": "Grassland",
+    "FractionLeach": 10,
+    "N2O_N_EmissionFactor": 0.33,
+    "N2_N_Ratio": 3,
+    "NH3_N_EmissionFactor": 68.3,
+    "NO_N_Ratio": 0.6
+  },
+  {
+    "Version": "0.0",
+    "LandUseId": 1,
+    "MatterType": "DIgestate Pig Slurry",
+    "MatterTypeId": 7,
+    "LandUse": "Grassland",
+    "FractionLeach": 10,
+    "N2O_N_EmissionFactor": 0.7475,
+    "N2_N_Ratio": 3,
+    "NH3_N_EmissionFactor": 24.2,
+    "NO_N_Ratio": 0.6
+  },
+  {
+    "Version": "0.0",
+    "LandUseId": 1,
+    "MatterType": "DIgestate Pig FYM",
+    "MatterTypeId": 8,
+    "LandUse": "Grassland",
+    "FractionLeach": 10,
+    "N2O_N_EmissionFactor": 0.7475,
+    "N2_N_Ratio": 3,
+    "NH3_N_EmissionFactor": 24.2,
+    "NO_N_Ratio": 0.6
+  },
+  {
+    "Version": "0.0",
+    "LandUseId": 2,
+    "MatterType": "Pig Slurry",
+    "MatterTypeId": 5,
+    "LandUse": "Arable",
+    "FractionLeach": 30,
+    "N2O_N_EmissionFactor": 0.7475,
+    "N2_N_Ratio": 3,
+    "NH3_N_EmissionFactor": 24.2,
+    "NO_N_Ratio": 0.4
+  },
+  {
+    "Version": "0.0",
+    "LandUseId": 2,
+    "MatterType": "Pig FYM",
+    "MatterTypeId": 6,
+    "LandUse": "Arable",
+    "FractionLeach": 30,
+    "N2O_N_EmissionFactor": 0.33,
+    "N2_N_Ratio": 3,
+    "NH3_N_EmissionFactor": 68.3,
+    "NO_N_Ratio": 0.4
+  },
+  {
+    "Version": "0.0",
+    "LandUseId": 2,
+    "MatterType": "DIgestate Pig Slurry",
+    "MatterTypeId": 7,
+    "LandUse": "Arable",
+    "FractionLeach": 30,
+    "N2O_N_EmissionFactor": 0.7475,
+    "N2_N_Ratio": 3,
+    "NH3_N_EmissionFactor": 24.2,
+    "NO_N_Ratio": 0.4
+  },
+  {
+    "Version": "0.0",
+    "LandUseId": 2,
+    "MatterType": "DIgestate Pig FYM",
+    "MatterTypeId": 8,
+    "LandUse": "Arable",
+    "FractionLeach": 30,
+    "N2O_N_EmissionFactor": 0.7475,
+    "N2_N_Ratio": 3,
+    "NH3_N_EmissionFactor": 24.2,
+    "NO_N_Ratio": 0.4
+  }
+]

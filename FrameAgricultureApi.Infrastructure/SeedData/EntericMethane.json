@@ -1,0 +1,90 @@
+[
+  {
+    "Version": "0.0",
+    "SectorId": 5,
+    "AnimalTypeId": 1,
+    "AnimalType": "Sows",
+    "Sector": "Pigs",
+    "CH4": 1.5
+  },
+  {
+    "Version": "0.0",
+    "SectorId": 5,
+    "AnimalTypeId": 2,
+    "AnimalType": "Gilts",
+    "Sector": "Pigs",
+    "CH4": 1.5
+  },
+  {
+    "Version": "0.0",
+    "SectorId": 5,
+    "AnimalTypeId": 3,
+    "AnimalType": "Boars",
+    "Sector": "Pigs",
+    "CH4": 1.5
+  },
+  {
+    "Version": "0.0",
+    "SectorId": 5,
+    "AnimalTypeId": 4,
+    "AnimalType": "Weaner >80kg",
+    "Sector": "Pigs",
+    "CH4": 1.5
+  },
+  {
+    "Version": "0.0",
+    "SectorId": 5,
+    "AnimalTypeId": 5,
+    "AnimalType": "Weaner 20 to 80 kg",
+    "Sector": "Pigs",
+    "CH4": 1.5
+  },
+  {
+    "Version": "0.0",
+    "SectorId": 5,
+    "AnimalTypeId": 6,
+    "AnimalType": "Weaner <20kg",
+    "Sector": "Pigs",
+    "CH4": 1.5
+  },
+  {
+    "Version": "0.0",
+    "SectorId": 7,
+    "AnimalTypeId": 1,
+    "AnimalType": "Goats",
+    "Sector": "Minor Livestock",
+    "CH4": 9
+  },
+  {
+    "Version": "0.0",
+    "SectorId": 7,
+    "AnimalTypeId": 2,
+    "AnimalType": "Deer",
+    "Sector": "Minor Livestock",
+    "CH4": 20
+  },
+  {
+    "Version": "0.0",
+    "SectorId": 7,
+    "AnimalTypeId": 3,
+    "AnimalType": "Agricultural Horses",
+    "Sector": "Minor Livestock",
+    "CH4": 18
+  },
+  {
+    "Version": "0.0",
+    "SectorId": 7,
+    "AnimalTypeId": 4,
+    "AnimalType": "Professional Horses",
+    "Sector": "Minor Livestock",
+    "CH4": 18
+  },
+  {
+    "Version": "0.0",
+    "SectorId": 7,
+    "AnimalTypeId": 5,
+    "AnimalType": "Domestic Horses",
+    "Sector": "Minor Livestock",
+    "CH4": 18
+  }
+]

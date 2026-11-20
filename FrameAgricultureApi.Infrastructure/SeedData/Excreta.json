@@ -1,0 +1,154 @@
+[
+  {
+    "Version": "0.0",
+    "AnimalTypeId": 1,
+    "SectorId": 5,
+    "N_Excretion": 21.1,
+    "Percent_TAN": 70,
+    "Volatile_Solids": 0.46
+  },
+  {
+    "Version": "0.0",
+    "AnimalTypeId": 2,
+    "SectorId": 5,
+    "N_Excretion": 11.68,
+    "Percent_TAN": 70,
+    "Volatile_Solids": 0.46
+  },
+  {
+    "Version": "0.0",
+    "AnimalTypeId": 3,
+    "SectorId": 5,
+    "N_Excretion": 18.9,
+    "Percent_TAN": 70,
+    "Volatile_Solids": 0.46
+  },
+  {
+    "Version": "0.0",
+    "AnimalTypeId": 4,
+    "SectorId": 5,
+    "N_Excretion": 13.16862745,
+    "Percent_TAN": 70,
+    "Volatile_Solids": 0.3
+  },
+  {
+    "Version": "0.0",
+    "AnimalTypeId": 5,
+    "SectorId": 5,
+    "N_Excretion": 9.598148148,
+    "Percent_TAN": 70,
+    "Volatile_Solids": 0.3
+  },
+  {
+    "Version": "0.0",
+    "AnimalTypeId": 6,
+    "SectorId": 5,
+    "N_Excretion": 4.034210526,
+    "Percent_TAN": 70,
+    "Volatile_Solids": 0.3
+  },
+  {
+    "Version": "0.0",
+    "AnimalTypeId": 1,
+    "SectorId": 6,
+    "N_Excretion": 0.358770043,
+    "Percent_TAN": 70,
+    "Volatile_Solids": 0.01
+  },
+  {
+    "Version": "0.0",
+    "AnimalTypeId": 2,
+    "SectorId": 6,
+    "N_Excretion": 0.664765149,
+    "Percent_TAN": 70,
+    "Volatile_Solids": 0.02
+  },
+  {
+    "Version": "0.0",
+    "AnimalTypeId": 3,
+    "SectorId": 6,
+    "N_Excretion": 1.140980068,
+    "Percent_TAN": 70,
+    "Volatile_Solids": 0.01
+  },
+  {
+    "Version": "0.0",
+    "AnimalTypeId": 4,
+    "SectorId": 6,
+    "N_Excretion": 0.283829641,
+    "Percent_TAN": 70,
+    "Volatile_Solids": 0.02
+  },
+  {
+    "Version": "0.0",
+    "AnimalTypeId": 5,
+    "SectorId": 6,
+    "N_Excretion": 1.781957019,
+    "Percent_TAN": 70,
+    "Volatile_Solids": 0.07
+  },
+  {
+    "Version": "0.0",
+    "AnimalTypeId": 6,
+    "SectorId": 6,
+    "N_Excretion": 1.199694167,
+    "Percent_TAN": 70,
+    "Volatile_Solids": 0.02
+  },
+  {
+    "Version": "0.0",
+    "AnimalTypeId": 7,
+    "SectorId": 6,
+    "N_Excretion": 1.199694167,
+    "Percent_TAN": 70,
+    "Volatile_Solids": 0.02
+  },
+  {
+    "Version": "0.0",
+    "AnimalTypeId": 8,
+    "SectorId": 6,
+    "N_Excretion": 1.199694167,
+    "Percent_TAN": 70,
+    "Volatile_Solids": 0.01
+  },
+  {
+    "Version": "0.0",
+    "AnimalTypeId": 1,
+    "SectorId": 7,
+    "N_Excretion": 8.4,
+    "Percent_TAN": 60,
+    "Volatile_Solids": 0.3
+  },
+  {
+    "Version": "0.0",
+    "AnimalTypeId": 2,
+    "SectorId": 7,
+    "N_Excretion": 29.3,
+    "Percent_TAN": 60,
+    "Volatile_Solids": 0.3
+  },
+  {
+    "Version": "0.0",
+    "AnimalTypeId": 3,
+    "SectorId": 7,
+    "N_Excretion": 50,
+    "Percent_TAN": 60,
+    "Volatile_Solids": 2.13
+  },
+  {
+    "Version": "0.0",
+    "AnimalTypeId": 4,
+    "SectorId": 7,
+    "N_Excretion": 129,
+    "Percent_TAN": 60,
+    "Volatile_Solids": 2.13
+  },
+  {
+    "Version": "0.0",
+    "AnimalTypeId": 5,
+    "SectorId": 7,
+    "N_Excretion": 50,
+    "Percent_TAN": 60,
+    "Volatile_Solids": 2.13
+  }
+]

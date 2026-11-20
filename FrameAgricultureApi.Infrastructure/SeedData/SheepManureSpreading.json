@@ -1,0 +1,26 @@
+[
+  {
+    "Version": "0.0",
+    "LandUse": "Grassland",
+    "MatterType": "Sheep FYM",
+    "MatterTypeId": 14,
+    "LandUseId": 1,
+    "FractionLeach": 10,
+    "N2O_N_EmissionFactor": 0.33,
+    "N2_N_Ratio": 3,
+    "NH3_N_EmissionFactor": 68.32,
+    "NO_N_Ratio": 0.6
+  },
+  {
+    "Version": "0.0",
+    "LandUse": "Arable",
+    "MatterType": "Sheep FYM",
+    "MatterTypeId": 14,
+    "LandUseId": 2,
+    "FractionLeach": 30,
+    "N2O_N_EmissionFactor": 0.33,
+    "N2_N_Ratio": 3,
+    "NH3_N_EmissionFactor": 68.3,
+    "NO_N_Ratio": 0.4
+  }
+]

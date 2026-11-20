@@ -4,7 +4,6 @@ using FrameAgricultureApi.Core.Enums;
 using FrameAgricultureApi.Generic;
 using FrameAgricultureApi.Infrastructure;
 using FrameAgricultureApi.Infrastructure.Entities;
-using FrameAgricultureApi.Libraries.LookUps;
 using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
 

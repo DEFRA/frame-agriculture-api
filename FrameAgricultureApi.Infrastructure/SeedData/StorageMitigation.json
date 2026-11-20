@@ -1,0 +1,54 @@
+[
+  {
+    "Version": "0.0",
+    "Name": "Natural Crust",
+    "FLEA Enumerator": 1,
+    "Method_ID": 14,
+    "UID": 39,
+    "Component Enum": 5,
+    "Ammonia_RF": 50,
+    "Leaching_RF": 0,
+    "Methane_RF": 0,
+    "Mineralisation_RF": 0,
+    "NitrousOxide_RF": 0
+  },
+  {
+    "Version": "0.0",
+    "Component Enum": 5,
+    "FLEA Enumerator": 1,
+    "Method_ID": 15,
+    "Name": "Floating Cover",
+    "UID": 40,
+    "Ammonia_RF": 60,
+    "Leaching_RF": 0,
+    "Methane_RF": 0,
+    "Mineralisation_RF": 0,
+    "NitrousOxide_RF": 0
+  },
+  {
+    "Version": "0.0",
+    "FLEA Enumerator": 1,
+    "Method_ID": 16,
+    "Component Enum": 5,
+    "Name": "Rigid Cover",
+    "UID": 41,
+    "Ammonia_RF": 80,
+    "Leaching_RF": 0,
+    "Methane_RF": 0,
+    "Mineralisation_RF": 0,
+    "NitrousOxide_RF": 0
+  },
+  {
+    "Version": "0.0",
+    "FLEA Enumerator": 2,
+    "Method_ID": 17,
+    "Component Enum": 5,
+    "Name": "Cover with Sheeting",
+    "UID": 42,
+    "Ammonia_RF": 60,
+    "Leaching_RF": 0,
+    "Methane_RF": 0,
+    "Mineralisation_RF": 0,
+    "NitrousOxide_RF": 30
+  }
+]

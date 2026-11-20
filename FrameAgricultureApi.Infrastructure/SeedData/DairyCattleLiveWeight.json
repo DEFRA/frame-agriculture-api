@@ -1,0 +1,110 @@
+[
+  {
+    "Version": "0.0",
+    "Breed": 1,
+    "Country": 1,
+    "Age Death": 68,
+    "Age First Calving": 28,
+    "Age first conception": 19,
+    "Cattle Mature Weight": 620.53
+  },
+  {
+    "Version": "0.0",
+    "Breed": 2,
+    "Country": 1,
+    "Age Death": 68,
+    "Age First Calving": 29,
+    "Age first conception": 20,
+    "Cattle Mature Weight": 596.91
+  },
+  {
+    "Version": "0.0",
+    "Breed": 3,
+    "Country": 1,
+    "Age Death": 65,
+    "Age First Calving": 27,
+    "Age first conception": 18,
+    "Cattle Mature Weight": 431.31
+  },
+  {
+    "Version": "0.0",
+    "Breed": 1,
+    "Country": 2,
+    "Age Death": 68,
+    "Age First Calving": 28,
+    "Age first conception": 19,
+    "Cattle Mature Weight": 620.53
+  },
+  {
+    "Version": "0.0",
+    "Breed": 2,
+    "Country": 2,
+    "Age Death": 68,
+    "Age First Calving": 29,
+    "Age first conception": 20,
+    "Cattle Mature Weight": 596.91
+  },
+  {
+    "Version": "0.0",
+    "Breed": 3,
+    "Country": 2,
+    "Age Death": 65,
+    "Age First Calving": 27,
+    "Age first conception": 18,
+    "Cattle Mature Weight": 431.31
+  },
+  {
+    "Version": "0.0",
+    "Breed": 1,
+    "Country": 3,
+    "Age Death": 68,
+    "Age First Calving": 28,
+    "Age first conception": 19,
+    "Cattle Mature Weight": 620.53
+  },
+  {
+    "Version": "0.0",
+    "Breed": 2,
+    "Country": 3,
+    "Age Death": 68,
+    "Age First Calving": 29,
+    "Age first conception": 20,
+    "Cattle Mature Weight": 596.91
+  },
+  {
+    "Version": "0.0",
+    "Breed": 3,
+    "Country": 3,
+    "Age Death": 65,
+    "Age First Calving": 27,
+    "Age first conception": 18,
+    "Cattle Mature Weight": 431.31
+  },
+  {
+    "Version": "0.0",
+    "Breed": 1,
+    "Country": 4,
+    "Age Death": 68,
+    "Age First Calving": 29,
+    "Age first conception": 20,
+    "Cattle Mature Weight": 620.53
+  },
+  {
+    "Version": "0.0",
+    "Breed": 2,
+    "Country": 4,
+    "Age Death": 78,
+    "Age First Calving": 32,
+    "Age first conception": 23,
+    "Cattle Mature Weight": 596.91
+  },
+  {
+    "Version": "0.0",
+    "Breed": 3,
+    "Country": 4,
+    "Age Death": 83,
+    "Age First Calving": 34,
+    "Age first conception": 25,
+    "Cattle Mature Weight": 431.31
+  }
+]
