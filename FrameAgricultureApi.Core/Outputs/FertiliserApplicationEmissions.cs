@@ -13,7 +13,7 @@ public class FertiliserApplicationEmissions : BaseEmissions
     /// <summary>
     /// Direct NH3-N, measured as nitrogen in kilograms.
     /// </summary>
-    public BaseEmission Direct_NH3_N { get; set; } = new()
+    public FertiliserApplicationEmission Direct_NH3_N { get; set; } = new()
     {
         SummarisePollutantType = SummarisePollutantType.NH3,
         SummarisePathwayType = SummarisePathwayType.Direct,
@@ -27,9 +27,10 @@ public class FertiliserApplicationEmissions : BaseEmissions
     /// <summary>
     /// Nitrogen applied as urea (CH4N2O), in kilograms of nitrogen.
     /// </summary>
-    public BaseEmission CH4N2O_N_Applied { get; set; } = new()
+    public FertiliserApplicationEmission CH4N2O_N_Applied { get; set; } = new()
     {
-        SummarisePollutantType = SummarisePollutantType.CH4N2O_N,
+        CropAndGrassFertilisingLocationType = CropAndGrassFertilisingLocationType.Urea,
+        SummarisePollutantType = SummarisePollutantType.N,
         SummarisePathwayType = SummarisePathwayType.Direct,
         Unit = new()
         {
@@ -41,9 +42,10 @@ public class FertiliserApplicationEmissions : BaseEmissions
     /// <summary>
     /// Nitrogen applied as ammonium nitrate (NH4NO3), in kilograms of nitrogen.
     /// </summary>
-    public BaseEmission NH4NO3_N_Applied { get; set; } = new()
+    public FertiliserApplicationEmission NH4NO3_N_Applied { get; set; } = new()
     {
-        SummarisePollutantType = SummarisePollutantType.NH4NO3_N,
+        CropAndGrassFertilisingLocationType = CropAndGrassFertilisingLocationType.AmmoniumNitrate,
+        SummarisePollutantType = SummarisePollutantType.N,
         SummarisePathwayType = SummarisePathwayType.Direct,
         Unit = new()
         {
@@ -55,9 +57,10 @@ public class FertiliserApplicationEmissions : BaseEmissions
     /// <summary>
     /// Nitrogen applied as calcium ammonium nitrate (CAN), in kilograms of nitrogen.
     /// </summary>
-    public BaseEmission CAN_N_Applied { get; set; } = new()
+    public FertiliserApplicationEmission CAN_N_Applied { get; set; } = new()
     {
-        SummarisePollutantType = SummarisePollutantType.CAN_N,
+        CropAndGrassFertilisingLocationType = CropAndGrassFertilisingLocationType.CalciumAmmoniumNitrate,
+        SummarisePollutantType = SummarisePollutantType.N,
         SummarisePathwayType = SummarisePathwayType.Direct,
         Unit = new()
         {
@@ -69,9 +72,10 @@ public class FertiliserApplicationEmissions : BaseEmissions
     /// <summary>
     /// Nitrogen applied as urea ammonium nitrate (UAN), in kilograms of nitrogen.
     /// </summary>
-    public BaseEmission UAN_N_Applied { get; set; } = new()
+    public FertiliserApplicationEmission UAN_N_Applied { get; set; } = new()
     {
-        SummarisePollutantType = SummarisePollutantType.UAN_N,
+        CropAndGrassFertilisingLocationType = CropAndGrassFertilisingLocationType.UreaAmmoniumNitrate,
+        SummarisePollutantType = SummarisePollutantType.N,
         SummarisePathwayType = SummarisePathwayType.Direct,
         Unit = new()
         {
@@ -83,9 +87,10 @@ public class FertiliserApplicationEmissions : BaseEmissions
     /// <summary>
     /// Nitrogen applied as ammonium sulphate or diammonium phosphate (AS/DAP), in kilograms of nitrogen.
     /// </summary>
-    public BaseEmission AS_DAP_N_Applied { get; set; } = new()
+    public FertiliserApplicationEmission AS_DAP_N_Applied { get; set; } = new()
     {
-        SummarisePollutantType = SummarisePollutantType.AS_DAP_N,
+        CropAndGrassFertilisingLocationType = CropAndGrassFertilisingLocationType.AmmoniumSulphate,
+        SummarisePollutantType = SummarisePollutantType.N,
         SummarisePathwayType = SummarisePathwayType.Direct,
         Unit = new()
         {
@@ -97,9 +102,10 @@ public class FertiliserApplicationEmissions : BaseEmissions
     /// <summary>
     /// Nitrogen applied as other nitrogen fertilisers, including compound blends, in kilograms of nitrogen.
     /// </summary>
-    public BaseEmission OtherFertilisers_N_Applied { get; set; } = new()
+    public FertiliserApplicationEmission OtherFertilisers_N_Applied { get; set; } = new()
     {
-        SummarisePollutantType = SummarisePollutantType.OtherFertilisers_N,
+        CropAndGrassFertilisingLocationType = CropAndGrassFertilisingLocationType.Other_N,
+        SummarisePollutantType = SummarisePollutantType.N,
         SummarisePathwayType = SummarisePathwayType.Direct,
         Unit = new()
         {
@@ -122,7 +128,7 @@ public class FertiliserApplicationEmissions : BaseEmissions
         }
     }
 
-    private IEnumerable<BaseEmission> GetAdditionalEmissions()
+    private IEnumerable<FertiliserApplicationEmission> GetAdditionalEmissions()
     {
         yield return Direct_NH3_N;
         yield return CH4N2O_N_Applied;
