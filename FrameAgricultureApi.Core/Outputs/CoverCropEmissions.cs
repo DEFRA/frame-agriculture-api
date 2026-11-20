@@ -54,19 +54,6 @@ public class CoverCropEmissions : BaseEmissions
         }
     };
 
-
-    /// <summary>
-    /// Resets core and additional emission values before calculation.
-    /// </summary>
-    public void InitialiseCoverCropEmissions()
-    {
-        InitialiseBaseEmissions();
-        foreach (var emission in GetAdditionalEmissions())
-        {
-            emission.Value = null;
-        }
-    }
-
     /// <summary>
     /// Method to round emissions to a fixed number of decimal places
     /// </summary>

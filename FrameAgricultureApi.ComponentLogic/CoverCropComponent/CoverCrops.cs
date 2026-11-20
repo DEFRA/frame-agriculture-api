@@ -38,7 +38,6 @@ public class CoverCrops
     public CoverCropEmissions CoverCropEmissions(CoverCropRequest coverCropRequest)
     {
         CoverCropEmissions myEmissions = new();
-        myEmissions.InitialiseCoverCropEmissions();
 
         var nReturn = coverCropRequest.CoverCropInputs.NReturn;
         var factors = coverCropRequest.CoverCropEmissionFactors;

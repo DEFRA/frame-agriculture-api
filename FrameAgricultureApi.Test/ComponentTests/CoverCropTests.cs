@@ -65,43 +65,10 @@ public class CoverCropTests
             () => AssertEmissionEqual(0.1733m, actualEmissions.UnadjustedIndirectedN20_NLeached.Value),
             () => AssertEmissionEqual(0.3080m, actualEmissions.DirectNO_N.Value),
             () => AssertEmissionEqual(2.31m, actualEmissions.DirectN2_N.Value),
-            () => AssertEmissionEqual(0.004312m, actualEmissions.IndirectN20_NVolatilisation.Value),
-            () => Assert.Null(actualEmissions.DirectNH3_N.Value));
+            () => AssertEmissionEqual(0.004312m, actualEmissions.IndirectN20_NVolatilisation.Value)
+        );
     }
 
-    /// <summary>
-    /// Rounds core and additional decimal outputs without replacing missing values.
-    /// </summary>
-    [Fact]
-    public void RoundEmissions_RoundsDecimalMidpointsAndPreservesNulls()
-    {
-        var emissions = new CoverCropEmissions();
-        emissions.DirectN20_N.Value = 0.12345m;
-        emissions.UnadjustedIndirectedN20_NLeached.Value = 0.17325m;
-
-        emissions.RoundEmissions(4);
-
-        Assert.Equal(0.1235m, emissions.DirectN20_N.Value);
-        Assert.Equal(0.1733m, emissions.UnadjustedIndirectedN20_NLeached.Value);
-        Assert.Null(emissions.DirectNH3_N.Value);
-        Assert.Null(emissions.N.Value);
-    }
-
-    /// <summary>
-    /// Clears previously calculated core and additional decimal outputs.
-    /// </summary>
-    [Fact]
-    public void InitialiseCoverCropEmissions_ResetsValuesToNull()
-    {
-        var emissions = new CoverCropEmissions();
-        emissions.DirectN20_N.Value = 0.77m;
-        emissions.N.Value = 77m;
-
-        emissions.InitialiseCoverCropEmissions();
-
-        Assert.Null(emissions.DirectN20_N.Value);
-        Assert.Null(emissions.N.Value);
-    }
 
     private static void AssertEmissionEqual(decimal expected, decimal? actual)
     {

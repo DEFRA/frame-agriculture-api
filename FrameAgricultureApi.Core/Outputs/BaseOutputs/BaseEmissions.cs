@@ -51,20 +51,6 @@ public class BaseEmissions
     };
 
     /// <summary>
-    /// Direct NH3-N, measured as nitrogen in kilograms.
-    /// </summary>
-    public BaseEmission DirectNH3_N { get; set; } = new()
-    {
-        SummarisePollutantType = SummarisePollutantType.Ammonia,
-        SummarisePathwayType = SummarisePathwayType.Direct,
-        Unit = new()
-        {
-            Symbol = UnitSymbols.Kg,
-            MultipleToBaseFactor = 1
-        }
-    };
-
-    /// <summary>
     /// Direct NO3-N (leached), measured as nitrogen in kilograms.
     /// </summary>
     public BaseEmission DirectNO3_NLeached { get; set; } = new()
@@ -106,16 +92,6 @@ public class BaseEmissions
         }
     };
 
-    /// <summary>
-    /// Resets all core emission values before calculation.
-    /// </summary>
-    public void InitialiseBaseEmissions()
-    {
-        foreach (var emission in GetCoreEmissions())
-        {
-            emission.Value = null;
-        }
-    }
 
     /// <summary>
     /// Rounds all calculated core emission values.
@@ -141,7 +117,6 @@ public class BaseEmissions
         yield return DirectN20_N;
         yield return IndirectN20_NLeached;
         yield return IndirectN20_NVolatilisation;
-        yield return DirectNH3_N;
         yield return DirectNO3_NLeached;
         yield return DirectNO_N;
         yield return DirectN2_N;
