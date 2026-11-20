@@ -3,10 +3,10 @@ using MongoDB.Bson.Serialization.Attributes;
 namespace FrameAgricultureApi.Infrastructure.Entities;
 
 /// <summary>
-/// Lookup document from the EntericMethane collection.
+/// Lookup document from the MethaneB0 collection.
 /// </summary>
-[BsonCollection("EntericMethane")]
-public class EntericMethaneLookUpEntity : MongoDocument
+[BsonCollection("MethaneB0")]
+public class CH4_B0LookUpEntity : MongoDocument
 {
     [BsonElement("AnimalType")]
     public string AnimalType { get; set; } = string.Empty;
@@ -14,8 +14,8 @@ public class EntericMethaneLookUpEntity : MongoDocument
     [BsonElement("AnimalTypeId")]
     public int AnimalTypeId { get; set; }
 
-    [BsonElement("CH4")]
-    public double CH4 { get; set; }
+    [BsonElement("B0")]
+    public double B0 { get; set; }
 
     [BsonElement("Sector")]
     public string Sector { get; set; } = string.Empty;

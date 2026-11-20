@@ -24,19 +24,19 @@ public class OrganicMatterSpreadingLookUpEntity : MongoDocument
     public int MatterTypeId { get; set; }
 
     [BsonElement("N2O_N_EmissionFactor")]
-    public int N2ONEmissionFactor { get; set; }
+    public int N2O_N_EmissionFactor { get; set; }
 
     [BsonElement("N2_N_Ratio")]
-    public int N2NRatio { get; set; }
+    public int N2_N_Ratio { get; set; }
 
     [BsonElement("NH3_N_EmissionFactor")]
-    public int NH3NEmissionFactor { get; set; }
+    public int NH3_N_EmissionFactor { get; set; }
 
     [BsonElement("NO_N_Ratio")]
-    public double NONRatio { get; set; }
+    public double NO_N_Ratio { get; set; }
 
     [BsonElement("N_Content")]
-    public double NContent { get; set; }
+    public double N_Content { get; set; }
 
     [BsonElement("PercentageTAN")]
     public int PercentageTAN { get; set; }

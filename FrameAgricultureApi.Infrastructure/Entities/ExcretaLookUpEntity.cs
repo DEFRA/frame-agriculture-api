@@ -12,7 +12,7 @@ public class ExcretaLookUpEntity : MongoDocument
     public int AnimalTypeId { get; set; }
 
     [BsonElement("N_Excretion")]
-    public double NExcretion { get; set; }
+    public double N_Excretion { get; set; }
 
     [BsonElement("Percent_TAN")]
     public int PercentTAN { get; set; }

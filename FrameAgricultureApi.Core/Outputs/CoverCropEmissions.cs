@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using FrameAgricultureApi.Core;
 using FrameAgricultureApi.Core.Enums;
 
@@ -15,7 +16,7 @@ public class CoverCropEmissions : BaseEmissions
     public BaseEmission N { get; set; } = new()
     {
         // Todo I have just assumed N is nitrogen 
-        SummarisePollutantType = SummarisePollutantType.Nitrogen,
+        SummarisePollutantType = SummarisePollutantType.N,
         // Todo I have assumed this is direct
         SummarisePathwayType = SummarisePathwayType.Direct,
         Unit = new()
@@ -28,9 +29,10 @@ public class CoverCropEmissions : BaseEmissions
     /// <summary>
     /// Nitrate leached without the cover crop reduction, measured in kilograms of nitrogen.
     /// </summary>
-    public BaseEmission UnadjustedN03_N { get; set; } = new()
+    [JsonPropertyName("unadjustedN03_N")]
+    public BaseEmission Unadjusted_NO3_N { get; set; } = new()
     {
-        SummarisePollutantType = SummarisePollutantType.NitrateNitrogen,
+        SummarisePollutantType = SummarisePollutantType.NO3_N,
         // Todo I have assumed this is direct
         SummarisePathwayType = SummarisePathwayType.Direct,
         Unit = new()
@@ -43,9 +45,10 @@ public class CoverCropEmissions : BaseEmissions
     /// <summary>
     /// Indirect nitrous oxide from unadjusted nitrate leaching, measured in kilograms of nitrogen.
     /// </summary>
-    public BaseEmission UnadjustedIndirectedN20_NLeached { get; set; } = new()
+    [JsonPropertyName("unadjustedIndirectedN20_NLeached")]
+    public BaseEmission UnadjustedIndirected_N2O_N_Leached { get; set; } = new()
     {
-        SummarisePollutantType = SummarisePollutantType.NitrousOxide,
+        SummarisePollutantType = SummarisePollutantType.N2O,
         SummarisePathwayType = SummarisePathwayType.IndirectLeaching,
         Unit = new()
         {
@@ -74,7 +77,7 @@ public class CoverCropEmissions : BaseEmissions
     private IEnumerable<BaseEmission> GetAdditionalEmissions()
     {
         yield return N;
-        yield return UnadjustedN03_N;
-        yield return UnadjustedIndirectedN20_NLeached;
+        yield return Unadjusted_NO3_N;
+        yield return UnadjustedIndirected_N2O_N_Leached;
     }
 }

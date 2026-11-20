@@ -24,16 +24,16 @@ public class ManureManagementYardsLookUpEntity : MongoDocument
     public int MCF { get; set; }
 
     [BsonElement("N2O_N_EmissionFactor")]
-    public int N2ONEmissionFactor { get; set; }
+    public int N2O_N_EmissionFactor { get; set; }
 
     [BsonElement("N2_Ratio")]
-    public int N2Ratio { get; set; }
+    public int N2_Ratio { get; set; }
 
     [BsonElement("NH3_N_EmissionFactor")]
-    public int NH3NEmissionFactor { get; set; }
+    public int NH3_N_EmissionFactor { get; set; }
 
     [BsonElement("NO_N_Ratio")]
-    public double NONRatio { get; set; }
+    public double NO_N_Ratio { get; set; }
 
     [BsonElement("ScrapingEfficiency")]
     public int ScrapingEfficiency { get; set; }

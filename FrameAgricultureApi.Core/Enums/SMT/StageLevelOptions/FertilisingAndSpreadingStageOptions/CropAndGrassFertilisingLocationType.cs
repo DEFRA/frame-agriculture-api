@@ -32,7 +32,7 @@ public enum CropAndGrassFertilisingLocationType
     /// <summary>
     /// Other Nitrogen.
     /// </summary>
-    OtherNitrogen = 6,
+    Other_N = 6,
     /// <summary>
     /// No Fertiliser.
     /// </summary>

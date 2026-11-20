@@ -15,7 +15,7 @@ public class ManureManagementHousingLookUpEntity : MongoDocument
     public int AnimalTypeId { get; set; }
 
     [BsonElement("CH4 CF")]
-    public double CH4CF { get; set; }
+    public double CH4_CF { get; set; }
 
     [BsonElement("HousingIndex")]
     public int HousingIndex { get; set; }
@@ -33,16 +33,16 @@ public class ManureManagementHousingLookUpEntity : MongoDocument
     public int ManureTypeID { get; set; }
 
     [BsonElement("N2-N Ratio")]
-    public int N2NRatio { get; set; }
+    public int N2_N_Ratio { get; set; }
 
     [BsonElement("N2O-N EF")]
-    public double N2ONEF { get; set; }
+    public double N2O_N_EF { get; set; }
 
     [BsonElement("NH3_N EF")]
-    public double NH3NEF { get; set; }
+    public double NH3_N_EF { get; set; }
 
     [BsonElement("NO-N Ratio")]
-    public double NONRatio { get; set; }
+    public double NO_N_Ratio { get; set; }
 
     [BsonElement("Sector")]
     public string Sector { get; set; } = string.Empty;

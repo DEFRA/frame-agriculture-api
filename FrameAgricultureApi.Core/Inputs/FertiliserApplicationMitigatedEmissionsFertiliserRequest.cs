@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using System.ComponentModel.DataAnnotations;
 using FrameAgricultureApi.Core.Enums;
 
@@ -51,7 +52,8 @@ public class FertiliserApplicationMitigatedEmissionsFertiliserRequestInputs
     /// Total annual nitrogen applied across all fertiliser types, in kg N/ha.
     /// </summary>
     [Required]
-    public required decimal TotalNApplied { get; set; }
+    [JsonPropertyName("totalNApplied")]
+    public required decimal Total_N_Applied { get; set; }
 
     /// <summary>
     /// Share of total nitrogen supplied by this fertiliser type, as a percentage (0 to 100).
@@ -98,25 +100,29 @@ public class FertiliserApplicationMitigatedEmissionsFertiliserRequestEmissionFac
     /// Additive nitrous oxide model coefficient uncertainty, resolved from CropLookup.Uncertainty_N2ON_FertiliserModelCoefficient; not a percentage multiplier.
     /// </summary>
     [Required]
-    public required decimal N2ONModelCoefficientUncertainty { get; set; }
+    [JsonPropertyName("n2ONModelCoefficientUncertainty")]
+    public required decimal N2O_N_ModelCoefficientUncertainty { get; set; }
 
     /// <summary>
     /// Additive ammonia emission factor uncertainty in percentage points, resolved from CropLookup.Uncertainty_AmmoniaFertiliserModelCoefficient.
     /// </summary>
     [Required]
-    public required decimal AmmoniaModelCoefficientUncertainty { get; set; }
+    [JsonPropertyName("ammoniaModelCoefficientUncertainty")]
+    public required decimal NH3_ModelCoefficientUncertainty { get; set; }
 
     /// <summary>
     /// Ratio of NO-N to direct N2O-N, resolved from CropLookup.RetrieveRatioNON.
     /// </summary>
     [Required]
-    public required decimal NoNRatio { get; set; }
+    [JsonPropertyName("noNRatio")]
+    public required decimal NO_N_Ratio { get; set; }
 
     /// <summary>
     /// Ratio of N2-N to direct N2O-N, resolved from CropLookup.RetrieveRatioN2N.
     /// </summary>
     [Required]
-    public required decimal N2NRatio { get; set; }
+    [JsonPropertyName("n2NRatio")]
+    public required decimal N2_N_Ratio { get; set; }
 
     /// <summary>
     /// Nitrogen leached as nitrate, as a percentage, resolved from CropLookup.RetrieveFracLeach.
@@ -147,13 +153,15 @@ public class FertiliserApplicationMitigatedEmissionsFertiliserRequestMitigationF
     /// Final direct nitrous oxide multiplier from CalculateMitigation: 1 means no reduction; 0.8 means a 20% reduction.
     /// </summary>
     [Required]
-    public required decimal FactorNitrousOxide { get; set; }
+    [JsonPropertyName("factorNitrousOxide")]
+    public required decimal Factor_N2O { get; set; }
 
     /// <summary>
     /// Final direct ammonia multiplier from CalculateMitigation: 1 means no reduction; 0.8 means a 20% reduction.
     /// </summary>
     [Required]
-    public required decimal FactorAmmonia { get; set; }
+    [JsonPropertyName("factorAmmonia")]
+    public required decimal Factor_NH3 { get; set; }
 
     /// <summary>
     /// Final nitrate leaching multiplier from CalculateMitigation: 1 means no reduction; 0.8 means a 20% reduction.

@@ -18,7 +18,7 @@ public class SheepFirstWinterManureFracLeachLookUpEntity : MongoDocument
     public int ClimateRegion { get; set; }
 
     [BsonElement("FIRST_YEAR_NITROGEN_LOSS_PERCENT")]
-    public double FirstYearNitrogenLossPercent { get; set; }
+    public double FirstYear_N_LossPercent { get; set; }
 
     [BsonElement("SOILTYPE")]
     public int SoilType { get; set; }

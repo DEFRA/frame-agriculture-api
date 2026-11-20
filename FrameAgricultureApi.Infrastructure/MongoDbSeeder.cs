@@ -13,7 +13,7 @@ public class MongoDbSeeder(IMongoDatabase database)
         await DeleteCollectionDataAsync<CattleManureSpreadingLookUpEntity>("CattleManureSpreading");
         await DeleteCollectionDataAsync<CropResidueLookUpEntity>("Crop_Residue");
         await DeleteCollectionDataAsync<DairyCattleLiveWeightLookUpEntity>("DairyCattleLiveWeight");
-        await DeleteCollectionDataAsync<EntericMethaneLookUpEntity>("EntericMethane");
+        await DeleteCollectionDataAsync<Enteric_CH4_LookUpEntity>("EntericMethane");
         await DeleteCollectionDataAsync<ExcretaLookUpEntity>("Excreta");
         await DeleteCollectionDataAsync<FertiliserMitigationLookUpEntity>("FertiliserMitigation");
         await DeleteCollectionDataAsync<FertiliserRatioEfsLookUpEntity>("Fertiliser_RatioEFs");
@@ -22,7 +22,7 @@ public class MongoDbSeeder(IMongoDatabase database)
         await DeleteCollectionDataAsync<ManureManagementHousingLookUpEntity>("ManureManagement_Housing");
         await DeleteCollectionDataAsync<ManureManagementStorageLookUpEntity>("ManureManagement_Storage");
         await DeleteCollectionDataAsync<ManureManagementYardsLookUpEntity>("ManureManagement_Yards");
-        await DeleteCollectionDataAsync<MethaneB0LookUpEntity>("MethaneB0");
+        await DeleteCollectionDataAsync<CH4_B0LookUpEntity>("MethaneB0");
         await DeleteCollectionDataAsync<MinorLivestockManureSpreadingLookUpEntity>("MinorLivestockManureSpreading");
         await DeleteCollectionDataAsync<OrganicMatterSpreadingLookUpEntity>("OrganicMatterSpreading");
         await DeleteCollectionDataAsync<OutdoorExcretionLookUpEntity>("OutdoorExcretion");
@@ -39,7 +39,7 @@ public class MongoDbSeeder(IMongoDatabase database)
         await SeedCollectionAsync<CattleManureSpreadingLookUpEntity>("CattleManureSpreading.json", "CattleManureSpreading");
         await SeedCollectionAsync<CropResidueLookUpEntity>("CropResidue.json", "Crop_Residue");
         await SeedCollectionAsync<DairyCattleLiveWeightLookUpEntity>("DairyCattleLiveWeight.json", "DairyCattleLiveWeight");
-        await SeedCollectionAsync<EntericMethaneLookUpEntity>("EntericMethane.json", "EntericMethane");
+        await SeedCollectionAsync<Enteric_CH4_LookUpEntity>("EntericMethane.json", "EntericMethane");
         await SeedCollectionAsync<ExcretaLookUpEntity>("Excreta.json", "Excreta");
         await SeedCollectionAsync<FertiliserMitigationLookUpEntity>("FertiliserMitigation.json", "FertiliserMitigation");
         await SeedCollectionAsync<FertiliserRatioEfsLookUpEntity>("FertiliserRatioEFs.json", "Fertiliser_RatioEFs");
@@ -48,7 +48,7 @@ public class MongoDbSeeder(IMongoDatabase database)
         await SeedCollectionAsync<ManureManagementHousingLookUpEntity>("ManureManagement_Housing.json", "ManureManagement_Housing");
         await SeedCollectionAsync<ManureManagementStorageLookUpEntity>("ManureManagement_Storage.json", "ManureManagement_Storage");
         await SeedCollectionAsync<ManureManagementYardsLookUpEntity>("ManureManagement_Yards.json", "ManureManagement_Yards");
-        await SeedCollectionAsync<MethaneB0LookUpEntity>("MethaneB0.json", "MethaneB0");
+        await SeedCollectionAsync<CH4_B0LookUpEntity>("MethaneB0.json", "MethaneB0");
         await SeedCollectionAsync<MinorLivestockManureSpreadingLookUpEntity>("MinorLivestockManureSpreading.json", "MinorLivestockManureSpreading");
         await SeedCollectionAsync<OrganicMatterSpreadingLookUpEntity>("OrganicMatterSpreading.json", "OrganicMatterSpreading");
         await SeedCollectionAsync<OutdoorExcretionLookUpEntity>("OutdoorExcretion.json", "OutdoorExcretion");

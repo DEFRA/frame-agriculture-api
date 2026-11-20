@@ -34,5 +34,5 @@ public enum FertiliserType
     /// <summary>
     /// All other nitrogen fertiliser (including blends) = 6
     /// </summary>
-    OtherNitrogenIncludingCompoundBlends = 6
+    Other_N_IncludingCompoundBlends = 6
 }

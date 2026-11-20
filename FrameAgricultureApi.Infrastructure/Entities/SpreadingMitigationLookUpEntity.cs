@@ -9,7 +9,7 @@ namespace FrameAgricultureApi.Infrastructure.Entities;
 public class SpreadingMitigationLookUpEntity : MongoDocument
 {
     [BsonElement("Ammonia_RF")]
-    public int AmmoniaRF { get; set; }
+    public int NH3_RF { get; set; }
 
     [BsonElement("Animal Source Enum")]
     public int AnimalSourceEnum { get; set; }
@@ -24,7 +24,7 @@ public class SpreadingMitigationLookUpEntity : MongoDocument
     public int LeachingRF { get; set; }
 
     [BsonElement("Methane_RF")]
-    public int MethaneRF { get; set; }
+    public int CH4_RF { get; set; }
 
     [BsonElement("Method_ID")]
     public int MethodID { get; set; }
@@ -36,7 +36,7 @@ public class SpreadingMitigationLookUpEntity : MongoDocument
     public string Name { get; set; } = string.Empty;
 
     [BsonElement("NitrousOxide_RF")]
-    public int NitrousOxideRF { get; set; }
+    public int N2O_RF { get; set; }
 
     [BsonElement("Sector")]
     public string Sector { get; set; } = string.Empty;

@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using System;
 using System.ComponentModel.DataAnnotations;
 using FrameAgricultureApi.Core;
@@ -18,7 +19,8 @@ public class CoverCropRequest
 public class CoverCropInputs
 {
     [Required]
-    public required decimal NReturn { get; set; }
+    [JsonPropertyName("nReturn")]
+    public required decimal N_Return { get; set; }
 }
 
 public class CoverCropEmissionFactors
@@ -32,7 +34,8 @@ public class CoverCropEmissionFactors
     [Required]
     public required decimal FracLeach { get; set; }
     [Required]
-    public required decimal N0_N_ratio { get; set; }
+    [JsonPropertyName("n0_N_ratio")]
+    public required decimal NO_N_ratio { get; set; }
     [Required]
     public required decimal N2_N_ratio { get; set; }
 }

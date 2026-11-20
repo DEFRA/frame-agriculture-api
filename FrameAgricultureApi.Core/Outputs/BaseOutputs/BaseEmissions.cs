@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using FrameAgricultureApi.Core;
 using FrameAgricultureApi.Core.Enums;
 
@@ -11,9 +12,10 @@ public class BaseEmissions
     /// <summary>
     /// Direct N2O-N, measured as nitrogen in kilograms.
     /// </summary>
-    public BaseEmission DirectN20_N { get; set; } = new()
+    [JsonPropertyName("directN20_N")]
+    public BaseEmission Direct_N2O_N { get; set; } = new()
     {
-        SummarisePollutantType = SummarisePollutantType.NitrousOxide,
+        SummarisePollutantType = SummarisePollutantType.N2O,
         SummarisePathwayType = SummarisePathwayType.Direct,
         Unit = new()
         {
@@ -25,9 +27,10 @@ public class BaseEmissions
     /// <summary>
     /// Indirect N2O-N (leached), measured as nitrogen in kilograms.
     /// </summary>
-    public BaseEmission IndirectN20_NLeached { get; set; } = new()
+    [JsonPropertyName("indirectN20_NLeached")]
+    public BaseEmission Indirect_N2O_N_Leached { get; set; } = new()
     {
-        SummarisePollutantType = SummarisePollutantType.NitrousOxide,
+        SummarisePollutantType = SummarisePollutantType.N2O,
         SummarisePathwayType = SummarisePathwayType.IndirectLeaching,
         Unit = new()
         {
@@ -39,9 +42,10 @@ public class BaseEmissions
     /// <summary>
     /// Indirect N2O-N (volatilisation), measured as nitrogen in kilograms.
     /// </summary>
-    public BaseEmission IndirectN20_NVolatilisation { get; set; } = new()
+    [JsonPropertyName("indirectN20_NVolatilisation")]
+    public BaseEmission Indirect_N2O_N_Volatilisation { get; set; } = new()
     {
-        SummarisePollutantType = SummarisePollutantType.NitrousOxide,
+        SummarisePollutantType = SummarisePollutantType.N2O,
         SummarisePathwayType = SummarisePathwayType.IndirectDeposition,
         Unit = new()
         {
@@ -53,9 +57,10 @@ public class BaseEmissions
     /// <summary>
     /// Direct NO3-N (leached), measured as nitrogen in kilograms.
     /// </summary>
-    public BaseEmission DirectNO3_NLeached { get; set; } = new()
+    [JsonPropertyName("directNO3_NLeached")]
+    public BaseEmission Direct_NO3_N_Leached { get; set; } = new()
     {
-        SummarisePollutantType = SummarisePollutantType.Nitrate,
+        SummarisePollutantType = SummarisePollutantType.NO3,
         SummarisePathwayType = SummarisePathwayType.Direct,
         Unit = new()
         {
@@ -67,9 +72,10 @@ public class BaseEmissions
     /// <summary>
     /// Direct NO-N, measured as nitrogen in kilograms.
     /// </summary>
-    public BaseEmission DirectNO_N { get; set; } = new()
+    [JsonPropertyName("directNO_N")]
+    public BaseEmission Direct_NO_N { get; set; } = new()
     {
-        SummarisePollutantType = SummarisePollutantType.NitricOxide,
+        SummarisePollutantType = SummarisePollutantType.NO,
         SummarisePathwayType = SummarisePathwayType.Direct,
         Unit = new()
         {
@@ -81,9 +87,10 @@ public class BaseEmissions
     /// <summary>
     /// Direct N2-N, measured as nitrogen in kilograms.
     /// </summary>
-    public BaseEmission DirectN2_N { get; set; } = new()
+    [JsonPropertyName("directN2_N")]
+    public BaseEmission Direct_N2_N { get; set; } = new()
     {
-        SummarisePollutantType = SummarisePollutantType.Dinitrogen,
+        SummarisePollutantType = SummarisePollutantType.N2,
         SummarisePathwayType = SummarisePathwayType.Direct,
         Unit = new()
         {
@@ -114,11 +121,11 @@ public class BaseEmissions
     /// <returns>The seven core nitrogen emissions.</returns>
     protected IEnumerable<BaseEmission> GetCoreEmissions()
     {
-        yield return DirectN20_N;
-        yield return IndirectN20_NLeached;
-        yield return IndirectN20_NVolatilisation;
-        yield return DirectNO3_NLeached;
-        yield return DirectNO_N;
-        yield return DirectN2_N;
+        yield return Direct_N2O_N;
+        yield return Indirect_N2O_N_Leached;
+        yield return Indirect_N2O_N_Volatilisation;
+        yield return Direct_NO3_N_Leached;
+        yield return Direct_NO_N;
+        yield return Direct_N2_N;
     }
 }

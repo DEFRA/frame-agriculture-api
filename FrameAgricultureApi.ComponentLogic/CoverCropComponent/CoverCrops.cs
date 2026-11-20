@@ -39,23 +39,23 @@ public class CoverCrops
     {
         CoverCropEmissions myEmissions = new();
 
-        var nReturn = coverCropRequest.CoverCropInputs.NReturn;
+        var N_Return = coverCropRequest.CoverCropInputs.N_Return;
         var factors = coverCropRequest.CoverCropEmissionFactors;
         var adjustedFracLeach = factors.FracLeach * ((100m - coverCropRequest.CoverCropMitigationFactors.FracLeachReduction) * 0.01m);
-        var directN2ON = GenericEquations.Emission_PercentageEF(nReturn, factors.IpccEf1);
-        var directNO3NLeached = GenericEquations.Emission_PercentageEF(nReturn, adjustedFracLeach);
-        var unadjustedNO3N = GenericEquations.Emission_PercentageEF(nReturn, factors.FracLeach);
-        var directNON = GenericEquations.Emission_ProportionEF(directN2ON, factors.N0_N_ratio);
+        var direct_N2O_N = GenericEquations.Emission_PercentageEF(N_Return, factors.IpccEf1);
+        var direct_NO3_N_Leached = GenericEquations.Emission_PercentageEF(N_Return, adjustedFracLeach);
+        var unadjusted_NO3_N = GenericEquations.Emission_PercentageEF(N_Return, factors.FracLeach);
+        var direct_NO_N = GenericEquations.Emission_ProportionEF(direct_N2O_N, factors.NO_N_ratio);
 
-        myEmissions.N.Value = nReturn;
-        myEmissions.DirectN20_N.Value = directN2ON;
-        myEmissions.DirectNO3_NLeached.Value = directNO3NLeached;
-        myEmissions.UnadjustedN03_N.Value = unadjustedNO3N;
-        myEmissions.IndirectN20_NLeached.Value = GenericEquations.Emission_PercentageEF(directNO3NLeached, factors.IpccEf5);
-        myEmissions.UnadjustedIndirectedN20_NLeached.Value = GenericEquations.Emission_PercentageEF(unadjustedNO3N, factors.IpccEf5);
-        myEmissions.DirectNO_N.Value = directNON;
-        myEmissions.DirectN2_N.Value = GenericEquations.Emission_ProportionEF(directN2ON, factors.N2_N_ratio);
-        myEmissions.IndirectN20_NVolatilisation.Value = GenericEquations.Emission_PercentageEF(directNON, factors.IpccEf4);
+        myEmissions.N.Value = N_Return;
+        myEmissions.Direct_N2O_N.Value = direct_N2O_N;
+        myEmissions.Direct_NO3_N_Leached.Value = direct_NO3_N_Leached;
+        myEmissions.Unadjusted_NO3_N.Value = unadjusted_NO3_N;
+        myEmissions.Indirect_N2O_N_Leached.Value = GenericEquations.Emission_PercentageEF(direct_NO3_N_Leached, factors.IpccEf5);
+        myEmissions.UnadjustedIndirected_N2O_N_Leached.Value = GenericEquations.Emission_PercentageEF(unadjusted_NO3_N, factors.IpccEf5);
+        myEmissions.Direct_NO_N.Value = direct_NO_N;
+        myEmissions.Direct_N2_N.Value = GenericEquations.Emission_ProportionEF(direct_N2O_N, factors.N2_N_ratio);
+        myEmissions.Indirect_N2O_N_Volatilisation.Value = GenericEquations.Emission_PercentageEF(direct_NO_N, factors.IpccEf4);
 
         return myEmissions;
     }

@@ -24,7 +24,7 @@ public class CoverCropTests
             // CoverCrop: Cover Crop Type = All, Item = N return.
             CoverCropInputs = new CoverCropInputs
             {
-                NReturn = 77m
+                N_Return = 77m
             },
             // Fertiliser_RatioEFs: IPCCEF1, IPCCEF4, IPCCEF5, FracLeach, Ratio_NON, Ratio_N2N.
             CoverCropEmissionFactors = new CoverCropEmissionFactors
@@ -33,7 +33,7 @@ public class CoverCropTests
                 IpccEf4 = 1.4m,
                 IpccEf5 = 0.75m,
                 FracLeach = 30m,
-                N0_N_ratio = 0.4m,
+                NO_N_ratio = 0.4m,
                 N2_N_ratio = 3m
             },
             // CoverCrop: Cover Crop Type = All, Item = Frac Leach reduction.
@@ -52,20 +52,20 @@ public class CoverCropTests
         var actualEmissions = component.CoverCropEmissions(request);
 
         // Check unrounded values to verify decimal arithmetic before comparing legacy rounded results.
-        Assert.Equal(0.17325m, actualEmissions.UnadjustedIndirectedN20_NLeached.Value);
-        Assert.Equal(0.0952875m, actualEmissions.IndirectN20_NLeached.Value);
+        Assert.Equal(0.17325m, actualEmissions.UnadjustedIndirected_N2O_N_Leached.Value);
+        Assert.Equal(0.0952875m, actualEmissions.Indirect_N2O_N_Leached.Value);
 
         // Legacy expected values, compared as decimals with midpoint rounding away from zero.
         Assert.Multiple(
             () => AssertEmissionEqual(77m, actualEmissions.N.Value),
-            () => AssertEmissionEqual(0.77m, actualEmissions.DirectN20_N.Value),
-            () => AssertEmissionEqual(12.705m, actualEmissions.DirectNO3_NLeached.Value),
-            () => AssertEmissionEqual(23.1m, actualEmissions.UnadjustedN03_N.Value),
-            () => AssertEmissionEqual(0.0953m, actualEmissions.IndirectN20_NLeached.Value),
-            () => AssertEmissionEqual(0.1733m, actualEmissions.UnadjustedIndirectedN20_NLeached.Value),
-            () => AssertEmissionEqual(0.3080m, actualEmissions.DirectNO_N.Value),
-            () => AssertEmissionEqual(2.31m, actualEmissions.DirectN2_N.Value),
-            () => AssertEmissionEqual(0.004312m, actualEmissions.IndirectN20_NVolatilisation.Value)
+            () => AssertEmissionEqual(0.77m, actualEmissions.Direct_N2O_N.Value),
+            () => AssertEmissionEqual(12.705m, actualEmissions.Direct_NO3_N_Leached.Value),
+            () => AssertEmissionEqual(23.1m, actualEmissions.Unadjusted_NO3_N.Value),
+            () => AssertEmissionEqual(0.0953m, actualEmissions.Indirect_N2O_N_Leached.Value),
+            () => AssertEmissionEqual(0.1733m, actualEmissions.UnadjustedIndirected_N2O_N_Leached.Value),
+            () => AssertEmissionEqual(0.3080m, actualEmissions.Direct_NO_N.Value),
+            () => AssertEmissionEqual(2.31m, actualEmissions.Direct_N2_N.Value),
+            () => AssertEmissionEqual(0.004312m, actualEmissions.Indirect_N2O_N_Volatilisation.Value)
         );
     }
 

@@ -69,11 +69,11 @@ public static class GenericEquations
     /// </summary>
     /// <param name="volatileSolids">Volatile solids (kg) in excreta/manure deposited in the unit time</param>
     /// <param name="B0">Methane potential of excreta or manure (m3 per kg VS)</param>
-    /// <param name="methaneConversionFactor">Methane conversion factor for excreta or manure</param>
+    /// <param name="CH4_ConversionFactor">Methane conversion factor for excreta or manure</param>
     /// <param name="m3ToKg">Conversion factor to convert m3 to kg</param>
     /// <returns>Methane emission (CH4) in kg per unit time</returns>
-    public static double ManureManagementMethane(double volatileSolids, double B0, double methaneConversionFactor, double m3ToKg)
+    public static double ManureManagement_CH4(double volatileSolids, double B0, double CH4_ConversionFactor, double m3ToKg)
     {
-        return volatileSolids * B0 * methaneConversionFactor * m3ToKg * HelperFunctions.Percent_to_Proportion;
+        return volatileSolids * B0 * CH4_ConversionFactor * m3ToKg * HelperFunctions.Percent_to_Proportion;
     }
 }

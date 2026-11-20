@@ -12,31 +12,31 @@ public enum SummarisePollutantType
     /// <summary>
     /// Ammonia.
     /// </summary>
-    Ammonia = 1,
+    NH3 = 1,
     /// <summary>
     /// Nitrous Oxide.
     /// </summary>
-    NitrousOxide = 2,
+    N2O = 2,
     /// <summary>
     /// Nitric Oxide.
     /// </summary>
-    NitricOxide = 3,
+    NO = 3,
     /// <summary>
     /// Dinitrogen.
     /// </summary>
-    Dinitrogen = 4,
+    N2 = 4,
     /// <summary>
     /// Nitrate.
     /// </summary>
-    Nitrate = 5,
+    NO3 = 5,
     /// <summary>
     /// Methane.
     /// </summary>
-    Methane = 6,
+    CH4 = 6,
     /// <summary>
     /// Non Methane Volatile Organic Compound.
     /// </summary>
-    NonMethaneVolatileOrganicCompound = 7,
+    NMVOC = 7,
     /// <summary>
     /// Particulate Matter2500 Nano Met.
     /// </summary>
@@ -49,6 +49,6 @@ public enum SummarisePollutantType
     /// Total Suspended Particles.
     /// </summary>
     TotalSuspendedParticles = 10,
-    Nitrogen = 12,
-    NitrateNitrogen = 13,
+    N = 12,
+    NO3_N = 13,
 }

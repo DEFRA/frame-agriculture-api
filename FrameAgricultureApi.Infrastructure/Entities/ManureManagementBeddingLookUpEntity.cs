@@ -24,7 +24,7 @@ public class ManureManagementBeddingLookUpEntity : MongoDocument
     public double BeddingAmount { get; set; }
 
     [BsonElement("BeddingNContent")]
-    public double BeddingNContent { get; set; }
+    public double Bedding_N_Content { get; set; }
 
     [BsonElement("Sector")]
     public string Sector { get; set; } = string.Empty;

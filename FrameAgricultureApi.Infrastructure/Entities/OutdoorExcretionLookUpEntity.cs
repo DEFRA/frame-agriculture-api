@@ -17,19 +17,19 @@ public class OutdoorExcretionLookUpEntity : MongoDocument
 
     /// <summary>Stored as either numeric or text values in this collection.</summary>
     [BsonElement("Dung N2ON EF")]
-    public BsonValue DungN2ONEF { get; set; } = BsonNull.Value;
+    public BsonValue Dung_N2O_N_EF { get; set; } = BsonNull.Value;
 
     /// <summary>Stored as either numeric or text values in this collection.</summary>
     [BsonElement("Dung NH3N EF")]
-    public BsonValue DungNH3NEF { get; set; } = BsonNull.Value;
+    public BsonValue Dung_NH3_N_EF { get; set; } = BsonNull.Value;
 
     /// <summary>Stored as either numeric or text values in this collection.</summary>
     [BsonElement("Excreta N2ON EF")]
-    public BsonValue ExcretaN2ONEF { get; set; } = BsonNull.Value;
+    public BsonValue Excreta_N2O_N_EF { get; set; } = BsonNull.Value;
 
     /// <summary>Stored as either numeric or text values in this collection.</summary>
     [BsonElement("Excreta NH3N EF")]
-    public BsonValue ExcretaNH3NEF { get; set; } = BsonNull.Value;
+    public BsonValue Excreta_NH3_N_EF { get; set; } = BsonNull.Value;
 
     /// <summary>Stored as either numeric or text values in this collection.</summary>
     [BsonElement("FracLeach")]
@@ -40,17 +40,17 @@ public class OutdoorExcretionLookUpEntity : MongoDocument
     public BsonValue FracLeachUncertainty { get; set; } = BsonNull.Value;
 
     [BsonElement("Methane Conversion Factor")]
-    public int MethaneConversionFactor { get; set; }
+    public int CH4_ConversionFactor { get; set; }
 
     [BsonElement("N2N Ratio")]
-    public int N2NRatio { get; set; }
+    public int N2_N_Ratio { get; set; }
 
     [BsonElement("NON ratio")]
-    public double NONRatio { get; set; }
+    public double NO_N_Ratio { get; set; }
 
     /// <summary>Stored as either numeric or text values in this collection.</summary>
     [BsonElement("Nitrogen Coefficient For Free Range Poultry")]
-    public BsonValue NitrogenCoefficientForFreeRangePoultry { get; set; } = BsonNull.Value;
+    public BsonValue N_CoefficientForFreeRangePoultry { get; set; } = BsonNull.Value;
 
     [BsonElement("Sector")]
     public string Sector { get; set; } = string.Empty;
@@ -60,9 +60,9 @@ public class OutdoorExcretionLookUpEntity : MongoDocument
 
     /// <summary>Stored as either numeric or text values in this collection.</summary>
     [BsonElement("Urine N2ON EF")]
-    public BsonValue UrineN2ONEF { get; set; } = BsonNull.Value;
+    public BsonValue Urine_N2O_N_EF { get; set; } = BsonNull.Value;
 
     /// <summary>Stored as either numeric or text values in this collection.</summary>
     [BsonElement("Urine NH3N EF")]
-    public BsonValue UrineNH3NEF { get; set; } = BsonNull.Value;
+    public BsonValue Urine_NH3_N_EF { get; set; } = BsonNull.Value;
 }

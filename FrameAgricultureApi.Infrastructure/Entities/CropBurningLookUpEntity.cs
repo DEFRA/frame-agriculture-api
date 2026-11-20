@@ -18,22 +18,22 @@ public class CropBurningLookUpEntity : MongoDocument
     public int CropTypeId { get; set; }
 
     [BsonElement("EF_CH4")]
-    public double EFCH4 { get; set; }
+    public double EF_CH4 { get; set; }
 
     [BsonElement("EF_CO")]
-    public double EFCO { get; set; }
+    public double EF_CO { get; set; }
 
     [BsonElement("EF_N2ON")]
-    public double EFN2ON { get; set; }
+    public double EF_N2O_N { get; set; }
 
     [BsonElement("EF_NH3N")]
-    public double EFNH3N { get; set; }
+    public double EF_NH3_N { get; set; }
 
     [BsonElement("EF_NMVOC")]
     public double EFNMVOC { get; set; }
 
     [BsonElement("EF_NOxN")]
-    public double EFNOxN { get; set; }
+    public double EF_NOx_N { get; set; }
 
     [BsonElement("EF_PM10")]
     public double EFPM10 { get; set; }
@@ -42,7 +42,7 @@ public class CropBurningLookUpEntity : MongoDocument
     public double EFPM25 { get; set; }
 
     [BsonElement("EF_SO2")]
-    public double EFSO2 { get; set; }
+    public double EF_SO2 { get; set; }
 
     [BsonElement("EF_TSP")]
     public double EFTSP { get; set; }

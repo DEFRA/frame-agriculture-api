@@ -15,13 +15,13 @@ public class CropResidueLookUpEntity : MongoDocument
     public double AboveGroundResiduesRemainingAfterBalingPercentage { get; set; }
 
     [BsonElement("AboveGroundResidueNContent")]
-    public double AboveGroundResidueNContent { get; set; }
+    public double AboveGroundResidue_N_Content { get; set; }
     [BsonElement("AboveToBelowGroundResidueRatio")]
     public double AboveToBelowGroundResidueRatio { get; set; }
     [BsonElement("BelowGroundResidueNContent")]
-    public double BelowGroundResidueNContent { get; set; }
+    public double BelowGroundResidue_N_Content { get; set; }
     [BsonElement("CropYieldNContent")]
-    public double? CropYieldNContent { get; set; }
+    public double? CropYield_N_Content { get; set; }
     [BsonElement("DryMatterContentPercentage")]
     public double DryMatterContentPercentage { get; set; }
     [BsonElement("Fate1")]
@@ -42,7 +42,7 @@ public class CropResidueLookUpEntity : MongoDocument
     [BsonElement("RegionalAverageYieldsEngland2019")]
     public double? RegionalAverageYieldsEngland2019 { get; set; }
     [BsonElement("ResidueAmmoniaContributingFraction")]
-    public double ResidueAmmoniaContributingFraction { get; set; }
+    public double Residue_NH3_ContributingFraction { get; set; }
     [BsonElement("Yield")]
     public double Yield { get; set; }
 }

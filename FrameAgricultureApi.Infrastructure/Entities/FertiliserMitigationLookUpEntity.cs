@@ -9,7 +9,7 @@ namespace FrameAgricultureApi.Infrastructure.Entities;
 public class FertiliserMitigationLookUpEntity : MongoDocument
 {
     [BsonElement("Ammonia_RF")]
-    public int AmmoniaRF { get; set; }
+    public int NH3_RF { get; set; }
 
     [BsonElement("Component")]
     public int Component { get; set; }
@@ -21,7 +21,7 @@ public class FertiliserMitigationLookUpEntity : MongoDocument
     public int LeachingRF { get; set; }
 
     [BsonElement("Methane_RF")]
-    public int MethaneRF { get; set; }
+    public int CH4_RF { get; set; }
 
     [BsonElement("Method_ID")]
     public int MethodID { get; set; }
@@ -33,7 +33,7 @@ public class FertiliserMitigationLookUpEntity : MongoDocument
     public string Name { get; set; } = string.Empty;
 
     [BsonElement("NitrousOxide_RF")]
-    public int NitrousOxideRF { get; set; }
+    public int N2O_RF { get; set; }
 
     [BsonElement("UID")]
     public int UID { get; set; }

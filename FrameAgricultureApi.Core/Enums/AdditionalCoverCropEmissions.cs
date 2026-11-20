@@ -8,13 +8,13 @@ public enum AdditionalCoverCropEmissions
     /// <summary>
     /// Additional N return from cover crops (kg)
     /// </summary>
-    NReturn,
+    N_Return,
     /// <summary>
     /// Leached nitrate if cover crop frac leach reduction is not applied (kg)
     /// </summary>
-    UnadjustedNO3N,
+    Unadjusted_NO3_N,
     /// <summary>
     /// N2ON from leached nitrate without frac leach reduction applied (kg)
     /// </summary>
-    UnadjustedN2ONLeach
+    Unadjusted_N2O_N_Leach
 }

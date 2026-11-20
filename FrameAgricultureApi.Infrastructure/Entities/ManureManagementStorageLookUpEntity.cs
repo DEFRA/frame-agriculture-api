@@ -15,7 +15,7 @@ public class ManureManagementStorageLookUpEntity : MongoDocument
     public int AnimalTypeId { get; set; }
 
     [BsonElement("CH4_CF")]
-    public double CH4CF { get; set; }
+    public double CH4_CF { get; set; }
 
     [BsonElement("Column8")]
     public int Column8 { get; set; }
@@ -30,16 +30,16 @@ public class ManureManagementStorageLookUpEntity : MongoDocument
     public int MineralisationFactor { get; set; }
 
     [BsonElement("N2O-N_EmissionFactor")]
-    public double N2ONEmissionFactor { get; set; }
+    public double N2O_N_EmissionFactor { get; set; }
 
     [BsonElement("N2_N_Ratio")]
-    public int N2NRatio { get; set; }
+    public int N2_N_Ratio { get; set; }
 
     [BsonElement("NH3_N_EmissionFactor")]
-    public double NH3NEmissionFactor { get; set; }
+    public double NH3_N_EmissionFactor { get; set; }
 
     [BsonElement("NO_N_Ratio")]
-    public double NONRatio { get; set; }
+    public double NO_N_Ratio { get; set; }
 
     [BsonElement("Sector")]
     public string Sector { get; set; } = string.Empty;

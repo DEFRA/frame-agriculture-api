@@ -15,28 +15,28 @@ public class SheepEnergyBalanceLookUpEntity : MongoDocument
     public int DietType { get; set; }
 
     [BsonElement("FIELDAVAILABLENITROGEN")]
-    public double FieldAvailableNitrogen { get; set; }
+    public double FieldAvailable_N { get; set; }
 
     [BsonElement("FIELDAVAILABLENITROGENCP100")]
-    public double FieldAvailableNitrogenCp100 { get; set; }
+    public double FieldAvailable_N_Cp100 { get; set; }
 
     [BsonElement("FIELDAVAILABLENITROGENCP200")]
-    public double FieldAvailableNitrogenCp200 { get; set; }
+    public double FieldAvailable_N_Cp200 { get; set; }
 
     [BsonElement("FIELDDAYS")]
     public double FieldDays { get; set; }
 
     [BsonElement("FIELDDUNGNITROGEN")]
-    public double FieldDungNitrogen { get; set; }
+    public double FieldDung_N { get; set; }
 
     [BsonElement("FIELDDUNGNITROGENCP100")]
-    public double FieldDungNitrogenCp100 { get; set; }
+    public double FieldDung_N_Cp100 { get; set; }
 
     [BsonElement("FIELDDUNGNITROGENCP200")]
-    public double FieldDungNitrogenCp200 { get; set; }
+    public double FieldDung_N_Cp200 { get; set; }
 
     [BsonElement("FIELDENTERICMETHANE")]
-    public double FieldEntericMethane { get; set; }
+    public double FieldEnteric_CH4 { get; set; }
 
     [BsonElement("FIELDEXCRETAMASS")]
     public double FieldExcretaMass { get; set; }
@@ -51,40 +51,40 @@ public class SheepEnergyBalanceLookUpEntity : MongoDocument
     public double FieldMetabolisableEnergy { get; set; }
 
     [BsonElement("FIELDNITROGENINTAKE")]
-    public double FieldNitrogenIntake { get; set; }
+    public double Field_N_Intake { get; set; }
 
     [BsonElement("FIELDNITROGENINTAKECP100")]
-    public double FieldNitrogenIntakeCp100 { get; set; }
+    public double Field_N_IntakeCp100 { get; set; }
 
     [BsonElement("FIELDNITROGENINTAKECP200")]
-    public double FieldNitrogenIntakeCp200 { get; set; }
+    public double Field_N_IntakeCp200 { get; set; }
 
     [BsonElement("FIELDRYMATTERINTAKE")]
     public double FieldDryMatterIntake { get; set; }
 
     [BsonElement("FIELDTOTALNITROGEN")]
-    public double FieldTotalNitrogen { get; set; }
+    public double FieldTotal_N { get; set; }
 
     [BsonElement("FIELDTOTALNITROGENCP100")]
-    public double FieldTotalNitrogenCp100 { get; set; }
+    public double FieldTotal_N_Cp100 { get; set; }
 
     [BsonElement("FIELDTOTALNITROGENCP200")]
-    public double FieldTotalNitrogenCp200 { get; set; }
+    public double FieldTotal_N_Cp200 { get; set; }
 
     [BsonElement("FIELDURINENITROGEN")]
-    public double FieldUrineNitrogen { get; set; }
+    public double FieldUrine_N { get; set; }
 
     [BsonElement("FIELDURINENITROGENCP100")]
-    public double FieldUrineNitrogenCp100 { get; set; }
+    public double FieldUrine_N_Cp100 { get; set; }
 
     [BsonElement("FIELDURINENITROGENCP200")]
-    public double FieldUrineNitrogenCp200 { get; set; }
+    public double FieldUrine_N_Cp200 { get; set; }
 
     [BsonElement("FIELDVOLATILESOLIDS")]
     public double FieldVolatileSolids { get; set; }
 
     [BsonElement("HOUSEAVAILABLENITROGEN")]
-    public double HouseAvailableNitrogen { get; set; }
+    public double HouseAvailable_N { get; set; }
 
     [BsonElement("HOUSEDAYS")]
     public double HouseDays { get; set; }
@@ -93,10 +93,10 @@ public class SheepEnergyBalanceLookUpEntity : MongoDocument
     public double HouseDryMatterIntake { get; set; }
 
     [BsonElement("HOUSEDUNGNITROGEN")]
-    public double HouseDungNitrogen { get; set; }
+    public double HouseDung_N { get; set; }
 
     [BsonElement("HOUSEENTERICMETHANE")]
-    public double HouseEntericMethane { get; set; }
+    public double HouseEnteric_CH4 { get; set; }
 
     [BsonElement("HOUSEEXCRETAMASS")]
     public double HouseExcretaMass { get; set; }
@@ -117,13 +117,13 @@ public class SheepEnergyBalanceLookUpEntity : MongoDocument
     public double HouseMetabolisableEnergy { get; set; }
 
     [BsonElement("HOUSENITROGENINTAKE")]
-    public double HouseNitrogenIntake { get; set; }
+    public double House_N_Intake { get; set; }
 
     [BsonElement("HOUSETOTALNITROGEN")]
-    public double HouseTotalNitrogen { get; set; }
+    public double HouseTotal_N { get; set; }
 
     [BsonElement("HOUSEURINENITROGEN")]
-    public double HouseUrineNitrogen { get; set; }
+    public double HouseUrine_N { get; set; }
 
     [BsonElement("HOUSEVOLATILESOLIDS")]
     public double HouseVolatileSolids { get; set; }
