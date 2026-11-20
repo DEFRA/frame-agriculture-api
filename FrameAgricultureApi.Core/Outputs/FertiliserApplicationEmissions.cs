@@ -5,7 +5,7 @@ namespace FrameAgricultureApi.Core.Outputs;
 /// <summary>
 /// Core fertiliser application emissions and nitrogen applied by fertiliser type.
 /// Used for both mitigated and unmitigated fertiliser application calculations.
-/// Additional nitrogen-applied outputs use the N/direct metadata convention of CoverCropEmissions.N;
+/// Additional outputs identify nitrogen supplied by each fertiliser type;
 /// they represent applied nitrogen rather than pollutant emissions.
 /// </summary>
 public class FertiliserApplicationEmissions : BaseEmissions
@@ -29,7 +29,7 @@ public class FertiliserApplicationEmissions : BaseEmissions
     /// </summary>
     public BaseEmission CH4N2O_N_Applied { get; set; } = new()
     {
-        SummarisePollutantType = SummarisePollutantType.N,
+        SummarisePollutantType = SummarisePollutantType.CH4N2O_N,
         SummarisePathwayType = SummarisePathwayType.Direct,
         Unit = new()
         {
@@ -43,7 +43,7 @@ public class FertiliserApplicationEmissions : BaseEmissions
     /// </summary>
     public BaseEmission NH4NO3_N_Applied { get; set; } = new()
     {
-        SummarisePollutantType = SummarisePollutantType.N,
+        SummarisePollutantType = SummarisePollutantType.NH4NO3_N,
         SummarisePathwayType = SummarisePathwayType.Direct,
         Unit = new()
         {
@@ -57,7 +57,7 @@ public class FertiliserApplicationEmissions : BaseEmissions
     /// </summary>
     public BaseEmission CAN_N_Applied { get; set; } = new()
     {
-        SummarisePollutantType = SummarisePollutantType.N,
+        SummarisePollutantType = SummarisePollutantType.CAN_N,
         SummarisePathwayType = SummarisePathwayType.Direct,
         Unit = new()
         {
@@ -71,7 +71,7 @@ public class FertiliserApplicationEmissions : BaseEmissions
     /// </summary>
     public BaseEmission UAN_N_Applied { get; set; } = new()
     {
-        SummarisePollutantType = SummarisePollutantType.N,
+        SummarisePollutantType = SummarisePollutantType.UAN_N,
         SummarisePathwayType = SummarisePathwayType.Direct,
         Unit = new()
         {
@@ -85,7 +85,7 @@ public class FertiliserApplicationEmissions : BaseEmissions
     /// </summary>
     public BaseEmission AS_DAP_N_Applied { get; set; } = new()
     {
-        SummarisePollutantType = SummarisePollutantType.N,
+        SummarisePollutantType = SummarisePollutantType.AS_DAP_N,
         SummarisePathwayType = SummarisePathwayType.Direct,
         Unit = new()
         {
@@ -99,7 +99,7 @@ public class FertiliserApplicationEmissions : BaseEmissions
     /// </summary>
     public BaseEmission OtherFertilisers_N_Applied { get; set; } = new()
     {
-        SummarisePollutantType = SummarisePollutantType.N,
+        SummarisePollutantType = SummarisePollutantType.OtherFertilisers_N,
         SummarisePathwayType = SummarisePathwayType.Direct,
         Unit = new()
         {
