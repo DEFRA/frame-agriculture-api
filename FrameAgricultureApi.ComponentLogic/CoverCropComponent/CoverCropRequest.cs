@@ -18,27 +18,27 @@ public class CoverCropRequest
 public class CoverCropInputs
 {
     [Required]
-    public required double NReturn { get; set; }
+    public required decimal NReturn { get; set; }
 }
 
 public class CoverCropEmissionFactors
 {
     [Required]
-    public required double IpccEf1 { get; set; }
+    public required decimal IpccEf1 { get; set; }
     [Required]
-    public required double IpccEf4 { get; set; }
+    public required decimal IpccEf4 { get; set; }
     [Required]
-    public required double IpccEf5 { get; set; }
+    public required decimal IpccEf5 { get; set; }
     [Required]
-    public required double FracLeach { get; set; }
+    public required decimal FracLeach { get; set; }
     [Required]
-    public required double N0_N_ratio { get; set; }
+    public required decimal N0_N_ratio { get; set; }
     [Required]
-    public required double N2_N_ratio { get; set; }
+    public required decimal N2_N_ratio { get; set; }
 }
 
 public class CoverCropMitigationFactors
 {
     [Required]
-    public required double FracLeachReduction { get; set; }
+    public required decimal FracLeachReduction { get; set; }
 }

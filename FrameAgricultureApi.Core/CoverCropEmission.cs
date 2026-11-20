@@ -12,5 +12,8 @@ public class CoverCropEmission
     public SummarisePollutantType SummarisePollutantType { get; set; }
     public SummarisePathwayType SummarisePathwayType { get; set; }
     public Unit Unit { get; set; } = new();
-    public double Value { get; set; } = double.NaN;
+    /// <summary>
+    /// Calculated emission value, or null when no value has been calculated.
+    /// </summary>
+    public decimal? Value { get; set; }
 }

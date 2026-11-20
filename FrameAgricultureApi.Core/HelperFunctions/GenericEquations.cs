@@ -8,6 +8,22 @@ namespace FrameAgricultureApi.Generic;
 public static class GenericEquations
 {
     /// <summary>
+    /// Calculates a decimal emission using a percentage factor and percentage uncertainty.
+    /// </summary>
+    public static decimal Emission_PercentageEF(decimal source, decimal EF, decimal Uncertainty = 100m)
+    {
+        return source * (EF * 0.01m) * (Uncertainty * 0.01m);
+    }
+
+    /// <summary>
+    /// Calculates a decimal emission using a proportional factor and percentage uncertainty.
+    /// </summary>
+    public static decimal Emission_ProportionEF(decimal source, decimal EF, decimal Uncertainty = 100m)
+    {
+        return source * EF * (Uncertainty * 0.01m);
+    }
+
+    /// <summary>
     /// Generic Emission Equation
     /// </summary>
     /// <param name="source">Amount of source (N, Carbon, etc) from which to calculate emission (kg)</param>

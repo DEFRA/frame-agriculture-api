@@ -113,7 +113,7 @@ public class BaseEmissions
     {
         foreach (var emission in GetCoreEmissions())
         {
-            emission.Value = double.NaN;
+            emission.Value = null;
         }
     }
 
@@ -125,9 +125,9 @@ public class BaseEmissions
     {
         foreach (var emission in GetCoreEmissions())
         {
-            if (!double.IsNaN(emission.Value))
+            if (emission.Value is decimal value)
             {
-                emission.Value = Math.Round(emission.Value, decimalPlaces);
+                emission.Value = decimal.Round(value, decimalPlaces, MidpointRounding.AwayFromZero);
             }
         }
     }
