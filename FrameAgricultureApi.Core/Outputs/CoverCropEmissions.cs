@@ -12,7 +12,7 @@ public class CoverCropEmissions : BaseEmissions
     /// Nitrogen returned by cover crops, measured in kilograms of nitrogen.
     /// This is an input to the emission calculations rather than a pollutant emission.
     /// </summary>
-    public CoverCropEmission N { get; set; } = new()
+    public BaseEmission N { get; set; } = new()
     {
         // Todo I have just assumed N is nitrogen 
         SummarisePollutantType = SummarisePollutantType.Nitrogen,
@@ -28,7 +28,7 @@ public class CoverCropEmissions : BaseEmissions
     /// <summary>
     /// Nitrate leached without the cover crop reduction, measured in kilograms of nitrogen.
     /// </summary>
-    public CoverCropEmission UnadjustedN03_N { get; set; } = new()
+    public BaseEmission UnadjustedN03_N { get; set; } = new()
     {
         SummarisePollutantType = SummarisePollutantType.NitrateNitrogen,
         // Todo I have assumed this is direct
@@ -43,7 +43,7 @@ public class CoverCropEmissions : BaseEmissions
     /// <summary>
     /// Indirect nitrous oxide from unadjusted nitrate leaching, measured in kilograms of nitrogen.
     /// </summary>
-    public CoverCropEmission UnadjustedIndirectedN20_NLeached { get; set; } = new()
+    public BaseEmission UnadjustedIndirectedN20_NLeached { get; set; } = new()
     {
         SummarisePollutantType = SummarisePollutantType.NitrousOxide,
         SummarisePathwayType = SummarisePathwayType.IndirectLeaching,
@@ -71,7 +71,7 @@ public class CoverCropEmissions : BaseEmissions
         }
     }
 
-    private IEnumerable<CoverCropEmission> GetAdditionalEmissions()
+    private IEnumerable<BaseEmission> GetAdditionalEmissions()
     {
         yield return N;
         yield return UnadjustedN03_N;
