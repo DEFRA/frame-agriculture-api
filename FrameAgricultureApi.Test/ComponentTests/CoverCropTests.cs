@@ -18,5 +18,5 @@ namespace FrameAgricultureApi.Test.ComponentTests;
 /// </summary>
 public class CoverCropTests
 {
-    
+
 }
