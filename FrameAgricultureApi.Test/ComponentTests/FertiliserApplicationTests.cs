@@ -230,7 +230,7 @@ public class FertiliserApplicationTests
                 Total_N_Applied = total_N_Applied,
                 PercentageFertiliserType = percentageFertiliserType,
                 AcidicSoil = acidicSoil,
-                // FRAMESeparatedByLUT.Generic_CLIMATE REGION_CELL, ANNUALRAINFALL for the scenario's CELL.
+                // FRAMESeparatedByLUT.Generic_CLIMATE REGION_CELL, ANNUAL RAINFALL for the scenario's CELL.
                 // TODO: Reconcile these climate values with the different physical lookup used by the legacy component.
                 AnnualAverageRainfall = annualAverageRainfall,
                 // TODO: Replace every 9999 with the missing monthly mean temperature, January to December.
