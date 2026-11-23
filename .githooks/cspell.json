@@ -10,7 +10,8 @@
     "**/Migrations/**",
     "**/*.min.*",
     "**/*.dll",
-    "**/*.lock"
+    "**/*.lock",
+    "**/.gitignore"
   ],
   "words": [
     "ACMR",
