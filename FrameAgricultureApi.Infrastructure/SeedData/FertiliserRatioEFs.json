@@ -12,21 +12,21 @@
   {
     "Version": "0.0",
     "Parameter": "FracLeach",
-    "Value": 30
+    "Value": 0.3
   },
   {
     "Version": "0.0",
     "Parameter": "IPCCEF1",
-    "Value": 1
+    "Value": 0.01
   },
   {
     "Version": "0.0",
     "Parameter": "IPCCEF4",
-    "Value": 1.4
+    "Value": 0.014
   },
   {
     "Version": "0.0",
     "Parameter": "IPCCEF5",
-    "Value": 0.75
+    "Value": 0.0075
   }
 ]

@@ -11,6 +11,7 @@ public class MongoDbSeeder(IMongoDatabase database)
     {
         await DeleteCollectionDataAsync<BeefCattleLiveWeightParametersLookUpEntity>("BeefCattleLiveWeightParameters");
         await DeleteCollectionDataAsync<CattleManureSpreadingLookUpEntity>("CattleManureSpreading");
+        await DeleteCollectionDataAsync<CoverCropLookUpEntity>("CoverCrops");
         await DeleteCollectionDataAsync<CropResidueLookUpEntity>("Crop_Residue");
         await DeleteCollectionDataAsync<DairyCattleLiveWeightLookUpEntity>("DairyCattleLiveWeight");
         await DeleteCollectionDataAsync<Enteric_CH4_LookUpEntity>("EntericMethane");
@@ -37,6 +38,7 @@ public class MongoDbSeeder(IMongoDatabase database)
 
         await SeedCollectionAsync<BeefCattleLiveWeightParametersLookUpEntity>("BeefCattleLiveWeightParameters.json", "BeefCattleLiveWeightParameters");
         await SeedCollectionAsync<CattleManureSpreadingLookUpEntity>("CattleManureSpreading.json", "CattleManureSpreading");
+        await SeedCollectionAsync<CoverCropLookUpEntity>("CoverCrops.json", "CoverCrops");
         await SeedCollectionAsync<CropResidueLookUpEntity>("CropResidue.json", "Crop_Residue");
         await SeedCollectionAsync<DairyCattleLiveWeightLookUpEntity>("DairyCattleLiveWeight.json", "DairyCattleLiveWeight");
         await SeedCollectionAsync<Enteric_CH4_LookUpEntity>("EntericMethane.json", "EntericMethane");
