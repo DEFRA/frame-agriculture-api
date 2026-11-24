@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:8085
 
-### Calculate cover crop emissions using lookup inputs (0 = All)
+### Get cover crop calculation inputs from lookups (0 = All)
 GET {{baseUrl}}/api/cover-crops/cover-crop-emissions/0?api-version=0.0
 Accept: application/json
 
