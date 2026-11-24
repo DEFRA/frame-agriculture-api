@@ -66,6 +66,7 @@ static void ConfigureServices(WebApplicationBuilder builder)
 
     services.AddHttpContextAccessor();
     services.AddScoped<CoverCrops>();
+    services.AddScoped<CoverCropInputLookup>();
 
     ConfigureHeaderPropagation(services, configuration);
     ConfigureHttpClients(services);
