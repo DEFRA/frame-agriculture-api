@@ -1,4 +1,5 @@
 using FrameAgricultureApi.Core.Outputs;
+using FrameAgricultureApi.Core.Enums;
 using System.Net.Mime;
 using Asp.Versioning;
 using FrameAgricultureApi.ComponentLogic.CoverCropComponent;
@@ -15,10 +16,44 @@ namespace FrameAgricultureApi.Controllers
     public class CoverCropsController : ControllerBase
     {
         private readonly CoverCrops _coverCrops;
+        private readonly CoverCropInputLookup _coverCropInputLookup;
 
-        public CoverCropsController(CoverCrops coverCrops)
+        public CoverCropsController(CoverCrops coverCrops, CoverCropInputLookup coverCropInputLookup)
         {
             _coverCrops = coverCrops;
+            _coverCropInputLookup = coverCropInputLookup;
+        }
+
+        /// <summary>
+        /// Calculates cover crop emissions using inputs and factors resolved from the lookup collections.
+        /// </summary>
+        /// <param name="coverCropType">The cover crop type; 0 represents all cover crops.</param>
+        /// <returns>The cover crop type and calculated emissions.</returns>
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(CoverCropOutput), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        [HttpGet("cover-crop-emissions/{coverCropType}")]
+        [ApiVersion(0.0)]
+        public IActionResult CoverCropEmissionsFromLookup([FromRoute] CoverCropType coverCropType)
+        {
+            if (!Enum.IsDefined(coverCropType))
+            {
+                return BadRequest($"Unsupported cover crop type '{coverCropType}'.");
+            }
+
+            try
+            {
+                var request = _coverCropInputLookup.CoverCropEmissionInputHelper(coverCropType);
+                return Ok(new CoverCropOutput
+                {
+                    CoverCropType = coverCropType,
+                    Emissions = _coverCrops.CoverCropEmissions(request)
+                });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         /// <summary>
