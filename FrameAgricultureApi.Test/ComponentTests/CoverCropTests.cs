@@ -1,8 +1,11 @@
 using FrameAgricultureApi.ComponentLogic.CoverCropComponent;
+using FrameAgricultureApi.Core.Enums;
 using FrameAgricultureApi.Core.Outputs;
 using FrameAgricultureApi.Infrastructure;
 using FrameAgricultureApi.Infrastructure.Entities;
-using Microsoft.Extensions.Logging.Abstractions;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Driver;
 using NSubstitute;
 
 namespace FrameAgricultureApi.Test.ComponentTests;
@@ -42,12 +45,7 @@ public class CoverCropTests
                 FracLeachReduction = 45m
             }
         };
-        var component = new CoverCrops(
-            Substitute.For<IMongoService<CoverCropLookUpEntity>>(),
-            Substitute.For<IMongoService<CropNonGhgLookUpEntity>>(),
-            Substitute.For<IMongoService<CropResidueLookUpEntity>>(),
-            Substitute.For<IMongoService<FertiliserRatioEfsLookUpEntity>>(),
-            NullLogger<CoverCrops>.Instance);
+        var component = new CoverCrops();
 
         var actualEmissions = component.CoverCropEmissions(request);
 
