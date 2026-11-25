@@ -1,54 +1,25 @@
-using System;
-
 namespace FrameAgricultureApi.Core;
 
+/// <summary>
+/// Reusable combined physical and chemical units used by the API.
+/// </summary>
 public static class Units
 {
-    public static PhysicalUnit Kilogram { get; } = new(
+    /// <summary>
+    /// Kilograms of nitrogen per hectare, displayed as KgN/ha.
+    /// </summary>
+    public static Unit Kilogram_N_PerHectare { get; } = new(
+        PhysicalUnits.KilogramPerHectare,
+        new ChemicalUnit(
         [
-            new BasePhysicalUnit
+            new BaseChemicalUnit
             {
-                Symbol = UnitSymbols.Kg,
+                Symbol = "N",
                 Exponent = 1
             }
-        ])
-    {
-        MultipleToBaseFactor = 1m
-    };
+        ]));
 
-    public static PhysicalUnit KilogramPerHectare { get; } = new(
-        [
-            new BasePhysicalUnit
-            {
-                Symbol = UnitSymbols.KgPerHa,
-                Exponent = 1
-            }
-        ])
-    {
-        MultipleToBaseFactor = 0.0001m
-    };
+    public static Unit Ratio { get; } = new(PhysicalUnits.Ratio, new ChemicalUnit([]));
 
-    public static PhysicalUnit Ratio { get; } = new(
-        [
-            new BasePhysicalUnit
-            {
-                Symbol = UnitSymbols.Ratio,
-                Exponent = 1
-            }
-        ])
-    {
-        MultipleToBaseFactor = 1m
-    };
-
-    public static PhysicalUnit Proportion { get; } = new(
-        [
-            new BasePhysicalUnit
-            {
-                Symbol = UnitSymbols.Proportion,
-                Exponent = 1
-            }
-        ])
-    {
-        MultipleToBaseFactor = 1m
-    };
+    public static Unit Proportion { get; } = new(PhysicalUnits.Proportion, new ChemicalUnit([]));
 }
