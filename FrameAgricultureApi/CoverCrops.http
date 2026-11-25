@@ -5,12 +5,25 @@ GET {{baseUrl}}/api/cover-crops/cover-crop-emissions/0?api-version=0.0
 Accept: application/json
 
 ### Calculate cover crop emissions
-# cropType: 10 = Wheat (see FrameAgricultureApi.Libraries.CoverCrops/CropType.cs)
-# coverCropType: 0 = All (the only supported cover crop type)
+# The current calculator expects EF1, EF4, EF5, leaching and reduction as percentages.
+# NO-N and N2-N ratios are proportions. n0_N_ratio is the model's JSON property name.
 POST {{baseUrl}}/api/cover-crops/cover-crop-emissions?api-version=0.0
 Content-Type: application/json
 Accept: application/json
 
 {
-  "NReturn": 10,
+  "coverCropInputs": {
+    "nReturn": 77
+  },
+  "coverCropEmissionFactors": {
+    "ipccEf1": 1,
+    "ipccEf4": 1.4,
+    "ipccEf5": 0.75,
+    "fracLeach": 30,
+    "n0_N_ratio": 0.4,
+    "n2_N_ratio": 3
+  },
+  "coverCropMitigationFactors": {
+    "fracLeachReduction": 45
+  }
 }
