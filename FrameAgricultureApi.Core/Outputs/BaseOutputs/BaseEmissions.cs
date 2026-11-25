@@ -12,7 +12,6 @@ public class BaseEmissions
     /// <summary>
     /// Direct N2O-N, measured as nitrogen in kilograms.
     /// </summary>
-    [JsonPropertyName("directN20_N")]
     public BaseEmission Direct_N2O_N { get; set; } = new()
     {
         SummarisePollutantType = SummarisePollutantType.N2O,
@@ -27,7 +26,6 @@ public class BaseEmissions
     /// <summary>
     /// Indirect N2O-N (leached), measured as nitrogen in kilograms.
     /// </summary>
-    [JsonPropertyName("indirectN20_NLeached")]
     public BaseEmission Indirect_N2O_N_Leached { get; set; } = new()
     {
         SummarisePollutantType = SummarisePollutantType.N2O,
@@ -40,10 +38,9 @@ public class BaseEmissions
     };
 
     /// <summary>
-    /// Indirect N2O-N (volatilisation), measured as nitrogen in kilograms.
+    /// Indirect N2O-N (Redeposition), measured as nitrogen in kilograms.
     /// </summary>
-    [JsonPropertyName("indirectN20_NVolatilisation")]
-    public BaseEmission Indirect_N2O_N_Volatilisation { get; set; } = new()
+    public BaseEmission Indirect_N2O_N_Redeposition { get; set; } = new()
     {
         SummarisePollutantType = SummarisePollutantType.N2O,
         SummarisePathwayType = SummarisePathwayType.IndirectDeposition,
@@ -57,7 +54,6 @@ public class BaseEmissions
     /// <summary>
     /// Direct NO3-N (leached), measured as nitrogen in kilograms.
     /// </summary>
-    [JsonPropertyName("directNO3_NLeached")]
     public BaseEmission Direct_NO3_N_Leached { get; set; } = new()
     {
         SummarisePollutantType = SummarisePollutantType.NO3,
@@ -72,7 +68,6 @@ public class BaseEmissions
     /// <summary>
     /// Direct NO-N, measured as nitrogen in kilograms.
     /// </summary>
-    [JsonPropertyName("directNO_N")]
     public BaseEmission Direct_NO_N { get; set; } = new()
     {
         SummarisePollutantType = SummarisePollutantType.NO,
@@ -87,7 +82,6 @@ public class BaseEmissions
     /// <summary>
     /// Direct N2-N, measured as nitrogen in kilograms.
     /// </summary>
-    [JsonPropertyName("directN2_N")]
     public BaseEmission Direct_N2_N { get; set; } = new()
     {
         SummarisePollutantType = SummarisePollutantType.N2,
@@ -123,7 +117,7 @@ public class BaseEmissions
     {
         yield return Direct_N2O_N;
         yield return Indirect_N2O_N_Leached;
-        yield return Indirect_N2O_N_Volatilisation;
+        yield return Indirect_N2O_N_Redeposition;
         yield return Direct_NO3_N_Leached;
         yield return Direct_NO_N;
         yield return Direct_N2_N;
