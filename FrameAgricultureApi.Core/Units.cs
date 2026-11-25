@@ -15,4 +15,16 @@ public static class Units
         Symbol = UnitSymbols.KgPerHa,
         MultipleToBaseFactor = 0.0001m
     };
+
+    public static Unit Ratio { get; } = new()
+    {
+        Symbol = UnitSymbols.Ratio,
+        MultipleToBaseFactor = 1m
+    };
+
+    public static Unit Proportion { get; } = new()
+    {
+        Symbol = UnitSymbols.Proportion,
+        MultipleToBaseFactor = 1m
+    };
 }
