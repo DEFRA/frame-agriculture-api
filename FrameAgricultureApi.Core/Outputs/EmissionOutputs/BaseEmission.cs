@@ -10,6 +10,6 @@ public class BaseEmission
 
     public SummarisePollutantType SummarisePollutantType { get; set; }
     public SummarisePathwayType SummarisePathwayType { get; set; }
-    public PhysicalUnit Unit { get; set; } = new([]);
+    public Unit Unit { get; set; }
     public decimal Value { get; set; }
 }

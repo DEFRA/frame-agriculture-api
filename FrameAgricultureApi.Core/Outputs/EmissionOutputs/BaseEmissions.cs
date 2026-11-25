@@ -10,63 +10,63 @@ namespace FrameAgricultureApi.Core.Outputs;
 public class BaseEmissions
 {
     /// <summary>
-    /// Direct N2O-N, measured as nitrogen in kilograms.
+    /// Direct N2O-N, measured as nitrogen in kilograms per hectare.
     /// </summary>
     public BaseEmission Direct_N2O_N { get; set; } = new()
     {
         SummarisePollutantType = SummarisePollutantType.N2O,
         SummarisePathwayType = SummarisePathwayType.Direct,
-        Unit = Units.KilogramPerHectare
+        Unit = Units.Kilogram_N2O_N_PerHectare
     };
 
     /// <summary>
-    /// Indirect N2O-N (leached), measured as nitrogen in kilograms.
+    /// Indirect N2O-N (leached), measured as nitrogen in kilograms per hectare.
     /// </summary>
     public BaseEmission Indirect_N2O_N_Leached { get; set; } = new()
     {
         SummarisePollutantType = SummarisePollutantType.N2O,
         SummarisePathwayType = SummarisePathwayType.IndirectLeaching,
-        Unit = Units.KilogramPerHectare
+        Unit = Units.Kilogram_N2O_N_PerHectare
     };
 
     /// <summary>
-    /// Indirect N2O-N (Redeposition), measured as nitrogen in kilograms.
+    /// Indirect N2O-N (Redeposition), measured as nitrogen in kilograms per hectare.
     /// </summary>
     public BaseEmission Indirect_N2O_N_Redeposition { get; set; } = new()
     {
         SummarisePollutantType = SummarisePollutantType.N2O,
         SummarisePathwayType = SummarisePathwayType.IndirectDeposition,
-        Unit = Units.KilogramPerHectare
+        Unit = Units.Kilogram_N2O_N_PerHectare
     };
 
     /// <summary>
-    /// Direct NO3-N (leached), measured as nitrogen in kilograms.
+    /// Direct NO3-N (leached), measured as nitrogen in kilograms per hectare.
     /// </summary>
     public BaseEmission Mitigated_NO3_N_Leached { get; set; } = new()
     {
         SummarisePollutantType = SummarisePollutantType.NO3,
         SummarisePathwayType = SummarisePathwayType.Direct,
-        Unit = Units.KilogramPerHectare
+        Unit = Units.Kilogram_NO3_N_PerHectare
     };
 
     /// <summary>
-    /// Direct NO-N, measured as nitrogen in kilograms.
+    /// Direct NO-N, measured as nitrogen in kilograms per hectare.
     /// </summary>
     public BaseEmission Direct_NO_N { get; set; } = new()
     {
         SummarisePollutantType = SummarisePollutantType.NO,
         SummarisePathwayType = SummarisePathwayType.Direct,
-        Unit = Units.KilogramPerHectare
+        Unit = Units.Kilogram_NO_N_PerHectare
     };
 
     /// <summary>
-    /// Direct N2-N, measured as nitrogen in kilograms.
+    /// Direct N2-N, measured as nitrogen in kilograms per hectare.
     /// </summary>
     public BaseEmission Direct_N2_N { get; set; } = new()
     {
         SummarisePollutantType = SummarisePollutantType.N2,
         SummarisePathwayType = SummarisePathwayType.Direct,
-        Unit = Units.KilogramPerHectare
+        Unit = Units.Kilogram_N2_N_PerHectare
     };
 
 
@@ -88,7 +88,7 @@ public class BaseEmissions
     /// <summary>
     /// Enumerates the core emission properties for shared processing.
     /// </summary>
-    /// <returns>The seven core nitrogen emissions.</returns>
+    /// <returns>The six core nitrogen emissions.</returns>
     protected IEnumerable<BaseEmission> GetCoreEmissions()
     {
         yield return Direct_N2O_N;
