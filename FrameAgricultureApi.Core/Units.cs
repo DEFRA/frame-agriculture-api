@@ -4,27 +4,51 @@ namespace FrameAgricultureApi.Core;
 
 public static class Units
 {
-    public static PhysicalUnit Kilogram { get; } = new()
+    public static PhysicalUnit Kilogram { get; } = new(
+        [
+            new BasePhysicalUnit
+            {
+                Symbol = UnitSymbols.Kg,
+                Exponent = 1
+            }
+        ])
     {
-        Symbol = UnitSymbols.Kg,
         MultipleToBaseFactor = 1m
     };
 
-    public static PhysicalUnit KilogramPerHectare { get; } = new()
+    public static PhysicalUnit KilogramPerHectare { get; } = new(
+        [
+            new BasePhysicalUnit
+            {
+                Symbol = UnitSymbols.KgPerHa,
+                Exponent = 1
+            }
+        ])
     {
-        Symbol = UnitSymbols.KgPerHa,
         MultipleToBaseFactor = 0.0001m
     };
 
-    public static PhysicalUnit Ratio { get; } = new()
+    public static PhysicalUnit Ratio { get; } = new(
+        [
+            new BasePhysicalUnit
+            {
+                Symbol = UnitSymbols.Ratio,
+                Exponent = 1
+            }
+        ])
     {
-        Symbol = UnitSymbols.Ratio,
         MultipleToBaseFactor = 1m
     };
 
-    public static PhysicalUnit Proportion { get; } = new()
+    public static PhysicalUnit Proportion { get; } = new(
+        [
+            new BasePhysicalUnit
+            {
+                Symbol = UnitSymbols.Proportion,
+                Exponent = 1
+            }
+        ])
     {
-        Symbol = UnitSymbols.Proportion,
         MultipleToBaseFactor = 1m
     };
 }
