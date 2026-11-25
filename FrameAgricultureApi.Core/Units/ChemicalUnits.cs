@@ -11,7 +11,7 @@ public static class ChemicalUnits
     [
         new BaseChemicalUnit
         {
-            Symbol = "N",
+            Symbol = ChemicalUnitSymbols.N,
             Exponent = 1
         }
     ]);
@@ -20,7 +20,7 @@ public static class ChemicalUnits
     [
         new BaseChemicalUnit
         {
-            Symbol = "N2O-N",
+            Symbol = ChemicalUnitSymbols.N2O_N,
             Exponent = 1
         }
     ]);
@@ -29,7 +29,7 @@ public static class ChemicalUnits
     [
         new BaseChemicalUnit
         {
-            Symbol = "NO3-N",
+            Symbol = ChemicalUnitSymbols.NO3_N,
             Exponent = 1
         }
     ]);
@@ -38,7 +38,7 @@ public static class ChemicalUnits
     [
         new BaseChemicalUnit
         {
-            Symbol = "NO-N",
+            Symbol = ChemicalUnitSymbols.NO_N,
             Exponent = 1
         }
     ]);
@@ -47,7 +47,7 @@ public static class ChemicalUnits
     [
         new BaseChemicalUnit
         {
-            Symbol = "N2-N",
+            Symbol = ChemicalUnitSymbols.N2_N,
             Exponent = 1
         }
     ]);
@@ -56,12 +56,12 @@ public static class ChemicalUnits
     [
         new BaseChemicalUnit
         {
-            Symbol = "N2O-N",
+            Symbol = ChemicalUnitSymbols.N2O_N,
             Exponent = 1
         },
         new BaseChemicalUnit
         {
-            Symbol = "N",
+            Symbol = ChemicalUnitSymbols.N,
             Exponent = -1
         }
     ]);
@@ -74,12 +74,12 @@ public static class ChemicalUnits
     [
         new BaseChemicalUnit
         {
-            Symbol = "N2O-N",
+            Symbol = ChemicalUnitSymbols.N2O_N,
             Exponent = 1
         },
         new BaseChemicalUnit
         {
-            Symbol = "(NH3-N+NOx-N)",
+            Symbol = ChemicalUnitSymbols.NH3_N_And_NOx_N,
             Exponent = -1
         }
     ]);
@@ -88,12 +88,12 @@ public static class ChemicalUnits
     [
         new BaseChemicalUnit
         {
-            Symbol = "NO3-N",
+            Symbol = ChemicalUnitSymbols.NO3_N,
             Exponent = 1
         },
         new BaseChemicalUnit
         {
-            Symbol = "N",
+            Symbol = ChemicalUnitSymbols.N,
             Exponent = -1
         }
     ]);
@@ -102,12 +102,12 @@ public static class ChemicalUnits
     [
         new BaseChemicalUnit
         {
-            Symbol = "NO-N",
+            Symbol = ChemicalUnitSymbols.NO_N,
             Exponent = 1
         },
         new BaseChemicalUnit
         {
-            Symbol = "N2O-N",
+            Symbol = ChemicalUnitSymbols.N2O_N,
             Exponent = -1
         }
     ]);
@@ -116,12 +116,12 @@ public static class ChemicalUnits
     [
         new BaseChemicalUnit
         {
-            Symbol = "N2-N",
+            Symbol = ChemicalUnitSymbols.N2_N,
             Exponent = 1
         },
         new BaseChemicalUnit
         {
-            Symbol = "N2O-N",
+            Symbol = ChemicalUnitSymbols.N2O_N,
             Exponent = -1
         }
     ]);
@@ -130,7 +130,7 @@ public static class ChemicalUnits
     [
         new BaseChemicalUnit
         {
-            Symbol = "NH3-N",
+            Symbol = ChemicalUnitSymbols.NH3_N,
             Exponent = 1
         }
     ]);

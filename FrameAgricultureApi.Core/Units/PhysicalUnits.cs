@@ -8,7 +8,7 @@ public static class PhysicalUnits
         [
             new BasePhysicalUnit
             {
-                Symbol = UnitSymbols.Kg,
+                Symbol = PhysicalUnitSymbols.Kg,
                 Exponent = 1
             }
         ])
@@ -20,12 +20,12 @@ public static class PhysicalUnits
         [
             new BasePhysicalUnit
             {
-                Symbol = UnitSymbols.Kg,
+                Symbol = PhysicalUnitSymbols.Kg,
                 Exponent = 1
             },
             new BasePhysicalUnit
             {
-                Symbol = UnitSymbols.Ha,
+                Symbol = PhysicalUnitSymbols.Ha,
                 Exponent = -1
             }
         ])
@@ -37,12 +37,12 @@ public static class PhysicalUnits
     [
         new BasePhysicalUnit
         {
-            Symbol = UnitSymbols.Kg,
+            Symbol = PhysicalUnitSymbols.Kg,
             Exponent = 1
         },
         new BasePhysicalUnit
         {
-            Symbol = UnitSymbols.Kg,
+            Symbol = PhysicalUnitSymbols.Kg,
             Exponent = -1
         }
     ])
@@ -54,7 +54,7 @@ public static class PhysicalUnits
         [
             new BasePhysicalUnit
             {
-                Symbol = UnitSymbols.Ratio,
+                Symbol = PhysicalUnitSymbols.Ratio,
                 Exponent = 1
             }
         ])
@@ -66,7 +66,7 @@ public static class PhysicalUnits
         [
             new BasePhysicalUnit
             {
-                Symbol = UnitSymbols.Proportion,
+                Symbol = PhysicalUnitSymbols.Proportion,
                 Exponent = 1
             }
         ])
