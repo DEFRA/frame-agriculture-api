@@ -10,38 +10,39 @@ public class Unit
         ArgumentNullException.ThrowIfNull(physicalUnit);
         ArgumentNullException.ThrowIfNull(chemicalUnit);
 
-        PhysicalUnit = physicalUnit;
-        ChemicalUnit = chemicalUnit;
+        Symbol = CreateSymbol(physicalUnit, chemicalUnit);
+        MultipleToBaseFactor = physicalUnit.MultipleToBaseFactor;
     }
-
-    public PhysicalUnit PhysicalUnit { get; }
-    public ChemicalUnit ChemicalUnit { get; }
 
     /// <summary>
     /// Component symbols grouped by exponent sign, with physical symbols first in each group.
     /// </summary>
-    public string Symbol
+    public string Symbol { get; }
+
+    /// <summary>
+    /// Conversion factor copied from the physical unit at construction.
+    /// </summary>
+    public decimal MultipleToBaseFactor { get; }
+
+    private static string CreateSymbol(PhysicalUnit physicalUnit, ChemicalUnit chemicalUnit)
     {
-        get
+        var components = physicalUnit.PhysicalUnitComponents
+            .Select(component => (component.Symbol, component.Exponent))
+            .Concat(chemicalUnit.ChemicalUnitComponents
+                .Select(component => (component.Symbol, component.Exponent)));
+        var numerator = string.Concat(components
+            .Where(component => component.Exponent > 0)
+            .Select(FormatComponentSymbol));
+        var denominator = string.Concat(components
+            .Where(component => component.Exponent < 0)
+            .Select(FormatComponentSymbol));
+
+        if (denominator.Length == 0)
         {
-            var components = PhysicalUnit.PhysicalUnitComponents
-                .Select(component => (component.Symbol, component.Exponent))
-                .Concat(ChemicalUnit.ChemicalUnitComponents
-                    .Select(component => (component.Symbol, component.Exponent)));
-            var numerator = string.Concat(components
-                .Where(component => component.Exponent > 0)
-                .Select(FormatComponentSymbol));
-            var denominator = string.Concat(components
-                .Where(component => component.Exponent < 0)
-                .Select(FormatComponentSymbol));
-
-            if (denominator.Length == 0)
-            {
-                return numerator;
-            }
-
-            return $"{(numerator.Length == 0 ? "1" : numerator)}/{denominator}";
+            return numerator;
         }
+
+        return $"{(numerator.Length == 0 ? "1" : numerator)}/{denominator}";
     }
 
     private static string FormatComponentSymbol((string Symbol, int Exponent) component)
