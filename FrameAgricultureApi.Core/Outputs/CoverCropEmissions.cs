@@ -22,31 +22,11 @@ public class CoverCropEmissions : BaseEmissions
         Unit = Units.KilogramPerHectare
     };
 
-    /// <summary>
-    /// Nitrate leached without the cover crop reduction, measured in kilograms of nitrogen.
-    /// </summary>
-    [JsonPropertyName("unadjustedN03_N")]
-    public CoverCropEmission Unadjusted_NO3_N { get; set; } = new()
+    public BaseEmission Unmitigated_NO3_N_Leached { get; set; } = new()
     {
         SummarisePollutantType = SummarisePollutantType.NO3_N,
-        // Todo I have assumed this is direct
         SummarisePathwayType = SummarisePathwayType.Direct,
-        Unit = new()
-        {
-            Symbol = UnitSymbols.Kg,
-            MultipleToBaseFactor = 1
-        }
-    };
-
-    /// <summary>
-    /// Indirect nitrous oxide from unadjusted nitrate leaching, measured in kilograms of nitrogen.
-    /// </summary>
-    [JsonPropertyName("unadjustedIndirectedN20_NLeached")]
-    public CoverCropEmission UnadjustedIndirected_N2O_N_Leached { get; set; } = new()
-    {
-        SummarisePollutantType = SummarisePollutantType.N2O,
-        SummarisePathwayType = SummarisePathwayType.IndirectLeaching,
-        Unit = Units.Kilogram
+        Unit = Units.KilogramPerHectare
     };
 
     /// <summary>
@@ -69,7 +49,5 @@ public class CoverCropEmissions : BaseEmissions
     private IEnumerable<CoverCropEmission> GetAdditionalEmissions()
     {
         yield return N;
-        yield return Unadjusted_NO3_N;
-        yield return UnadjustedIndirected_N2O_N_Leached;
     }
 }

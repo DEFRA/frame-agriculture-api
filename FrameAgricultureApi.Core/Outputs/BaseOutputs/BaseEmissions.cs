@@ -16,11 +16,7 @@ public class BaseEmissions
     {
         SummarisePollutantType = SummarisePollutantType.N2O,
         SummarisePathwayType = SummarisePathwayType.Direct,
-        Unit = new()
-        {
-            Symbol = UnitSymbols.Kg,
-            MultipleToBaseFactor = 1
-        }
+        Unit = Units.KilogramPerHectare
     };
 
     /// <summary>
@@ -30,11 +26,7 @@ public class BaseEmissions
     {
         SummarisePollutantType = SummarisePollutantType.N2O,
         SummarisePathwayType = SummarisePathwayType.IndirectLeaching,
-        Unit = new()
-        {
-            Symbol = UnitSymbols.Kg,
-            MultipleToBaseFactor = 1
-        }
+        Unit = Units.KilogramPerHectare
     };
 
     /// <summary>
@@ -44,25 +36,17 @@ public class BaseEmissions
     {
         SummarisePollutantType = SummarisePollutantType.N2O,
         SummarisePathwayType = SummarisePathwayType.IndirectDeposition,
-        Unit = new()
-        {
-            Symbol = UnitSymbols.Kg,
-            MultipleToBaseFactor = 1
-        }
+        Unit = Units.KilogramPerHectare
     };
 
     /// <summary>
     /// Direct NO3-N (leached), measured as nitrogen in kilograms.
     /// </summary>
-    public BaseEmission Direct_NO3_N_Leached { get; set; } = new()
+    public BaseEmission Mitigated_NO3_N_Leached { get; set; } = new()
     {
         SummarisePollutantType = SummarisePollutantType.NO3,
         SummarisePathwayType = SummarisePathwayType.Direct,
-        Unit = new()
-        {
-            Symbol = UnitSymbols.Kg,
-            MultipleToBaseFactor = 1
-        }
+        Unit = Units.KilogramPerHectare
     };
 
     /// <summary>
@@ -72,11 +56,7 @@ public class BaseEmissions
     {
         SummarisePollutantType = SummarisePollutantType.NO,
         SummarisePathwayType = SummarisePathwayType.Direct,
-        Unit = new()
-        {
-            Symbol = UnitSymbols.Kg,
-            MultipleToBaseFactor = 1
-        }
+        Unit = Units.KilogramPerHectare
     };
 
     /// <summary>
@@ -86,11 +66,7 @@ public class BaseEmissions
     {
         SummarisePollutantType = SummarisePollutantType.N2,
         SummarisePathwayType = SummarisePathwayType.Direct,
-        Unit = new()
-        {
-            Symbol = UnitSymbols.Kg,
-            MultipleToBaseFactor = 1
-        }
+        Unit = Units.KilogramPerHectare
     };
 
 
@@ -118,7 +94,7 @@ public class BaseEmissions
         yield return Direct_N2O_N;
         yield return Indirect_N2O_N_Leached;
         yield return Indirect_N2O_N_Redeposition;
-        yield return Direct_NO3_N_Leached;
+        yield return Mitigated_NO3_N_Leached;
         yield return Direct_NO_N;
         yield return Direct_N2_N;
     }

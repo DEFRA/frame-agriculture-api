@@ -50,20 +50,17 @@ public class CoverCropTests
         var actualEmissions = component.CoverCropEmissions(request);
 
         // Check unrounded values to verify decimal arithmetic before comparing legacy rounded results.
-        Assert.Equal(0.17325m, actualEmissions.UnadjustedIndirected_N2O_N_Leached.Value);
         Assert.Equal(0.0952875m, actualEmissions.Indirect_N2O_N_Leached.Value);
 
         // Legacy expected values, compared as decimals with midpoint rounding away from zero.
         Assert.Multiple(
             () => AssertEmissionEqual(77m, actualEmissions.N.Value),
             () => AssertEmissionEqual(0.77m, actualEmissions.Direct_N2O_N.Value),
-            () => AssertEmissionEqual(12.705m, actualEmissions.Direct_NO3_N_Leached.Value),
-            () => AssertEmissionEqual(23.1m, actualEmissions.Unadjusted_NO3_N.Value),
+            () => AssertEmissionEqual(12.705m, actualEmissions.Mitigated_NO3_N_Leached.Value),
             () => AssertEmissionEqual(0.0953m, actualEmissions.Indirect_N2O_N_Leached.Value),
-            () => AssertEmissionEqual(0.1733m, actualEmissions.UnadjustedIndirected_N2O_N_Leached.Value),
             () => AssertEmissionEqual(0.3080m, actualEmissions.Direct_NO_N.Value),
             () => AssertEmissionEqual(2.31m, actualEmissions.Direct_N2_N.Value),
-            () => AssertEmissionEqual(0.004312m, actualEmissions.Indirect_N2O_N_Volatilisation.Value)
+            () => AssertEmissionEqual(0.004312m, actualEmissions.Indirect_N2O_N_Redeposition.Value)
         );
     }
 

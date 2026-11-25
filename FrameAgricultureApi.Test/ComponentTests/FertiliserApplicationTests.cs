@@ -32,8 +32,8 @@ public class FertiliserApplicationTests
                 Direct_NO_N = { Value = 0.425906m },
                 Direct_N2_N = { Value = 3.194295m },
                 Indirect_N2O_N_Leached = { Value = 0.45m },
-                Indirect_N2O_N_Volatilisation = { Value = 0.521109m },
-                Direct_NO3_N_Leached = { Value = 60m },
+                Indirect_N2O_N_Redeposition = { Value = 0.521109m },
+                Mitigated_NO3_N_Leached = { Value = 60m },
                 CH4N2O_N_Applied = { Value = 200m }
             }
         },
@@ -51,8 +51,8 @@ public class FertiliserApplicationTests
                 Direct_NO_N = { Value = 2.597307m },
                 Direct_N2_N = { Value = 19.47981m },
                 Indirect_N2O_N_Leached = { Value = 0.54m },
-                Indirect_N2O_N_Volatilisation = { Value = 0.093214m },
-                Direct_NO3_N_Leached = { Value = 72m },
+                Indirect_N2O_N_Redeposition = { Value = 0.093214m },
+                Mitigated_NO3_N_Leached = { Value = 72m },
                 NH4NO3_N_Applied = { Value = 240m }
             }
         },
@@ -70,8 +70,8 @@ public class FertiliserApplicationTests
                 Direct_NO_N = { Value = 3.170343m },
                 Direct_N2_N = { Value = 23.77757m },
                 Indirect_N2O_N_Leached = { Value = 1.4625m },
-                Indirect_N2O_N_Volatilisation = { Value = 1.492033m },
-                Direct_NO3_N_Leached = { Value = 195m },
+                Indirect_N2O_N_Redeposition = { Value = 1.492033m },
+                Mitigated_NO3_N_Leached = { Value = 195m },
                 AS_DAP_N_Applied = { Value = 650m }
             }
         }
@@ -98,8 +98,8 @@ public class FertiliserApplicationTests
                 Direct_NO_N = { Value = 0.391406m },
                 Direct_N2_N = { Value = 2.935543m },
                 Indirect_N2O_N_Leached = { Value = 0.2475m },
-                Indirect_N2O_N_Volatilisation = { Value = 0.520626m },
-                Direct_NO3_N_Leached = { Value = 33m },
+                Indirect_N2O_N_Redeposition = { Value = 0.520626m },
+                Mitigated_NO3_N_Leached = { Value = 33m },
                 CH4N2O_N_Applied = { Value = 200m }
             }
         },
@@ -118,8 +118,8 @@ public class FertiliserApplicationTests
                 Direct_NO_N = { Value = 0.50245m },
                 Direct_N2_N = { Value = 3.768373m },
                 Indirect_N2O_N_Leached = { Value = 0.297m },
-                Indirect_N2O_N_Volatilisation = { Value = 0.825435m },
-                Direct_NO3_N_Leached = { Value = 39.6m },
+                Indirect_N2O_N_Redeposition = { Value = 0.825435m },
+                Mitigated_NO3_N_Leached = { Value = 39.6m },
                 CH4N2O_N_Applied = { Value = 240m }
             }
         },
@@ -138,8 +138,8 @@ public class FertiliserApplicationTests
                 Direct_NO_N = { Value = 1.823971m },
                 Direct_N2_N = { Value = 13.67978m },
                 Indirect_N2O_N_Leached = { Value = 0.804375m },
-                Indirect_N2O_N_Volatilisation = { Value = 0.452999m },
-                Direct_NO3_N_Leached = { Value = 107.25m },
+                Indirect_N2O_N_Redeposition = { Value = 0.452999m },
+                Mitigated_NO3_N_Leached = { Value = 107.25m },
                 UAN_N_Applied = { Value = 650m }
             }
         },
@@ -158,8 +158,8 @@ public class FertiliserApplicationTests
                 Direct_NO_N = { Value = 1.823971m },
                 Direct_N2_N = { Value = 13.67978m },
                 Indirect_N2O_N_Leached = { Value = 0.804375m },
-                Indirect_N2O_N_Volatilisation = { Value = 0.452999m },
-                Direct_NO3_N_Leached = { Value = 107.25m },
+                Indirect_N2O_N_Redeposition = { Value = 0.452999m },
+                Mitigated_NO3_N_Leached = { Value = 107.25m },
                 UAN_N_Applied = { Value = 650m }
             }
         },
@@ -178,8 +178,8 @@ public class FertiliserApplicationTests
                 Direct_NO_N = { Value = 49.13827m },
                 Direct_N2_N = { Value = 368.5371m },
                 Indirect_N2O_N_Leached = { Value = 1.035m },
-                Indirect_N2O_N_Volatilisation = { Value = 0.709729m },
-                Direct_NO3_N_Leached = { Value = 138m },
+                Indirect_N2O_N_Redeposition = { Value = 0.709729m },
+                Mitigated_NO3_N_Leached = { Value = 138m },
                 CAN_N_Applied = { Value = 460m }
             }
         }
@@ -314,8 +314,8 @@ public class FertiliserApplicationTests
             () => AssertEmissionEqual(expected.Direct_NO_N.Value, actual.Direct_NO_N.Value),
             () => AssertEmissionEqual(expected.Direct_N2_N.Value, actual.Direct_N2_N.Value),
             () => AssertEmissionEqual(expected.Indirect_N2O_N_Leached.Value, actual.Indirect_N2O_N_Leached.Value),
-            () => AssertEmissionEqual(expected.Indirect_N2O_N_Volatilisation.Value, actual.Indirect_N2O_N_Volatilisation.Value),
-            () => AssertEmissionEqual(expected.Direct_NO3_N_Leached.Value, actual.Direct_NO3_N_Leached.Value),
+            () => AssertEmissionEqual(expected.Indirect_N2O_N_Redeposition.Value, actual.Indirect_N2O_N_Redeposition.Value),
+            () => AssertEmissionEqual(expected.Mitigated_NO3_N_Leached.Value, actual.Mitigated_NO3_N_Leached.Value),
             () => AssertEmissionEqual(expected.CH4N2O_N_Applied.Value, actual.CH4N2O_N_Applied.Value),
             () => AssertEmissionEqual(expected.NH4NO3_N_Applied.Value, actual.NH4NO3_N_Applied.Value),
             () => AssertEmissionEqual(expected.CAN_N_Applied.Value, actual.CAN_N_Applied.Value),
