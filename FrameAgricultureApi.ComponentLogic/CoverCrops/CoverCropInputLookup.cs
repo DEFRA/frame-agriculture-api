@@ -1,4 +1,5 @@
 using FrameAgricultureApi.Core.Enums;
+using FrameAgricultureApi.Core.Outputs;
 using FrameAgricultureApi.Infrastructure;
 using FrameAgricultureApi.Infrastructure.Entities;
 using MongoDB.Driver;
@@ -21,28 +22,21 @@ public class CoverCropInputLookup
         _fertiliserRatioEfsCollection = fertiliserRatioEfsCollection ?? throw new ArgumentNullException(nameof(fertiliserRatioEfsCollection));
     }
 
-    public CoverCropRequest CoverCropEmissionInputHelper(CoverCropType coverCropType)
+    public CoverCropInputLookupOutput CoverCropEmissionInputHelper(CoverCropType coverCropType)
     {
-        return new CoverCropRequest
-        {
-            CoverCropInputs = new CoverCropInputs
-            {
-                N_Return = GetCoverCropValue("N return")
-            },
-            CoverCropEmissionFactors = new CoverCropEmissionFactors
-            {
-                IpccEf1 = GetEmissionFactor("IPCCEF1"),
-                IpccEf4 = GetEmissionFactor("IPCCEF4"),
-                IpccEf5 = GetEmissionFactor("IPCCEF5"),
-                FracLeach = GetEmissionFactor("FracLeach"),
-                NO_N_ratio = GetEmissionFactor("Ratio_NON"),
-                N2_N_ratio = GetEmissionFactor("Ratio_N2N")
-            },
-            CoverCropMitigationFactors = new CoverCropMitigationFactors
-            {
-                FracLeachReduction = GetCoverCropValue("Frac Leach reduction")
-            }
-        };
+        var output = new CoverCropInputLookupOutput();
+        output.CoverCropInputsHelper.N_Return.Value = GetCoverCropValue("N return");
+
+        var factors = output.CoverCropEmissionFactorsHelper;
+        factors.IpccEf1.Value = GetEmissionFactor("IPCCEF1");
+        factors.IpccEf4.Value = GetEmissionFactor("IPCCEF4");
+        factors.IpccEf5.Value = GetEmissionFactor("IPCCEF5");
+        factors.FracLeach.Value = GetEmissionFactor("FracLeach");
+        factors.NO_N_ratio.Value = GetEmissionFactor("Ratio_NON");
+        factors.N2_N_ratio.Value = GetEmissionFactor("Ratio_N2N");
+
+        output.CoverCropMitigationFactorsHelper.FracLeachReduction.Value = GetCoverCropValue("Frac Leach reduction");
+        return output;
 
         decimal GetCoverCropValue(string item)
         {

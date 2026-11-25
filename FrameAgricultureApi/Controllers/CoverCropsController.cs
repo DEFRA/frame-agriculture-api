@@ -25,12 +25,12 @@ namespace FrameAgricultureApi.Controllers
         }
 
         /// <summary>
-        /// Returns cover crop calculation inputs and factors resolved from the lookup collections.
+        /// Returns cover crop calculation inputs and factors with their units, resolved from the lookup collections.
         /// </summary>
         /// <param name="coverCropType">The cover crop type; 0 represents all cover crops.</param>
-        /// <returns>The populated request for calculating cover crop emissions.</returns>
+        /// <returns>Lookup values and units for cover crop inputs, emission factors and mitigation factors.</returns>
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(CoverCropRequest), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(CoverCropInputLookupOutput), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         [HttpGet("cover-crop-emissions/{coverCropType}")]
         [ApiVersion(0.0)]
@@ -43,8 +43,8 @@ namespace FrameAgricultureApi.Controllers
 
             try
             {
-                var request = _coverCropInputLookup.CoverCropEmissionInputHelper(coverCropType);
-                return Ok(request);
+                var output = _coverCropInputLookup.CoverCropEmissionInputHelper(coverCropType);
+                return Ok(output);
             }
             catch (InvalidOperationException ex)
             {
