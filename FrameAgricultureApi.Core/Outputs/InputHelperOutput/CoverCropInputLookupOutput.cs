@@ -96,7 +96,7 @@ public class CoverCropMitigationFactorsHelper
 /// </summary>
 public class InputHelper
 {
-    public Unit Unit { get; set; }
+    public PhysicalUnit Unit { get; set; }
 
     public decimal Value { get; set; }
 }
