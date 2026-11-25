@@ -19,14 +19,14 @@ public class CoverCropEmissions : BaseEmissions
         SummarisePollutantType = SummarisePollutantType.N,
         // Todo I have assumed this is direct
         SummarisePathwayType = SummarisePathwayType.Direct,
-        Unit = Units.KilogramPerHectare
+        Unit = Units.Kilogram_N_PerHectare
     };
 
     public BaseEmission Unmitigated_NO3_N_Leached { get; set; } = new()
     {
         SummarisePollutantType = SummarisePollutantType.NO3_N,
         SummarisePathwayType = SummarisePathwayType.Direct,
-        Unit = Units.KilogramPerHectare
+        Unit = Units.Kilogram_NO3_N_PerHectare
     };
 
     /// <summary>
