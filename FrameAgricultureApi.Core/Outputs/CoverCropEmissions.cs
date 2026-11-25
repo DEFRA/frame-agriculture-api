@@ -19,11 +19,7 @@ public class CoverCropEmissions : BaseEmissions
         SummarisePollutantType = SummarisePollutantType.N,
         // Todo I have assumed this is direct
         SummarisePathwayType = SummarisePathwayType.Direct,
-        Unit = new()
-        {
-            Symbol = UnitSymbols.Kg,
-            MultipleToBaseFactor = 1
-        }
+        Unit = Units.KilogramPerHectare
     };
 
     /// <summary>
@@ -50,11 +46,7 @@ public class CoverCropEmissions : BaseEmissions
     {
         SummarisePollutantType = SummarisePollutantType.N2O,
         SummarisePathwayType = SummarisePathwayType.IndirectLeaching,
-        Unit = new()
-        {
-            Symbol = UnitSymbols.Kg,
-            MultipleToBaseFactor = 1
-        }
+        Unit = Units.Kilogram
     };
 
     /// <summary>
