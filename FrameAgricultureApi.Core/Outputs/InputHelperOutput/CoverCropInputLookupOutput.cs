@@ -19,7 +19,7 @@ public class CoverCropInputsHelper
 {
     public InputHelper N_Return { get; set; } = new()
     {
-        Unit = Units.KilogramPerHectare
+        Unit = Units.Kilogram_N_PerHectare,
     };
 }
 
@@ -33,7 +33,7 @@ public class CoverCropEmissionFactorsHelper
     /// </summary>
     public InputHelper IpccEf1 { get; set; } = new()
     {
-        Unit = Units.Ratio,
+        Unit = Units.Kilogram_N2O_N_PerKilogram_N,
     };
 
     /// <summary>
@@ -41,7 +41,7 @@ public class CoverCropEmissionFactorsHelper
     /// </summary>
     public InputHelper IpccEf4 { get; set; } = new()
     {
-        Unit = Units.Ratio,
+        Unit = Units.Kilogram_N2O_N_PerKilogram_NH3_N_And_NOx_N,
     };
 
     /// <summary>
@@ -49,7 +49,7 @@ public class CoverCropEmissionFactorsHelper
     /// </summary>
     public InputHelper IpccEf5 { get; set; } = new()
     {
-        Unit = Units.Ratio,
+        Unit = Units.Kilogram_N2O_N_PerKilogram_N,
     };
 
     /// <summary>
@@ -57,7 +57,7 @@ public class CoverCropEmissionFactorsHelper
     /// </summary>
     public InputHelper FracLeach { get; set; } = new()
     {
-        Unit = Units.Ratio
+        Unit = Units.Kilogram_NO3_N_PerKilogram_N
     };
 
     /// <summary>
@@ -65,7 +65,7 @@ public class CoverCropEmissionFactorsHelper
     /// </summary>
     public InputHelper NO_N_ratio { get; set; } = new()
     {
-        Unit = Units.Ratio
+        Unit = Units.Kilogram_NO_N_PerKilogram_N2O_N
     };
 
     /// <summary>
@@ -73,7 +73,7 @@ public class CoverCropEmissionFactorsHelper
     /// </summary>
     public InputHelper N2_N_ratio { get; set; } = new()
     {
-        Unit = Units.Ratio
+        Unit = Units.Kilogram_N2_N_PerKilogram_N2O_N
     };
 }
 
@@ -96,7 +96,7 @@ public class CoverCropMitigationFactorsHelper
 /// </summary>
 public class InputHelper
 {
-    public PhysicalUnit Unit { get; set; }
+    public Unit Unit { get; set; }
 
     public decimal Value { get; set; }
 }

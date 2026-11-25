@@ -33,6 +33,23 @@ public static class PhysicalUnits
         MultipleToBaseFactor = 0.0001m
     };
 
+    public static PhysicalUnit KilogramPerKilogram { get; } = new(
+    [
+        new BasePhysicalUnit
+        {
+            Symbol = UnitSymbols.Kg,
+            Exponent = 1
+        },
+        new BasePhysicalUnit
+        {
+            Symbol = UnitSymbols.Kg,
+            Exponent = -1
+        }
+    ])
+    {
+        MultipleToBaseFactor = 1m
+    };
+
     public static PhysicalUnit Ratio { get; } = new(
         [
             new BasePhysicalUnit

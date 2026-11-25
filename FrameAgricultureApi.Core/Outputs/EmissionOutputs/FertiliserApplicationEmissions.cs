@@ -17,7 +17,7 @@ public class FertiliserApplicationEmissions : BaseEmissions
     {
         SummarisePollutantType = SummarisePollutantType.NH3,
         SummarisePathwayType = SummarisePathwayType.Direct,
-        Unit = Units.Kilogram
+        Unit = Units.Kilogram_NH3_N
     };
 
     /// <summary>
@@ -28,7 +28,7 @@ public class FertiliserApplicationEmissions : BaseEmissions
         CropAndGrassFertilisingLocationType = CropAndGrassFertilisingLocationType.Urea,
         SummarisePollutantType = SummarisePollutantType.N,
         SummarisePathwayType = SummarisePathwayType.Direct,
-        Unit = Units.Kilogram
+        Unit = Units.Kilogram_N
     };
 
     /// <summary>
@@ -39,7 +39,7 @@ public class FertiliserApplicationEmissions : BaseEmissions
         CropAndGrassFertilisingLocationType = CropAndGrassFertilisingLocationType.AmmoniumNitrate,
         SummarisePollutantType = SummarisePollutantType.N,
         SummarisePathwayType = SummarisePathwayType.Direct,
-        Unit = Units.Kilogram
+        Unit = Units.Kilogram_N
     };
 
     /// <summary>
@@ -50,7 +50,7 @@ public class FertiliserApplicationEmissions : BaseEmissions
         CropAndGrassFertilisingLocationType = CropAndGrassFertilisingLocationType.CalciumAmmoniumNitrate,
         SummarisePollutantType = SummarisePollutantType.N,
         SummarisePathwayType = SummarisePathwayType.Direct,
-        Unit = Units.Kilogram
+        Unit = Units.Kilogram_N
     };
 
     /// <summary>
@@ -61,7 +61,7 @@ public class FertiliserApplicationEmissions : BaseEmissions
         CropAndGrassFertilisingLocationType = CropAndGrassFertilisingLocationType.UreaAmmoniumNitrate,
         SummarisePollutantType = SummarisePollutantType.N,
         SummarisePathwayType = SummarisePathwayType.Direct,
-        Unit = Units.Kilogram
+        Unit = Units.Kilogram_N
     };
 
     /// <summary>
@@ -72,7 +72,7 @@ public class FertiliserApplicationEmissions : BaseEmissions
         CropAndGrassFertilisingLocationType = CropAndGrassFertilisingLocationType.AmmoniumSulphate,
         SummarisePollutantType = SummarisePollutantType.N,
         SummarisePathwayType = SummarisePathwayType.Direct,
-        Unit = Units.Kilogram
+        Unit = Units.Kilogram_N
     };
 
     /// <summary>
@@ -83,7 +83,7 @@ public class FertiliserApplicationEmissions : BaseEmissions
         CropAndGrassFertilisingLocationType = CropAndGrassFertilisingLocationType.Other_N,
         SummarisePollutantType = SummarisePollutantType.N,
         SummarisePathwayType = SummarisePathwayType.Direct,
-        Unit = Units.Kilogram
+        Unit = Units.Kilogram_N
     };
 
     /// <summary>
